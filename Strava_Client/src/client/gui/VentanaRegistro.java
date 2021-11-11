@@ -1,5 +1,7 @@
 package client.gui;
 
-public class VentanaRegistro {
+import javax.swing.JFrame;
+
+public class VentanaRegistro extends JFrame{
 
 }
