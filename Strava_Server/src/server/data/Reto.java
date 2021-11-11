@@ -1,5 +1,8 @@
 package server.data;
 
+import javax.jdo.annotations.PersistenceCapable;
+
+@PersistenceCapable
 public class Reto {
 	
 	private String idReto;
