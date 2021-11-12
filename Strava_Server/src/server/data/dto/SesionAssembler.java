@@ -3,7 +3,7 @@ package server.data.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import server.data.domain.Sesion;
+import server.data.Sesion;
 
 
 public class SesionAssembler {
@@ -32,7 +32,7 @@ public class SesionAssembler {
         return dto;
     }
     
-    public List<SesionDTO> sesion(List<Sesion> list) {
+    public List<SesionDTO> sesionToDTO(List<Sesion> list) {
     	List <SesionDTO> sesiones = new ArrayList<SesionDTO>();
     	for (Sesion s : list) {
     		SesionDTO dto = new SesionDTO();

@@ -4,15 +4,23 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTextField;
+
+import client.controller.LoginController;
+
 import javax.swing.JSpinner;
 import javax.swing.JButton;
 
 public class VentanaRegistro extends JFrame{
+	
 	private JTextField textUsername;
 	private JTextField textEmail;
 	private JTextField textPass;
-	public VentanaRegistro() {
+	
+	public VentanaRegistro(LoginController controller) {
 		getContentPane().setLayout(null);
 		
 		JLabel lblTitulo = new JLabel("STRAVA");
@@ -67,6 +75,17 @@ public class VentanaRegistro extends JFrame{
 		JButton btnRegistrarse = new JButton("Registrarse");
 		btnRegistrarse.setBounds(159, 327, 107, 23);
 		getContentPane().add(btnRegistrarse);
+		
+		btnRegistrarse.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				VentanaLogin vL = new VentanaLogin(controller);
+				vL.setVisible(true);
+				dispose();
+		
+			}
+		});
 		
 		this.setTitle("Strava - Registro");
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

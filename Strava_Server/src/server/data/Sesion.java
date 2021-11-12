@@ -1,8 +1,5 @@
-package server.data.domain;
+package server.data;
 
-import javax.jdo.annotations.PersistenceCapable;
-
-@PersistenceCapable
 public class Sesion {
 	
 	private String idSesion;
@@ -11,8 +8,9 @@ public class Sesion {
 	private int distancia;
 	private String fecha_ini;
 	private int duracion;
+	private Usuario creador;
 	
-	public Sesion(String idSesion, String titulo, Deporte deporte, int distancia, String fecha_ini, int duracion) {
+	public Sesion(String idSesion, String titulo, Deporte deporte, int distancia, String fecha_ini, int duracion, Usuario creador) {
 		super();
 		this.idSesion = idSesion;
 		this.titulo = titulo;
@@ -20,6 +18,8 @@ public class Sesion {
 		this.distancia = distancia;
 		this.fecha_ini = fecha_ini;
 		this.duracion = duracion;
+		this.creador = creador;
+
 	}
 	
 	public Sesion() {
@@ -30,6 +30,8 @@ public class Sesion {
 		this.distancia = 0;
 		this.fecha_ini = "";
 		this.duracion = 0;
+		this.creador = null;
+
 	}
 
 	public String getIdSesion() {
@@ -79,8 +81,13 @@ public class Sesion {
 	public void setDuracion(int duracion) {
 		this.duracion = duracion;
 	}
-	
-	
-	
 
+	public Usuario getCreador() {
+		return creador;
+	}
+
+	public void setCreador(Usuario creador) {
+		this.creador = creador;
+	}
+	
 }

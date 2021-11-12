@@ -2,7 +2,7 @@ package server.data.dto;
 
 import java.io.Serializable;
 
-import server.data.domain.Deporte;
+import server.data.Deporte;
 
 public class SesionDTO implements Serializable{
 

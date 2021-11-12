@@ -3,7 +3,7 @@ package server.data.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import server.data.domain.Reto;
+import server.data.Reto;
 
 public class RetoAssembler {
 	
@@ -32,7 +32,7 @@ public class RetoAssembler {
         return dto;
     }
     
-    public List<RetoDTO> entityToDTO(List<Reto> list) {
+    public List<RetoDTO> retoToDTO(List<Reto> list) {
     	List <RetoDTO> retos = new ArrayList<RetoDTO>();
     	for (Reto r : list) {
     		RetoDTO dto = new RetoDTO();

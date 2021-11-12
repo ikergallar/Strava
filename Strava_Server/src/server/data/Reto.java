@@ -1,8 +1,8 @@
-package server.data.domain;
+package server.data;
 
-import javax.jdo.annotations.PersistenceCapable;
+import java.util.ArrayList;
+import java.util.List;
 
-@PersistenceCapable
 public class Reto {
 	
 	private String idReto;
@@ -12,6 +12,8 @@ public class Reto {
 	private int distancia;
 	private Deporte deporte;
 	private Usuario creador;
+	private List<Usuario> participantes = new ArrayList<>();
+
 	
 	public Reto(String idReto, String nombre, String fecha_ini, String fecha_fin, int distancia, Deporte deporte, Usuario creador) {
 		super();
@@ -23,7 +25,7 @@ public class Reto {
 		this.deporte = deporte;
 		this.creador = creador;
 	}
-	
+
 	public Reto() {
 		super();
 		this.idReto = "";
@@ -91,6 +93,18 @@ public class Reto {
 		this.creador = creador;
 	}
 	
-	
+	public List<Usuario> getParticipantes() {
+		return participantes;
+	}
 
+	public void setParticipantes(List<Usuario> participantes) {
+		this.participantes = participantes;
+	}
+	
+	public void addParticipante(Usuario user) {
+		if (user != null && !this.participantes.contains(user)) {
+		    this.participantes.add(user);
+		}
+	}
+	
 }

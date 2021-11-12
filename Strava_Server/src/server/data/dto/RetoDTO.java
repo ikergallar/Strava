@@ -1,9 +1,8 @@
 package server.data.dto;
-
 import java.io.Serializable;
 
-import server.data.domain.Deporte;
-import server.data.domain.Usuario;
+import server.data.Deporte;
+import server.data.Usuario;
 
 public class RetoDTO implements Serializable{
 	

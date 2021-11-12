@@ -1,8 +1,5 @@
-package server.data.domain;
+package server.data;
 
-import javax.jdo.annotations.PersistenceCapable;
-
-@PersistenceCapable
 public class Usuario {
 	
 	private String username;

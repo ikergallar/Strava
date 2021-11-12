@@ -8,15 +8,13 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class VentanaLogin extends JFrame{
-	private LoginController controller;	
+	
 	private JTextField textEmail;
 	private JTextField textPass;
 	
 	public VentanaLogin(LoginController controller) {
 		getContentPane().setLayout(null);
-		
-		this.controller = controller;
-		
+				
 		JLabel lblTitulo = new JLabel("STRAVA");
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblTitulo.setForeground(new Color(244, 164, 96));
@@ -52,37 +50,21 @@ public class VentanaLogin extends JFrame{
 				
 				String email = "aticus@gmail.com";
 				String pass = "123";
-				boolean acceso = true;
 				
 				System.out.println(" - Login into the server: '" + email + "' - '" + pass + "' ...");
 				System.out.println("\t* Password : " + pass);		
 				boolean result = controller.login(email, pass);
 				System.out.println("\t* Login result: " + result);
 				System.out.println("\t* Token: " + controller.getToken());
-
 				
-				if(email.equals("") & pass.equals("")) {
-					acceso = false;
-				}
-				
-				if(acceso == true) {
-					JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Confirmacion", 1);
-					VentanaPrincipal vP = new VentanaPrincipal();
-					vP.setVisible(true);
-					dispose();
-					
-				}
-				
-				if (acceso != true) {
-					JOptionPane.showMessageDialog(null, "Datos incorrectos", "Error", 0);
-					textEmail.setText("");
-					textPass.setText("");
-				}	
+				JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Confirmacion", 1);
+				VentanaPrincipal vP = new VentanaPrincipal(controller);
+				vP.setVisible(true);
+				dispose();
+												
 			}
 		});
-		
-		
-		
+						
 		JLabel lblRegistro = new JLabel("No tienes una cuenta Strava?");
 		lblRegistro.setBounds(57, 300, 178, 14);
 		getContentPane().add(lblRegistro);
@@ -100,11 +82,10 @@ public class VentanaLogin extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				VentanaRegistro vR = new VentanaRegistro();
+				VentanaRegistro vR = new VentanaRegistro(controller);
 				vR.setVisible(true);
 				dispose();
-
-				
+		
 			}
 		});
 		

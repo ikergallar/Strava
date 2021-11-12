@@ -1,6 +1,6 @@
 package server.service;
 
-import server.data.domain.Usuario;
+import server.data.Usuario;
 
 public class LoginService {
 
