@@ -7,10 +7,9 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-import server.data.Deporte;
-import server.data.Reto;
-import server.data.Sesion;
-import server.data.Usuario;
+import server.data.domain.Reto;
+import server.data.domain.Sesion;
+import server.data.domain.Usuario;
 import server.data.dto.RetoAssembler;
 import server.data.dto.RetoDTO;
 import server.data.dto.SesionAssembler;
@@ -81,14 +80,14 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	
 	}
 	
-/*	@Override
-	public void crearReto(long token, String nombre, String fecha_ini, String fecha_fin, int distancia, Deporte deporte) throws RemoteException{
+	@Override
+	public void crearReto(long token, String nombre, String fecha_ini, String fecha_fin, int distancia, String deporte) throws RemoteException{
 		System.out.println(" * RemoteFaçade crear reto: " + nombre + "/ " + fecha_ini + "/ " + fecha_fin + "/ " + deporte+ "/ " + this.serverState.get(token));
 	    retoService.crearReto( nombre, fecha_ini, fecha_fin, distancia, deporte, this.serverState.get(token));
 		
 	}
 	
-	*/
+	
 	
 	
 	@Override
@@ -108,9 +107,9 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 				
 	}
 
-	/*
+	
 	@Override
-	public ArrayList<SesionDTO> buscarSesiones(String titulo, String fecha_ini, Deporte deporte, int distancia, int duracion) throws RemoteException{
+	public ArrayList<SesionDTO> buscarSesiones(String titulo, String fecha_ini, String deporte, int distancia, int duracion) throws RemoteException{
 		System.out.println(" * RemoteFaçade busqueda de sesiones: " + titulo + "/ " + fecha_ini + "/ " + distancia + "/ " + deporte);
 		
 		ArrayList<Sesion> sesiones = sesionService.buscarSesion(titulo, deporte, distancia, fecha_ini, duracion);
@@ -125,12 +124,10 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	}
 	
 	@Override
-	public void crearSesion(long token ,String titulo, Deporte deporte, int distancia, String fecha_ini, int duracion) throws RemoteException{
+	public void crearSesion(long token ,String titulo, String deporte, int distancia, String fecha_ini, int duracion) throws RemoteException{
 		System.out.println(" * RemoteFaçade crear sesion: " + titulo + "/ " + fecha_ini + "/ " + deporte + "/ " + distancia+ "/ " + this.serverState.get(token));
 		sesionService.crearSesion(titulo, deporte, distancia, fecha_ini, duracion, this.serverState.get(token));
 		
 	}
-	*/
 	
-
 }

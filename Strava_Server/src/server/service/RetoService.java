@@ -2,23 +2,22 @@ package server.service;
 
 import java.util.ArrayList;
 
-import server.data.Deporte;
-import server.data.Reto;
-import server.data.Usuario;
+import server.data.domain.Deporte;
+import server.data.domain.Reto;
+import server.data.domain.Usuario;
 
 public class RetoService {
 	
 	private ArrayList<Reto> retos = new ArrayList<Reto>();
 	
-	public void crearReto(String nombre, String fecha_ini, String fecha_fin, int distancia,  Deporte deporte, Usuario creador) {
+	public void crearReto(String nombre, String fecha_ini, String fecha_fin, int distancia,  String deporte, Usuario creador) {
 		
 		Reto reto = new Reto();
 		reto.setNombre(nombre);
 		reto.setFecha_ini(fecha_ini);
 		reto.setFecha_fin(fecha_fin);
-		reto.setDeporte(deporte);
+		reto.getDeporte().setNombre(nombre);;
 		reto.setDistancia(distancia);
-		reto.setDeporte(deporte);
 		reto.setCreador(creador);
 		
 		this.retos.add(reto);

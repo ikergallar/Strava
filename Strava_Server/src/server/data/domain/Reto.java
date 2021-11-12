@@ -1,4 +1,4 @@
-package server.data;
+package server.data.domain;
 
 import java.util.ArrayList;
 import java.util.List;

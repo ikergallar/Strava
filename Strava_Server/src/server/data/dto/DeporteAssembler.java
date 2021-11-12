@@ -3,9 +3,10 @@ package server.data.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import server.data.Deporte;
+import server.data.domain.Deporte;
 
 public class DeporteAssembler {
+	
 	private static DeporteAssembler instance;
 
 	private DeporteAssembler() { }
