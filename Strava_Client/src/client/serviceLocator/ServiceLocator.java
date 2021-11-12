@@ -2,11 +2,11 @@ package client.serviceLocator;
 
 import java.rmi.Naming;
 
-import server.remote.IStravaFaçade;
+import server.remote.IRemoteFaçade;
 
 public class ServiceLocator {
 	
-	private IStravaFaçade service;
+	private IRemoteFaçade service;
 
 	public void setService(String ip, String port, String serverName) {
 		if (System.getSecurityManager() == null) {
@@ -15,13 +15,13 @@ public class ServiceLocator {
 		
 		try {		
 			String URL = "//" + ip + ":" + port + "/" + serverName;
-			this.service = (IStravaFaçade) Naming.lookup(URL);
+			this.service = (IRemoteFaçade) Naming.lookup(URL);
 		} catch (Exception ex) {
 			System.err.println("# Error locating remote faï¿½ade: " + ex);
 		}		
 	}
 
-	public IStravaFaçade getService() {
+	public IRemoteFaçade getService() {
 		return this.service;
 	}
 }

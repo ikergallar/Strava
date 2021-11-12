@@ -1,26 +1,17 @@
 package server.service;
 
-import server.data.Usuario;
-import server.db.DBManager;
+import server.data.domain.Usuario;
 
 public class LoginService {
-	
-	private static LoginService instance;
-	
-	private LoginService() { }
-	
-	public static LoginService getInstance() {
-		if (instance == null) {
-			instance = new LoginService();
-		}
-		
-		return instance;
-	}
 
 	public Usuario login(String email, String password) {
-		Usuario user = DBManager.getInstance().getUsuario(email);
+		Usuario user = new Usuario();		
+		user.setEmail("aticus@gmail.com");
+		user.setUsername("Aticus");		
+		String pass =("123");		
+		user.setPass(pass);
 		
-		if (user != null && user.checkPassword(password)) {
+		if (user.getEmail().equals(email) && user.checkPassword(pass)) {		
 			return user;
 		} else {
 			return null;

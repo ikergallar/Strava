@@ -1,4 +1,4 @@
-package server.data;
+package server.data.domain;
 
 import javax.jdo.annotations.PersistenceCapable;
 

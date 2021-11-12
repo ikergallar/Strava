@@ -4,12 +4,10 @@ package server;
 import java.rmi.Naming;
 
 
-import server.remote.IStravaFaçade;
-import server.remote.StravaFaçade;
+import server.remote.IRemoteFaçade;
+import server.remote.RemoteFaçade;
 
 public class MainProgram{
-
-	private static final long serialVersionUID = 1L;
 
 	public static void main(String[] args) {
 
@@ -20,7 +18,7 @@ public class MainProgram{
 		String name = "//" + args[0] + ":" + args[1] + "/" + args[2];
 
 		try {		
-			IStravaFaçade remoteFaçade = StravaFaçade.getInstance();
+			IRemoteFaçade remoteFaçade = new RemoteFaçade();
 			Naming.rebind(name, remoteFaçade);
 			System.out.println("* Strava Server '" + name + "' active and waiting...");
 		} catch (Exception e) {
@@ -28,6 +26,5 @@ public class MainProgram{
 			e.printStackTrace();
 		}
 	}
-	
 	
 }

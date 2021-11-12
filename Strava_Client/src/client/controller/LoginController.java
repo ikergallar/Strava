@@ -1,14 +1,14 @@
 package client.controller;
 
 import java.rmi.RemoteException;
-import java.text.ParseException;
 
 import client.serviceLocator.ServiceLocator;
 
 public class LoginController {
 	
 	public ServiceLocator serviceLocator;
-
+	private long token = -1;
+	
 	public LoginController(ServiceLocator servideLocator) {
 		this.serviceLocator = servideLocator;
 	}
@@ -17,20 +17,26 @@ public class LoginController {
 		serviceLocator = new ServiceLocator();
 		serviceLocator.setService("127.0.0.1", "1099", "Strava");
 	}
-	public boolean Login(String email, String nombre, String contra) throws RemoteException, ParseException {
-		
+	public boolean login(String email, String pass) {
 		try {
-			System.out.println(" * Client login Strava: " + email + "|| nombre:" + nombre);
-			return serviceLocator.getService().login(email, contra);
+			this.token = this.serviceLocator.getService().login(email, pass);			
+			return true;
 		} catch (RemoteException e) {
-			System.err.println("# Error during login: " + e);
-			e.printStackTrace();
+			System.out.println("# Error during login: " + e);
+			this.token = -1;
 			return false;
 		}
-		
 	}
-	public boolean registrar(String correo, String nick, String contra) throws RemoteException, ParseException {
-		System.out.println(" * Client register Strava: " + correo + "|| nombre:" + nick);
-		return serviceLocator.getService().register(correo, nick, contra);
+	public void logout() {
+		try {
+			this.serviceLocator.getService().logout(this.token);
+			this.token = -1;
+		} catch (RemoteException e) {
+			System.out.println("# Error during logout: " + e);
+		}
+	}
+	
+	public long getToken() {
+		return token;
 	}
 }

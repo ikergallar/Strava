@@ -11,7 +11,7 @@ public class MainProgram {
 		serviceLocator.setService(args[0], args[1], args[2]);
 		
 		LoginController loginController = new LoginController(serviceLocator);
-		VentanaLogin ventanaLogin = new VentanaLogin();
+		VentanaLogin ventanaLogin = new VentanaLogin(loginController);
 		ventanaLogin.setVisible(true);
 	}
 
