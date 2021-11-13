@@ -81,7 +81,7 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	}
 	
 	@Override
-	public void crearReto(long token, String nombre, String fecha_ini, String fecha_fin, int distancia, String deporte) throws RemoteException{
+	public void crearReto(String nombre, String fecha_ini, String fecha_fin, int distancia, String deporte, long token) throws RemoteException{
 		System.out.println(" * RemoteFaçade crear reto: " + nombre + "/ " + fecha_ini + "/ " + fecha_fin + "/ " + deporte+ "/ " + this.serverState.get(token));
 	    retoService.crearReto( nombre, fecha_ini, fecha_fin, distancia, deporte, this.serverState.get(token));
 		
