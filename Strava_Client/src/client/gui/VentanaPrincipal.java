@@ -21,7 +21,7 @@ public class VentanaPrincipal extends JFrame{
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 101, 22);
 		getContentPane().add(menuBar);
-		
+//Menu
 		JMenu mnNewMenu = new JMenu("Menu");
 		menuBar.add(mnNewMenu);
 		
