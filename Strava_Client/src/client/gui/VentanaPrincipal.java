@@ -12,44 +12,71 @@ import javax.swing.JButton;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
-public class VentanaPrincipal extends JFrame{
-	
+public class VentanaPrincipal extends JFrame {
+
 	public VentanaPrincipal(LoginController controller) {
 		getContentPane().setLayout(null);
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 101, 22);
 		getContentPane().add(menuBar);
 
 		JMenu mnNewMenu = new JMenu("Menu");
 		menuBar.add(mnNewMenu);
-		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Reto");
-		mnNewMenu.add(mntmNewMenuItem);
-		
-		JButton btnLogout = new JButton("Logout");
-		btnLogout.setBounds(150, 300, 89, 23);
-		getContentPane().add(btnLogout);
-		
-		btnLogout.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				System.out.println(" - Logout from the server...");		
-				controller.logout();
-				System.out.println("\t* Logout success!");
-				VentanaLogin vL = new VentanaLogin(controller);
-				vL.setVisible(true);
-				JOptionPane.showMessageDialog(null, "Sesión cerrada correctamente", "Confirmacion", 1);
+
+		JMenuItem mntmReto = new JMenuItem("Reto");
+		mntmReto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaReto vR = new VentanaReto(controller);
+				vR.setVisible(true);
 				dispose();
-		
 			}
 		});
+		mnNewMenu.add(mntmReto);
 		
+		JMenuItem mntmCerrarSesion = new JMenuItem("Cerrar Sesion");
+		mntmCerrarSesion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaLogin vL = new VentanaLogin(controller);
+				vL.setVisible(true);
+				dispose();
+			}
+		});
+		mnNewMenu.add(mntmCerrarSesion);
+		
+		JLabel lblTitulo = new JLabel("Sesiones disponibles");
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		lblTitulo.setBounds(56, 33, 275, 50);
+		getContentPane().add(lblTitulo);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(10, 94, 364, 250);
+		getContentPane().add(panel);
+		
+		JButton btnCerrarSesion = new JButton("Crear Sesion");
+		btnCerrarSesion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaCrearSesion vCS = new VentanaCrearSesion(controller);
+				vCS.setVisible(true);
+				dispose();
+			}
+		});
+		btnCerrarSesion.setBounds(56, 366, 110, 23);
+		getContentPane().add(btnCerrarSesion);
+		
+		JButton btnAtras = new JButton("Atras");
+		btnAtras.setBounds(224, 366, 107, 23);
+		getContentPane().add(btnAtras);
+
 		this.setTitle("Strava - Menu");
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setVisible(true);
-		this.setSize(400,400);
+		this.setSize(401, 450);
 	}
 }
