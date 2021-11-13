@@ -1,6 +1,7 @@
 package server.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import server.data.domain.Deporte;
 import server.data.domain.Reto;
@@ -9,6 +10,11 @@ import server.data.domain.Usuario;
 public class RetoService {
 	
 	private ArrayList<Reto> retos = new ArrayList<Reto>();
+	
+	public List<Reto> getRetos() {
+		//TODO: Get all the categories using DAO Pattern		
+		return this.retos;
+	}
 	
 	public void crearReto(String nombre, String fecha_ini, String fecha_fin, int distancia,  String deporte, Usuario creador) {
 		

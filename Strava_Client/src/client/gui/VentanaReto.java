@@ -4,17 +4,27 @@ import javax.swing.JFrame;
 
 import client.controller.LoginController;
 import client.controller.RetoController;
+import server.data.dto.RetoDTO;
 
 import javax.swing.JLabel;
+
+import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JPanel;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
+import javax.swing.JList;
 
 public class VentanaReto extends JFrame {
+	
+	private DefaultListModel modelo;
+	private List<RetoDTO> lista;
+	
 
 	public VentanaReto(LoginController loginController, RetoController retoController) {
 		getContentPane().setLayout(null);
@@ -28,6 +38,18 @@ public class VentanaReto extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 94, 364, 250);
 		getContentPane().add(panel);
+		
+		JList list = new JList();
+		list.setBackground(Color.WHITE);
+		panel.add(list);
+		
+		modelo = new DefaultListModel<>();
+		lista = retoController.getRetos();
+		
+		for(RetoDTO re : lista) {
+			modelo.addElement(re);
+			list.setModel(modelo);	
+		}
 
 		JButton btnCrearReto = new JButton("Crear Reto");
 		btnCrearReto.addActionListener(new ActionListener() {

@@ -5,6 +5,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import server.data.domain.Reto;
@@ -62,6 +63,21 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 			this.serverState.remove(token);
 		} else {
 			throw new RemoteException("User is not logged in!");
+		}
+	}
+	
+	@Override
+	public List<RetoDTO> getRetos() throws RemoteException {
+		System.out.println(" * RemoteFacade getRetos()");
+		
+		//Get Categories using BidAppService
+		List<Reto> retos = retoService.getRetos();
+		
+		if (retos != null) {
+			//Convert domain object to DTO
+			return RetoAssembler.getInstance().retoToDTO(retos);
+		} else {
+			throw new RemoteException("getCategories() fails!");
 		}
 	}
 	
