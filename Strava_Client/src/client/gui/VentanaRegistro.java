@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 
 import client.controller.LoginController;
+import client.controller.RetoController;
 
 import javax.swing.JSpinner;
 import javax.swing.JButton;
@@ -20,7 +21,7 @@ public class VentanaRegistro extends JFrame{
 	private JTextField textEmail;
 	private JTextField textPass;
 	
-	public VentanaRegistro(LoginController controller) {
+	public VentanaRegistro(LoginController loginController, RetoController retoController) {
 		getContentPane().setLayout(null);
 		
 		JLabel lblTitulo = new JLabel("STRAVA");
@@ -80,7 +81,7 @@ public class VentanaRegistro extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				VentanaLogin vL = new VentanaLogin(controller);
+				VentanaLogin vL = new VentanaLogin(loginController, retoController);
 				vL.setVisible(true);
 				dispose();
 		

@@ -3,6 +3,7 @@ package client.gui;
 import javax.swing.JFrame;
 
 import client.controller.LoginController;
+import client.controller.RetoController;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -15,7 +16,7 @@ import java.awt.event.ActionEvent;
 
 public class VentanaReto extends JFrame {
 
-	public VentanaReto(LoginController controller) {
+	public VentanaReto(LoginController loginController, RetoController retoController) {
 		getContentPane().setLayout(null);
 
 		JLabel lblTitulo = new JLabel("Busca los mejores retos");
@@ -31,7 +32,7 @@ public class VentanaReto extends JFrame {
 		JButton btnCrearReto = new JButton("Crear Reto");
 		btnCrearReto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaCrearReto vCR = new VentanaCrearReto(controller);
+				VentanaCrearReto vCR = new VentanaCrearReto(loginController,retoController);
 				vCR.setVisible(true);
 				dispose();
 			}
@@ -42,7 +43,7 @@ public class VentanaReto extends JFrame {
 		JButton btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaPrincipal P = new VentanaPrincipal(controller);
+				VentanaPrincipal P = new VentanaPrincipal(loginController,retoController);
 				P.setVisible(true);
 				dispose();
 			}

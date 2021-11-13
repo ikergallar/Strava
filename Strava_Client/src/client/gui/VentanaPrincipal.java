@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import client.controller.LoginController;
+import client.controller.RetoController;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +20,7 @@ import javax.swing.SwingConstants;
 
 public class VentanaPrincipal extends JFrame {
 
-	public VentanaPrincipal(LoginController controller) {
+	public VentanaPrincipal(LoginController loginController, RetoController retoController) {
 		getContentPane().setLayout(null);
 
 		JMenuBar menuBar = new JMenuBar();
@@ -32,7 +33,7 @@ public class VentanaPrincipal extends JFrame {
 		JMenuItem mntmReto = new JMenuItem("Reto");
 		mntmReto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaReto vR = new VentanaReto(controller);
+				VentanaReto vR = new VentanaReto(loginController, retoController);
 				vR.setVisible(true);
 				dispose();
 			}
@@ -42,7 +43,7 @@ public class VentanaPrincipal extends JFrame {
 		JMenuItem mntmCerrarSesion = new JMenuItem("Cerrar Sesion");
 		mntmCerrarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaLogin vL = new VentanaLogin(controller);
+				VentanaLogin vL = new VentanaLogin(loginController,retoController);
 				vL.setVisible(true);
 				dispose();
 			}
@@ -62,7 +63,7 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnCerrarSesion = new JButton("Crear Sesion");
 		btnCerrarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaCrearSesion vCS = new VentanaCrearSesion(controller);
+				VentanaCrearSesion vCS = new VentanaCrearSesion(loginController,retoController);
 				vCS.setVisible(true);
 				dispose();
 			}

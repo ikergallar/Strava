@@ -10,7 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
 import client.controller.LoginController;
-
+import client.controller.RetoController;
 
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JSpinner;
@@ -24,7 +24,7 @@ public class VentanaCrearSesion extends JFrame {
     private JTextField textNombre;
     private JTextField txtDuracDeLa;
     
-    public VentanaCrearSesion(LoginController controller) {
+    public VentanaCrearSesion(LoginController loginController,RetoController retoController) {
         getContentPane().setLayout(null);
 
         textNombre = new JTextField();
@@ -80,7 +80,7 @@ public class VentanaCrearSesion extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				VentanaPrincipal C = new VentanaPrincipal(controller);
+				VentanaPrincipal C = new VentanaPrincipal(loginController,retoController);
 				 C.setVisible(true);
 				 dispose();
 				

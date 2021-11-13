@@ -3,6 +3,7 @@ package client.gui;
 import javax.swing.*;
 
 import client.controller.LoginController;
+import client.controller.RetoController;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -12,7 +13,7 @@ public class VentanaLogin extends JFrame{
 	private JTextField textEmail;
 	private JTextField textPass;
 	
-	public VentanaLogin(LoginController controller) {
+	public VentanaLogin(LoginController loginController, RetoController retoController) {
 		getContentPane().setLayout(null);
 				
 		JLabel lblTitulo = new JLabel("STRAVA");
@@ -53,12 +54,12 @@ public class VentanaLogin extends JFrame{
 				
 				System.out.println(" - Login into the server: '" + email + "' - '" + pass + "' ...");
 				System.out.println("\t* Password : " + pass);		
-				boolean result = controller.login(email, pass);
+				boolean result = loginController.login(email, pass);
 				System.out.println("\t* Login result: " + result);
-				System.out.println("\t* Token: " + controller.getToken());
+				System.out.println("\t* Token: " + loginController.getToken());
 				
 				JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Confirmacion", 1);
-				VentanaPrincipal vP = new VentanaPrincipal(controller);
+				VentanaPrincipal vP = new VentanaPrincipal(loginController,retoController);
 				vP.setVisible(true);
 				dispose();
 												
@@ -82,7 +83,7 @@ public class VentanaLogin extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				VentanaRegistro vR = new VentanaRegistro(controller);
+				VentanaRegistro vR = new VentanaRegistro(loginController, retoController);
 				vR.setVisible(true);
 				dispose();
 		
