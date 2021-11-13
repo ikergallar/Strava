@@ -9,14 +9,27 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class VentanaPrincipal extends JFrame{
 	
 	public VentanaPrincipal(LoginController controller) {
 		getContentPane().setLayout(null);
-				
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 0, 101, 22);
+		getContentPane().add(menuBar);
+		
+		JMenu mnNewMenu = new JMenu("Menu");
+		menuBar.add(mnNewMenu);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Reto");
+		mnNewMenu.add(mntmNewMenuItem);
+		
 		JButton btnLogout = new JButton("Logout");
-		btnLogout.setBounds(163, 28, 89, 23);
+		btnLogout.setBounds(150, 300, 89, 23);
 		getContentPane().add(btnLogout);
 		
 		btnLogout.addActionListener(new ActionListener() {
@@ -39,5 +52,4 @@ public class VentanaPrincipal extends JFrame{
 		this.setVisible(true);
 		this.setSize(400,400);
 	}
-	
 }
