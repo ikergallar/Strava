@@ -39,9 +39,9 @@ public class VentanaCrearSesion extends JFrame {
         comDeporte.setBounds(37, 125, 255, 28);
         getContentPane().add(comDeporte);
         
-        JDateChooser dateFechaIni = new JDateChooser();
-        dateFechaIni.setBounds(37, 164, 255, 28);
-        getContentPane().add(dateFechaIni);
+//        JDateChooser dateFechaIni = new JDateChooser();
+//        dateFechaIni.setBounds(37, 164, 255, 28);
+//        getContentPane().add(dateFechaIni);
         
         JSpinner spinnerHora = new JSpinner();
         spinnerHora.setBounds(37, 235, 45, 28);

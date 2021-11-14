@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import server.data.domain.Deporte;
 
-public class SesionDTO implements Serializable{
+public class SesionDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private String titulo;
@@ -12,7 +12,7 @@ public class SesionDTO implements Serializable{
 	private int distancia;
 	private String fecha_ini;
 	private int duracion;
-	
+
 	public SesionDTO(String titulo, Deporte deporte, int distancia, String fecha_ini, int duracion) {
 		super();
 		this.titulo = titulo;
@@ -21,7 +21,7 @@ public class SesionDTO implements Serializable{
 		this.fecha_ini = fecha_ini;
 		this.duracion = duracion;
 	}
-	
+
 	public SesionDTO() {
 		super();
 		this.titulo = "";
@@ -70,5 +70,13 @@ public class SesionDTO implements Serializable{
 	public void setDuracion(int duracion) {
 		this.duracion = duracion;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "SesionDTO [titulo=" + titulo + ", deporte=" + deporte + ", distancia=" + distancia + ", fecha_ini="
+				+ fecha_ini + ", duracion=" + duracion + "]";
+	}
+
+
+
 }

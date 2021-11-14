@@ -1,11 +1,12 @@
 package server.data.dto;
+
 import java.io.Serializable;
 
 import server.data.domain.Deporte;
 import server.data.domain.Usuario;
 
-public class RetoDTO implements Serializable{
-	
+public class RetoDTO implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private String fecha_ini;
@@ -13,7 +14,7 @@ public class RetoDTO implements Serializable{
 	private int distancia;
 	private Deporte deporte;
 	private Usuario creador;
-	
+
 	public RetoDTO(String nombre, String fecha_ini, String fecha_fin, int distancia, Deporte deporte, Usuario creador) {
 		super();
 		this.nombre = nombre;
@@ -23,7 +24,7 @@ public class RetoDTO implements Serializable{
 		this.deporte = deporte;
 		this.creador = creador;
 	}
-	
+
 	public RetoDTO() {
 		super();
 		this.nombre = "";
@@ -80,6 +81,12 @@ public class RetoDTO implements Serializable{
 
 	public void setCreador(Usuario creador) {
 		this.creador = creador;
+	}
+
+	@Override
+	public String toString() {
+		return "RetoDTO [nombre=" + nombre + ", fecha_ini=" + fecha_ini + ", fecha_fin=" + fecha_fin + ", distancia="
+				+ distancia + ", deporte=" + deporte + ", creador=" + creador + "]";
 	}
 
 }

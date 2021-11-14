@@ -92,12 +92,12 @@ public class VentanaReto extends JFrame {
 		getContentPane().add(btnBuscarReto);
 		
 		modelo = new DefaultListModel<RetoDTO>();
-		lista = retoController.getRetos();
+		//lista = retoController.getRetos();
 		
-		for(RetoDTO re : lista) {
-			modelo.addElement(re);
-			list.setModel(modelo);	
-		}
+//		for(RetoDTO re : lista) {
+//			modelo.addElement(re);
+//			list.setModel(modelo);	
+//		}
 		
 		btnBuscarReto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
