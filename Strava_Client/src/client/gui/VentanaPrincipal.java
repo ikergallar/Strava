@@ -5,12 +5,16 @@ import javax.swing.JOptionPane;
 
 import client.controller.LoginController;
 import client.controller.RetoController;
+import client.controller.SesionController;
+import server.data.dto.RetoDTO;
+import server.data.dto.SesionDTO;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -26,10 +30,13 @@ import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.JTextPane;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
 
 public class VentanaPrincipal extends JFrame {
+	private JTextField textFechaIni;
 	
-	public VentanaPrincipal(LoginController loginController, RetoController retoController) {
+	public VentanaPrincipal(LoginController loginController, RetoController retoController, SesionController sesionController) {
 		getContentPane().setLayout(null);
 
 		JMenuBar menuBar = new JMenuBar();
@@ -42,7 +49,7 @@ public class VentanaPrincipal extends JFrame {
 		JMenuItem mntmReto = new JMenuItem("Reto");
 		mntmReto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaReto vR = new VentanaReto(loginController, retoController);
+				VentanaReto vR = new VentanaReto(loginController, retoController, sesionController);
 				vR.setVisible(true);
 				dispose();
 			}
@@ -52,7 +59,7 @@ public class VentanaPrincipal extends JFrame {
 		JMenuItem mntmCerrarSesion = new JMenuItem("Cerrar Sesion");
 		mntmCerrarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaLogin vL = new VentanaLogin(loginController,retoController);
+				VentanaLogin vL = new VentanaLogin(loginController,retoController,sesionController);
 				vL.setVisible(true);
 				dispose();
 			}
@@ -68,12 +75,12 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnCerrarSesion = new JButton("Crear Sesion");
 		btnCerrarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaCrearSesion vCS = new VentanaCrearSesion(loginController,retoController);
+				VentanaCrearSesion vCS = new VentanaCrearSesion(loginController, retoController, sesionController);
 				vCS.setVisible(true);
 				dispose();
 			}
 		});
-		btnCerrarSesion.setBounds(56, 366, 110, 23);
+		btnCerrarSesion.setBounds(58, 366, 110, 23);
 		getContentPane().add(btnCerrarSesion);
 		
 		JButton btnAtras = new JButton("Atras");
@@ -84,55 +91,81 @@ public class VentanaPrincipal extends JFrame {
 //		panel.setBounds(173, 94, 179, 245);
 //		getContentPane().add(panel);
 		
-		JList list = new JList();
+		JList<SesionDTO> list = new JList<SesionDTO>();
 		getContentPane().add(list);
 		list.setBounds(173, 94, 179, 245);
 //		JScrollPane sp=new JScrollPane(panel);
 //		panel.add(sp);
 		
-		JTextPane textPane = new JTextPane();
-		textPane.setBounds(29, 174, 110, 20);
-		getContentPane().add(textPane);
+		JTextPane textNombre = new JTextPane();
+		textNombre.setBounds(29, 111, 110, 20);
+		getContentPane().add(textNombre);
 		
-		JButton btnNewButton = new JButton("Buscar Sesion");
-		btnNewButton.setBounds(29, 289, 110, 23);
-		getContentPane().add(btnNewButton);
+		JButton btnBuscarSesion = new JButton("Buscar Sesion");
+		btnBuscarSesion.setBounds(29, 316, 124, 31);
+		getContentPane().add(btnBuscarSesion);
+		
+		JLabel lblNewLabel = new JLabel("Nombre de la sesi\u00F3n");
+		lblNewLabel.setBounds(29, 86, 110, 14);
+		getContentPane().add(lblNewLabel);
+		
+		JLabel lblDis = new JLabel("Distancia");
+		lblDis.setBounds(28, 142, 101, 20);
+		getContentPane().add(lblDis);
+		
+		JSpinner spinnerDis = new JSpinner();
+		spinnerDis.setBounds(29, 162, 39, 22);
+		getContentPane().add(spinnerDis);
+		
+		textFechaIni = new JTextField();
+		textFechaIni.setBounds(29, 220, 110, 20);
+		getContentPane().add(textFechaIni);
+		textFechaIni.setColumns(10);
+		
+		JLabel lblFechaIni = new JLabel("Fecha de inicio");
+		lblFechaIni.setBounds(29, 195, 100, 14);
+		getContentPane().add(lblFechaIni);
+		
+		JLabel lblDuracion = new JLabel("Duraci\u00F3n");
+		lblDuracion.setBounds(29, 251, 110, 22);
+		getContentPane().add(lblDuracion);
+		
+		JSpinner spinnerDur = new JSpinner();
+		spinnerDur.setBounds(29, 283, 39, 22);
+		getContentPane().add(spinnerDur);
+		
+		btnBuscarSesion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String nombre = textNombre.getText();
+				int distancia = (Integer) spinnerDis.getValue();
+				String fechaIni = textFechaIni.getText();
+				int duracion = (Integer) spinnerDur.getValue();
+				
+				DefaultListModel<SesionDTO> modelo;
+				List<SesionDTO> lista;
+				
+				modelo = new DefaultListModel<SesionDTO>();
+			    lista = sesionController.buscarSesiones(nombre, distancia, fechaIni,  duracion);
+				
+				if(lista != null) {				
+					for(SesionDTO se : lista) {
+						modelo.addElement(se);
+						list.setModel(modelo);	
+					}
+				}else {
+					JOptionPane.showMessageDialog(null, "No existe ninguna sesion con esas caracteristicas", "Confirmacion", 1);
+
+				}
+				
+			}
+		});
 		
 		
 		
-//		String [] sesiones= {"Cardio", "Hit"};
 		
-//		lista = new JList<String>(sesiones);
-//		lista.setVisibleRowCount(4);
-//		JScrollPane sp=new JScrollPane(laminaLista);
-//		laminaLista=new JPanel();
-//		laminaLista.add(sp);
-//		lista.addListSelectionListener(new ListSelectionListener() {
-//			
-//			@Override
-//			public void valueChanged(ListSelectionEvent e) {
-//				// TODO Auto-generated method stub
-//				
-//				List<String> valores = lista.getSelectedValuesList();
-//				
-//				StringBuilder texto = new StringBuilder("Sesion seleccionada: ");
-//				
-//				for (String elemento: valores) {
-//					String palabra = elemento;
-//					texto.append(palabra);
-//					texto.append(" ");
-//				}
-//				
-//				rotulo.setText(texto.toString());
-//			}
-//		});
-//		laminaTexto=new JPanel();
-//		rotulo=new JLabel("Sesion seleccionada: ");
-//		laminaTexto.add(rotulo);
-//		add(laminaLista, BorderLayout.NORTH);
-//		add(laminaLista, BorderLayout.SOUTH);
-//		
-//		
+		
+	
 		this.setTitle("Strava - Menu");
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setVisible(true);

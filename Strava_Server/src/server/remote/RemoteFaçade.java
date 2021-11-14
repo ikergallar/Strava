@@ -110,10 +110,10 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 
 	
 	@Override
-	public ArrayList<SesionDTO> buscarSesiones(String titulo, String fecha_ini, String deporte, int distancia, int duracion) throws RemoteException{
-		System.out.println(" * RemoteFaçade busqueda de sesiones: " + titulo + "/ " + fecha_ini + "/ " + distancia + "/ " + deporte);
+	public ArrayList<SesionDTO> buscarSesiones(String titulo, int distancia,  String fecha_ini, int duracion) throws RemoteException{
+		System.out.println(" * RemoteFaçade busqueda de sesiones: " + titulo + "/ " + distancia + "/ " + fecha_ini + "/ " + duracion + "/ ");
 		
-		ArrayList<Sesion> sesiones = sesionService.buscarSesion(titulo, deporte, distancia, fecha_ini, duracion);
+		ArrayList<Sesion> sesiones = sesionService.buscarSesion(titulo, distancia, fecha_ini, duracion);
 				
 		if (sesiones != null) {
 			//Convert domain object to DTO
@@ -126,8 +126,8 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	
 	@Override
 	public void crearSesion(long token ,String titulo, String deporte, int distancia, String fecha_ini, int duracion) throws RemoteException{
-		System.out.println(" * RemoteFaçade crear sesion: " + titulo + "/ " + fecha_ini + "/ " + deporte + "/ " + distancia+ "/ " + this.serverState.get(token));
-		sesionService.crearSesion(titulo, deporte, distancia, fecha_ini, duracion, this.serverState.get(token));
+		System.out.println(" * RemoteFaçade crear sesion: "  + titulo + "/ " + deporte + "/ " + distancia + "/ " + fecha_ini+ "/ " + duracion+ "/" +this.serverState.get(token));
+		sesionService.crearSesion( titulo,deporte, distancia, fecha_ini, duracion,this.serverState.get(token));
 		
 	}
 	

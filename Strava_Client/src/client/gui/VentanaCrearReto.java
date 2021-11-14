@@ -13,6 +13,7 @@ import javax.swing.DefaultComboBoxModel;
 
 import client.controller.LoginController;
 import client.controller.RetoController;
+import client.controller.SesionController;
 
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JSpinner;
@@ -27,7 +28,7 @@ public class VentanaCrearReto extends JFrame {
 	private JTextField textFechaini;
 	private JTextField textFin;
 
-	public VentanaCrearReto(LoginController loginController, RetoController retoController) {
+	public VentanaCrearReto(LoginController loginController, RetoController retoController, SesionController sesionController) {
 		getContentPane().setLayout(null);
 		
 		JLabel lblTitulo = new JLabel("<html>Crea tus propios retos y compartelos con los usuarios de Strava<html>");
@@ -119,7 +120,7 @@ public class VentanaCrearReto extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				VentanaPrincipal C = new VentanaPrincipal(loginController,retoController);
+				VentanaReto C = new VentanaReto(loginController,retoController , sesionController);
 				C.setVisible(true);
 				dispose();
 

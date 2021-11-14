@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 
 import client.controller.LoginController;
 import client.controller.RetoController;
+import client.controller.SesionController;
 import server.data.dto.RetoDTO;
 
 import javax.swing.JLabel;
@@ -30,7 +31,7 @@ public class VentanaReto extends JFrame {
 	private JTextField textFin;
 	
 
-	public VentanaReto(LoginController loginController, RetoController retoController) {
+	public VentanaReto(LoginController loginController, RetoController retoController,SesionController sesionController) {
 		getContentPane().setLayout(null);
 
 		JLabel lblTitulo = new JLabel("Busca los mejores retos");
@@ -46,7 +47,7 @@ public class VentanaReto extends JFrame {
 		JButton btnCrearReto = new JButton("Crear Reto");
 		btnCrearReto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaCrearReto vCR = new VentanaCrearReto(loginController,retoController);
+				VentanaCrearReto vCR = new VentanaCrearReto(loginController,retoController, sesionController);
 				vCR.setVisible(true);
 				dispose();
 			}
@@ -57,7 +58,7 @@ public class VentanaReto extends JFrame {
 		JButton btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaPrincipal P = new VentanaPrincipal(loginController,retoController);
+				VentanaPrincipal P = new VentanaPrincipal(loginController,retoController,sesionController);
 				P.setVisible(true);
 				dispose();
 			}

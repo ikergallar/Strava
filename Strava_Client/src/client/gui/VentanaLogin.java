@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import client.controller.LoginController;
 import client.controller.RetoController;
+import client.controller.SesionController;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -13,7 +14,7 @@ public class VentanaLogin extends JFrame{
 	private JTextField textEmail;
 	private JTextField textPass;
 	
-	public VentanaLogin(LoginController loginController, RetoController retoController) {
+	public VentanaLogin(LoginController loginController, RetoController retoController, SesionController sesionController) {
 		getContentPane().setLayout(null);
 				
 		JLabel lblTitulo = new JLabel("STRAVA");
@@ -59,7 +60,7 @@ public class VentanaLogin extends JFrame{
 				System.out.println("\t* Token: " + loginController.getToken());
 				
 				JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Confirmacion", 1);
-				VentanaPrincipal vP = new VentanaPrincipal(loginController,retoController);
+				VentanaPrincipal vP = new VentanaPrincipal(loginController,retoController, sesionController);
 				vP.setVisible(true);
 				dispose();
 												
@@ -83,7 +84,7 @@ public class VentanaLogin extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				VentanaRegistro vR = new VentanaRegistro(loginController, retoController);
+				VentanaRegistro vR = new VentanaRegistro(loginController, retoController,sesionController);
 				vR.setVisible(true);
 				dispose();
 		
