@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.management.loading.PrivateClassLoader;
 import javax.swing.DefaultComboBoxModel;
 
 import client.controller.LoginController;
@@ -23,7 +24,8 @@ public class VentanaCrearReto extends JFrame {
 	private JTextField textNombre;
 	private JTextField txtDuracDeLa;
 	private JTextField txtDistacia;
-	private JTextField txtTiempoEstimadoDel;
+	private JTextField textFechaini;
+	private JTextField textFin;
 
 	public VentanaCrearReto(LoginController loginController, RetoController retoController) {
 		getContentPane().setLayout(null);
@@ -52,18 +54,23 @@ public class VentanaCrearReto extends JFrame {
 		JDateChooser dateFechaFin = new JDateChooser();
 		dateFechaFin.setBounds(38, 248, 255, 28);
 		getContentPane().add(dateFechaFin);*/
+		
+		textFechaini = new JTextField();
+		textFechaini.setBounds(38, 208, 255, 28);
+		getContentPane().add(textFechaini);
+		textFechaini.setColumns(10);
+		
+		textFin = new JTextField();
+		textFin.setBounds(38, 247, 255, 29);
+		getContentPane().add(textFin);
+		textFin.setColumns(10);
+
 
 		txtDistacia = new JTextField();
 		txtDistacia.setText("Distacia del reto (km)");
 		txtDistacia.setColumns(10);
 		txtDistacia.setBounds(38, 287, 255, 28);
 		getContentPane().add(txtDistacia);
-
-		txtTiempoEstimadoDel = new JTextField();
-		txtTiempoEstimadoDel.setText("Tiempo estimado del reto\r\n");
-		txtTiempoEstimadoDel.setColumns(10);
-		txtTiempoEstimadoDel.setBounds(38, 326, 255, 28);
-		getContentPane().add(txtTiempoEstimadoDel);
 
 		JButton btnCrearReto = new JButton("Crear Reto");
 		btnCrearReto.setBounds(91, 385, 89, 23);
@@ -73,14 +80,16 @@ public class VentanaCrearReto extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				// TODO Auto-generated method stub			    
 				
 				String nombre = textNombre.getText();
+				String fechaIni = textFechaini.getText();
+				String fechaFin = textFin.getText();
 				String Deporte = (String)comDeporte.getSelectedItem();
 				int distancia = Integer.parseInt(txtDistacia.getText());
 				
 				System.out.println(" - Creando un reto " + nombre + "'");
-				retoController.crearReto(nombre, null, null, distancia, Deporte, loginController.getToken());
+				retoController.crearReto(nombre, fechaIni, fechaFin, distancia, Deporte, loginController.getToken());
 				System.out.println(" - Reto creado correctamente " + nombre + "'");
 
 			}
@@ -89,7 +98,7 @@ public class VentanaCrearReto extends JFrame {
 		JButton btnAtras = new JButton("Atras");
 		btnAtras.setBounds(201, 385, 89, 23);
 		getContentPane().add(btnAtras);
-
+		
 		btnAtras.addActionListener(new ActionListener() {
 
 			@Override

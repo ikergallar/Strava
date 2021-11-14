@@ -11,6 +11,36 @@ public class RetoService {
 	
 	private ArrayList<Reto> retos = new ArrayList<Reto>();
 	
+	public RetoService() {
+		//TODO: remove when DAO Pattern is implemented
+		this.initilizeData();
+	}
+	
+	private void initilizeData() {
+		//Create Users
+		Usuario user0 = new Usuario();
+		user0.setEmail("thomas.e2001@gmail.com");
+		user0.setUsername("Thomas");
+		user0.setPass("$!9PhNz,");
+		
+		Usuario user1 = new Usuario();
+		user1.setEmail("sample@gmail.com");
+		user1.setUsername("buyer33");		
+		user1.setPass("hqc`}3Hb");
+		
+		Deporte deporte = new Deporte();
+		deporte.setNombre("Running");
+		
+		Reto reto = new Reto();
+		reto.setNombre("aaa");
+		reto.setFecha_ini("12/12/12");
+		reto.setFecha_fin("12/12/13");
+		reto.setDistancia(12);
+		reto.setCreador(user0);
+		
+		this.retos.add(reto);
+	}	
+	
 	public List<Reto> getRetos() {
 		//TODO: Get all the categories using DAO Pattern		
 		return this.retos;
@@ -22,14 +52,14 @@ public class RetoService {
 		reto.setNombre(nombre);
 		reto.setFecha_ini(fecha_ini);
 		reto.setFecha_fin(fecha_fin);
-		reto.getDeporte().setNombre(nombre);;
+		reto.getDeporte().setNombre(deporte);;
 		reto.setDistancia(distancia);
 		reto.setCreador(creador);
 		
 		this.retos.add(reto);
-		
-		
+			
 	}
+	
 	public ArrayList<Reto> buscarReto(String nombre, String fecha_ini, String fecha_fin, int distancia) {
 		
         ArrayList<Reto> reto = new ArrayList<Reto>();

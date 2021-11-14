@@ -77,7 +77,7 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 			//Convert domain object to DTO
 			return RetoAssembler.getInstance().retoToDTO(retos);
 		} else {
-			throw new RemoteException("getCategories() fails!");
+			throw new RemoteException("getRetos() fails!");
 		}
 	}
 	
