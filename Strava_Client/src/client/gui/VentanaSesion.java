@@ -6,12 +6,10 @@ import javax.swing.JOptionPane;
 import client.controller.LoginController;
 import client.controller.RetoController;
 import client.controller.SesionController;
-import server.data.dto.RetoDTO;
 import server.data.dto.SesionDTO;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
@@ -19,24 +17,20 @@ import javax.swing.JButton;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JList;
 
-import java.awt.BorderLayout;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.JTextPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 
-public class VentanaPrincipal extends JFrame {
+public class VentanaSesion extends JFrame {
+	
 	private JTextField textFechaIni;
 
-	public VentanaPrincipal(LoginController loginController, RetoController retoController,
+	public VentanaSesion(LoginController loginController, RetoController retoController,
 			SesionController sesionController) {
 		getContentPane().setLayout(null);
 
@@ -73,7 +67,7 @@ public class VentanaPrincipal extends JFrame {
 		lblTitulo.setBounds(56, 33, 275, 50);
 		getContentPane().add(lblTitulo);
 
-		JButton btnCerrarSesion = new JButton("Crear Sesion");
+		JButton btnCerrarSesion = new JButton("Crear Sesi\u00F3n");
 		btnCerrarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanaCrearSesion vCS = new VentanaCrearSesion(loginController, retoController, sesionController);
@@ -81,29 +75,23 @@ public class VentanaPrincipal extends JFrame {
 				dispose();
 			}
 		});
-		btnCerrarSesion.setBounds(133, 377, 110, 23);
+		btnCerrarSesion.setBounds(202, 431, 142, 23);
 		getContentPane().add(btnCerrarSesion);
-
-//		JPanel panel = new JPanel();
-//		panel.setBounds(173, 94, 179, 245);
-//		getContentPane().add(panel);
 
 		JList<SesionDTO> list = new JList<SesionDTO>();
 		getContentPane().add(list);
-		list.setBounds(173, 94, 179, 245);
-//		JScrollPane sp=new JScrollPane(panel);
-//		panel.add(sp);
+		list.setBounds(299, 104, 287, 267);
 
 		JTextPane textNombre = new JTextPane();
 		textNombre.setBounds(29, 111, 110, 20);
 		getContentPane().add(textNombre);
 
-		JButton btnBuscarSesion = new JButton("Buscar Sesion");
-		btnBuscarSesion.setBounds(29, 316, 124, 31);
+		JButton btnBuscarSesion = new JButton("Buscar Sesi\u00F3n");
+		btnBuscarSesion.setBounds(78, 340, 124, 31);
 		getContentPane().add(btnBuscarSesion);
 
 		JLabel lblNewLabel = new JLabel("Nombre de la sesi\u00F3n");
-		lblNewLabel.setBounds(29, 86, 110, 14);
+		lblNewLabel.setBounds(29, 86, 142, 14);
 		getContentPane().add(lblNewLabel);
 
 		JLabel lblDis = new JLabel("Distancia");
@@ -111,7 +99,7 @@ public class VentanaPrincipal extends JFrame {
 		getContentPane().add(lblDis);
 
 		JSpinner spinnerDis = new JSpinner();
-		spinnerDis.setBounds(29, 162, 39, 22);
+		spinnerDis.setBounds(29, 162, 110, 22);
 		getContentPane().add(spinnerDis);
 
 		textFechaIni = new JTextField();
@@ -128,7 +116,7 @@ public class VentanaPrincipal extends JFrame {
 		getContentPane().add(lblDuracion);
 
 		JSpinner spinnerDur = new JSpinner();
-		spinnerDur.setBounds(29, 283, 39, 22);
+		spinnerDur.setBounds(29, 283, 110, 22);
 		getContentPane().add(spinnerDur);
 
 		btnBuscarSesion.addActionListener(new ActionListener() {
@@ -162,6 +150,6 @@ public class VentanaPrincipal extends JFrame {
 		this.setTitle("Strava - Menu");
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setVisible(true);
-		this.setSize(401, 450);
+		this.setSize(634, 531);
 	}
 }

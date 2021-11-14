@@ -62,8 +62,7 @@ public class SesionDTO implements Serializable {
 
 	@Override
 	public String toString() {
-		return "SesionDTO [titulo=" + titulo +", distancia=" + distancia + ", fecha_ini="
-				+ fecha_ini + ", duracion=" + duracion + "]";
+		return  titulo + ", " + distancia + " km , " + duracion + " minutos.";
 	}
 
 

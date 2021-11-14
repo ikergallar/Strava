@@ -9,10 +9,8 @@ import server.data.dto.RetoDTO;
 
 import javax.swing.JLabel;
 
-import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import javax.swing.JPanel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
@@ -47,7 +45,7 @@ public class VentanaReto extends JFrame {
 		JMenuItem mntmReto = new JMenuItem("Sesiones");
 		mntmReto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaPrincipal vP = new VentanaPrincipal(loginController, retoController, sesionController);
+				VentanaSesion vP = new VentanaSesion(loginController, retoController, sesionController);
 				vP.setVisible(true);
 				dispose();
 			}
@@ -82,34 +80,34 @@ public class VentanaReto extends JFrame {
 				dispose();
 			}
 		});
-		btnCrearReto.setBounds(285, 501, 110, 23);
+		btnCrearReto.setBounds(285, 501, 140, 23);
 		getContentPane().add(btnCrearReto);
 
 		textNombre = new JTextField();
-		textNombre.setBounds(170, 97, 96, 20);
+		textNombre.setBounds(190, 97, 96, 20);
 		getContentPane().add(textNombre);
 		textNombre.setColumns(10);
 
 		textFechaini = new JTextField();
-		textFechaini.setBounds(170, 151, 96, 20);
+		textFechaini.setBounds(190, 151, 96, 20);
 		getContentPane().add(textFechaini);
 		textFechaini.setColumns(10);
 
 		textFin = new JTextField();
-		textFin.setBounds(170, 211, 96, 20);
+		textFin.setBounds(190, 211, 96, 20);
 		getContentPane().add(textFin);
 		textFin.setColumns(10);
 
 		JButton btnBuscarReto = new JButton("Buscar reto");
-		btnBuscarReto.setBounds(170, 343, 96, 23);
+		btnBuscarReto.setBounds(170, 343, 128, 23);
 		getContentPane().add(btnBuscarReto);
 
 		JButton btnApuntarse = new JButton("Apuntarse ");
-		btnApuntarse.setBounds(490, 397, 89, 23);
+		btnApuntarse.setBounds(490, 397, 128, 23);
 		getContentPane().add(btnApuntarse);
 
 		JSpinner spinner = new JSpinner();
-		spinner.setBounds(170, 275, 30, 20);
+		spinner.setBounds(212, 275, 74, 20);
 		getContentPane().add(spinner);
 		
 		JLabel lblNewLabel = new JLabel("Nombre");
@@ -117,11 +115,11 @@ public class VentanaReto extends JFrame {
 		getContentPane().add(lblNewLabel);
 		
 		JLabel lblFechaInicioddmmaaaa = new JLabel("Fecha inicio(dd/MM/aaaa)");
-		lblFechaInicioddmmaaaa.setBounds(20, 151, 123, 20);
+		lblFechaInicioddmmaaaa.setBounds(20, 151, 140, 20);
 		getContentPane().add(lblFechaInicioddmmaaaa);
 		
 		JLabel lblFechaFinddmmaaaa = new JLabel("Fecha fin(dd/MM/aaaa)");
-		lblFechaFinddmmaaaa.setBounds(20, 211, 123, 20);
+		lblFechaFinddmmaaaa.setBounds(20, 211, 140, 20);
 		getContentPane().add(lblFechaFinddmmaaaa);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Duraci\u00F3n");
@@ -147,11 +145,7 @@ public class VentanaReto extends JFrame {
 						modelo.addElement(re);
 						list.setModel(modelo);
 					}
-				} else {
-					JOptionPane.showMessageDialog(null, "No existe ningun reto con esas caracteristicas",
-							"Confirmacion", 1);
-
-				}
+				} 
 
 			}
 		});
@@ -161,8 +155,13 @@ public class VentanaReto extends JFrame {
 
 				RetoDTO reto = (RetoDTO) list.getSelectedValue();
 
-				retoController.apuntarseReto(loginController.getToken(), reto.getIdReto());
+				if(retoController.apuntarseReto(loginController.getToken(), reto.getIdReto()) == true) {
+					JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Confirmacion", 1);
+				}else {
+					JOptionPane.showMessageDialog(null, "Error al apuntarse al reto", "error", 2);
 
+				}
+				
 			}
 		});
 

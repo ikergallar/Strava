@@ -74,8 +74,7 @@ public class RetoDTO implements Serializable {
 
 	@Override
 	public String toString() {
-		return "RetoDTO [nombre=" + nombre + ", fecha_ini=" + fecha_ini + ", fecha_fin=" + fecha_fin + ", distancia="
-				+ distancia + "]";
+		return  nombre + ", fecha de expiración=" + fecha_fin + ", " +  distancia + "km.";
 	}
 
 }

@@ -10,6 +10,29 @@ import server.data.dto.DeporteDTO;
 public class SesionService {
 	
 private ArrayList<Sesion> sesiones = new ArrayList<Sesion>();
+
+	public SesionService() {
+	//TODO: remove when DAO Pattern is implemented
+		this.initilizeData();
+	}
+
+	private void initilizeData() {
+	
+		Usuario user0 = new Usuario();
+		user0.setEmail("aticus@gmail.com");
+		user0.setUsername("aticus");
+		user0.setPass("123,");
+	
+		Sesion sesion = new Sesion();		
+		sesion.setTitulo("aaa");
+		sesion.setFecha_ini("12/12/12");
+		sesion.setDistancia(12);
+		sesion.setDuracion(13);
+		sesion.setCreador(user0);
+	
+		this.sesiones.add(sesion);
+	}	
+
 	
 	public void crearSesion(String titulo, String deporte, int distancia, String fecha_ini, int duracion, Usuario creador) {
 		

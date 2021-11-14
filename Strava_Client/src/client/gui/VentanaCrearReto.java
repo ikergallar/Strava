@@ -1,30 +1,26 @@
 package client.gui;
 
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.SpinnerNumberModel;
 import javax.swing.JComboBox;
-import javax.management.loading.PrivateClassLoader;
 import javax.swing.DefaultComboBoxModel;
 
 import client.controller.LoginController;
 import client.controller.RetoController;
 import client.controller.SesionController;
 
-import com.toedter.calendar.JDateChooser;
 import javax.swing.JSpinner;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Calendar;
 
 public class VentanaCrearReto extends JFrame {
+	
 	private JTextField textNombre;
-	private JTextField txtDuracDeLa;
 	private JTextField textFechaini;
 	private JTextField textFin;
 
@@ -69,14 +65,6 @@ public class VentanaCrearReto extends JFrame {
 		comDeporte.setBounds(189, 169, 255, 28);
 		getContentPane().add(comDeporte);
 
-		/*
-		 * JDateChooser dateFechaIni = new JDateChooser(); dateFechaIni.setBounds(38,
-		 * 207, 255, 28); getContentPane().add(dateFechaIni);
-		 * 
-		 * JDateChooser dateFechaFin = new JDateChooser(); dateFechaFin.setBounds(38,
-		 * 248, 255, 28); getContentPane().add(dateFechaFin);
-		 */
-
 		textFechaini = new JTextField();
 		textFechaini.setBounds(189, 208, 255, 28);
 		getContentPane().add(textFechaini);
@@ -106,6 +94,9 @@ public class VentanaCrearReto extends JFrame {
 				System.out.println(" - Creando un reto " + nombre + "'");
 				retoController.crearReto(nombre, fechaIni, fechaFin, distancia, Deporte, loginController.getToken());
 				System.out.println(" - Reto creado correctamente " + nombre + "'");
+				
+				JOptionPane.showMessageDialog(null, "Reto creado correctamente", "Confirmacion", 1);
+
 
 			}
 		});

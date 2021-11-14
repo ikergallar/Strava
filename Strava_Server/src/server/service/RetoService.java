@@ -17,19 +17,11 @@ public class RetoService {
 	}
 	
 	private void initilizeData() {
-		//Create Users
+		
 		Usuario user0 = new Usuario();
-		user0.setEmail("thomas.e2001@gmail.com");
-		user0.setUsername("Thomas");
-		user0.setPass("$!9PhNz,");
-		
-		Usuario user1 = new Usuario();
-		user1.setEmail("sample@gmail.com");
-		user1.setUsername("buyer33");		
-		user1.setPass("hqc`}3Hb");
-		
-		Deporte deporte = new Deporte();
-		deporte.setNombre("Running");
+		user0.setEmail("aticus@gmail.com");
+		user0.setUsername("aticus");
+		user0.setPass("123,");
 		
 		Reto reto = new Reto();		
 		reto.setIdReto(21);

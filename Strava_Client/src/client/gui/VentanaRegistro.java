@@ -82,8 +82,8 @@ public class VentanaRegistro extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				VentanaLogin vL = new VentanaLogin(loginController, retoController,sesionController);
-				vL.setVisible(true);
+				VentanaSesion vP = new VentanaSesion(loginController, retoController,sesionController);
+				vP.setVisible(true);
 				dispose();
 		
 			}

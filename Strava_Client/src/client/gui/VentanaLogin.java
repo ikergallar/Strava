@@ -60,7 +60,7 @@ public class VentanaLogin extends JFrame{
 				System.out.println("\t* Token: " + loginController.getToken());
 				
 				JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Confirmacion", 1);
-				VentanaPrincipal vP = new VentanaPrincipal(loginController,retoController, sesionController);
+				VentanaSesion vP = new VentanaSesion(loginController,retoController, sesionController);
 				vP.setVisible(true);
 				dispose();
 												
