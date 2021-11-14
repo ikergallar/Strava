@@ -24,7 +24,6 @@ public class SesionAssembler {
     	SesionDTO dto = new SesionDTO();
 
     	dto.setTitulo(sesion.getTitulo());
-        dto.setDeporte(sesion.getDeporte());
         dto.setDistancia(sesion.getDistancia());
 		dto.setFecha_ini(sesion.getFecha_ini());
         dto.setDuracion(sesion.getDuracion());
@@ -38,7 +37,6 @@ public class SesionAssembler {
     		SesionDTO dto = new SesionDTO();
     		
     		dto.setTitulo(s.getTitulo());
-            dto.setDeporte(s.getDeporte());
             dto.setDistancia(s.getDistancia());
     		dto.setFecha_ini(s.getFecha_ini());
             dto.setDuracion(s.getDuracion());

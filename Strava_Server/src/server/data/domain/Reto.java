@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Reto {
 	
-	private String idReto;
+	private int idReto;
 	private String nombre;
 	private String fecha_ini;
 	private String fecha_fin;
@@ -15,7 +15,7 @@ public class Reto {
 	private List<Usuario> participantes = new ArrayList<>();
 
 	
-	public Reto(String idReto, String nombre, String fecha_ini, String fecha_fin, int distancia, Deporte deporte, Usuario creador) {
+	public Reto(int idReto, String nombre, String fecha_ini, String fecha_fin, int distancia, Deporte deporte, Usuario creador) {
 		super();
 		this.idReto = idReto;
 		this.nombre = nombre;
@@ -28,7 +28,7 @@ public class Reto {
 
 	public Reto() {
 		super();
-		this.idReto = "";
+		this.idReto = 0;
 		this.nombre = "";
 		this.fecha_ini = null;
 		this.fecha_fin = null;
@@ -37,11 +37,11 @@ public class Reto {
 		this.creador= null;
 	}
 
-	public String getIdReto() {
+	public int getIdReto() {
 		return idReto;
 	}
 
-	public void setIdReto(String idReto) {
+	public void setIdReto(int idReto) {
 		this.idReto = idReto;
 	}
 

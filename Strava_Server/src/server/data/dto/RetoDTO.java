@@ -8,31 +8,36 @@ import server.data.domain.Usuario;
 public class RetoDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	private int idReto;
 	private String nombre;
 	private String fecha_ini;
 	private String fecha_fin;
 	private int distancia;
-	private Deporte deporte;
-	private Usuario creador;
 
-	public RetoDTO(String nombre, String fecha_ini, String fecha_fin, int distancia, Deporte deporte, Usuario creador) {
+	public RetoDTO(int idReto, String nombre, String fecha_ini, String fecha_fin, int distancia) {
 		super();
+		this.idReto = idReto;
 		this.nombre = nombre;
 		this.fecha_ini = fecha_ini;
 		this.fecha_fin = fecha_fin;
 		this.distancia = distancia;
-		this.deporte = deporte;
-		this.creador = creador;
 	}
 
 	public RetoDTO() {
 		super();
+		this.idReto = 0;
 		this.nombre = "";
 		this.fecha_ini = "";
 		this.fecha_fin = "";
 		this.distancia = 0;
-		this.deporte = null;
-		this.creador = null;
+	}
+
+	public int getIdReto() {
+		return idReto;
+	}
+
+	public void setIdReto(int idReto) {
+		this.idReto = idReto;
 	}
 
 	public String getNombre() {
@@ -67,26 +72,10 @@ public class RetoDTO implements Serializable {
 		this.distancia = distancia;
 	}
 
-	public Deporte getDeporte() {
-		return deporte;
-	}
-
-	public void setDeporte(Deporte deporte) {
-		this.deporte = deporte;
-	}
-
-	public Usuario getCreador() {
-		return creador;
-	}
-
-	public void setCreador(Usuario creador) {
-		this.creador = creador;
-	}
-
 	@Override
 	public String toString() {
 		return "RetoDTO [nombre=" + nombre + ", fecha_ini=" + fecha_ini + ", fecha_fin=" + fecha_fin + ", distancia="
-				+ distancia + ", deporte=" + deporte + ", creador=" + creador + "]";
+				+ distancia + "]";
 	}
 
 }

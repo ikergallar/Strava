@@ -31,7 +31,8 @@ public class RetoService {
 		Deporte deporte = new Deporte();
 		deporte.setNombre("Running");
 		
-		Reto reto = new Reto();
+		Reto reto = new Reto();		
+		reto.setIdReto(21);
 		reto.setNombre("aaa");
 		reto.setFecha_ini("12/12/12");
 		reto.setFecha_fin("12/12/13");
@@ -41,18 +42,12 @@ public class RetoService {
 		this.retos.add(reto);
 	}	
 	
-	public List<Reto> getRetos() {
-		//TODO: Get all the categories using DAO Pattern		
-		return this.retos;
-	}
-	
 	public void crearReto(String nombre, String fecha_ini, String fecha_fin, int distancia,  String deporte, Usuario creador) {
 		
 		Reto reto = new Reto();
 		reto.setNombre(nombre);
 		reto.setFecha_ini(fecha_ini);
 		reto.setFecha_fin(fecha_fin);
-		reto.getDeporte().setNombre(deporte);;
 		reto.setDistancia(distancia);
 		reto.setCreador(creador);
 		
@@ -75,12 +70,12 @@ public class RetoService {
 	
 	}
 	
-	public boolean apuntarseReto(Usuario user, String idReto) {
+	public boolean apuntarseReto(Usuario user, int idReto) {
 			
 		Reto reto = null;
 		
 		for (Reto re : this.retos) {
-			if (re.getIdReto().equals(idReto) ) {
+			if (re.getIdReto() == idReto ) {
 				reto = re;
 				break;
 			}
