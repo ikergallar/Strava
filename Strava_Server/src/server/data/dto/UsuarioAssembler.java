@@ -19,7 +19,7 @@ public class UsuarioAssembler {
 		return instance;
 	}
 
-	public UsuarioDTO usuario(Usuario user) {
+	public UsuarioDTO usuarioToDTO(Usuario user) {
 		UsuarioDTO dto = new UsuarioDTO();
 		
 		dto.setUsername(user.getUsername());
@@ -33,7 +33,7 @@ public class UsuarioAssembler {
 		return dto;
 	}
 	
-	 public List<UsuarioDTO> usuario(List<Usuario> list) {
+	 public List<UsuarioDTO> usuarioToDTO(List<Usuario> list) {
 	    	List <UsuarioDTO> usuarios = new ArrayList<UsuarioDTO>();
 	    	for (Usuario u : list) {
 	    		UsuarioDTO dto = new UsuarioDTO();

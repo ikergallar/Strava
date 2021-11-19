@@ -19,7 +19,7 @@ public class RetoAssembler {
         return instance;
     }
     
-    public RetoDTO reto(Reto reto) {
+    public RetoDTO retoToDTO(Reto reto) {
     	RetoDTO dto = new RetoDTO();
 
     	dto.setIdReto(reto.getIdReto());

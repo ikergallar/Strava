@@ -20,7 +20,7 @@ public class SesionAssembler {
         return instance;
     }
     
-    public SesionDTO sesion(Sesion sesion) {
+    public SesionDTO sesionToDTO(Sesion sesion) {
     	SesionDTO dto = new SesionDTO();
 
     	dto.setTitulo(sesion.getTitulo());
