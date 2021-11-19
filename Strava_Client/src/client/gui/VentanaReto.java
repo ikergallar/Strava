@@ -156,7 +156,7 @@ public class VentanaReto extends JFrame {
 				RetoDTO reto = (RetoDTO) list.getSelectedValue();
 
 				if(retoController.apuntarseReto(loginController.getToken(), reto.getIdReto()) == true) {
-					JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Confirmacion", 1);
+					JOptionPane.showMessageDialog(null, "Apuntado al reto", "Confirmacion", 1);
 				}else {
 					JOptionPane.showMessageDialog(null, "Error al apuntarse al reto", "error", 2);
 
