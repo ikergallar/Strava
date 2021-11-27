@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="Strava_Client/src"/>
+	<classpathentry kind="src" path="FacebookServer/src"/>
+	<classpathentry kind="src" path="GoogleServer/src"/>
 	<classpathentry kind="src" path="Strava_Server/src"/>
-	<classpathentry kind="src" path="GoogleServer"/>
-	<classpathentry kind="src" path="FacebookServer"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>
