@@ -130,4 +130,25 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 		
 	}
 	
+	@Override
+	public boolean loginGoogle(String email, String pass)throws RemoteException{
+		System.out.println(" * RemoteFacade get Google Login");
+		
+		if(LoginService.getInstance().loginGoogle(email, pass)) {
+			return true;
+		}else {
+			throw new RemoteException("loginGoogle() fails!");
+		}		
+	}
+	
+	@Override
+	public boolean loginFacebook(String email, String pass)throws RemoteException{
+		System.out.println(" * RemoteFacade get Facebook Login");
+		
+		if(LoginService.getInstance().loginFacebook(email, pass)) {
+			return true;
+		}else {
+			throw new RemoteException("loginFacebook() fails!");
+		}	
+	}
 }

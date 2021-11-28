@@ -3,10 +3,7 @@ package server.remote;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.List;
 
-import server.data.domain.Deporte;
-import server.data.dto.DeporteDTO;
 import server.data.dto.RetoDTO;
 import server.data.dto.SesionDTO;
 
@@ -20,5 +17,8 @@ public interface IRemoteFaçade extends Remote{
 	
 	public ArrayList<SesionDTO> buscarSesiones(String titulo, int distancia,String fecha_ini,  int duracion) throws RemoteException;
 	public void crearSesion(long token ,String titulo, String deporte, int distancia, String fecha_ini, int duracion) throws RemoteException;
+	
+	public boolean loginGoogle(String email, String pass)throws RemoteException;
+	public boolean loginFacebook(String email, String pass)throws RemoteException;
 
 }
