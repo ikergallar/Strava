@@ -39,4 +39,24 @@ public class LoginController {
 	public long getToken() {
 		return token;
 	}
+	
+	public boolean loginGoogle(String email, String pass) {
+		try {
+			this.serviceLocator.getService().loginGoogle(email, pass);			
+			return true;
+		} catch (RemoteException e) {
+			System.out.println("# Error during login Google: " + e);
+			return false;
+		}
+	}
+	
+	public boolean loginFacebook(String email, String pass) {
+		try {
+			this.serviceLocator.getService().loginFacebook(email, pass);			
+			return true;
+		} catch (RemoteException e) {
+			System.out.println("# Error during login Facebook: " + e);
+			return false;
+		}
+	}
 }
