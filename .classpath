@@ -14,5 +14,7 @@
 	<classpathentry kind="lib" path="Strava_Client/lib/jcalendar-1.4.jar"/>
 	<classpathentry kind="lib" path="Strava_Client/lib/jgoodies-common-1.2.0.jar"/>
 	<classpathentry kind="lib" path="Strava_Client/lib/jgoodies-looks-2.4.1.jar"/>
+	<classpathentry kind="lib" path="Strava_Client/lib/FacebookServer.jar"/>
+	<classpathentry kind="lib" path="Strava_Client/lib/GoogleServer.jar"/>
 	<classpathentry kind="output" path="Strava_Client/bin"/>
 </classpath>

@@ -15,7 +15,7 @@ public class FacebookServer {
 		String name = "//" + args[0] + ":" + args[1] + "/" + args[2];		
 		
 		try {
-			IFacebookRemote remoteObject = (IFacebookRemote) FacebookRemote.getInstance();			
+			IFacebookRemote remoteObject = FacebookRemote.getInstance();			
 			Naming.rebind(name, remoteObject);
 			System.out.println(" * Facebook Server '" + name + "' started!!");
 		} catch (Exception ex) {

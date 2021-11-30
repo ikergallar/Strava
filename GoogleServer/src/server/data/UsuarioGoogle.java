@@ -11,6 +11,12 @@ public class UsuarioGoogle {
 		this.email = email;
 		this.pass = pass;
 	}
+	
+	public UsuarioGoogle() {
+		super();
+		this.email = "";
+		this.pass = "";
+	}
 
 
 	public String getEmail() {
@@ -23,13 +29,17 @@ public class UsuarioGoogle {
 	}
 
 
-	public String getpass() {
+	public String getPass() {
 		return pass;
 	}
 
 
-	public void setpass(String pass) {
+	public void setPass(String pass) {
 		this.pass = pass;
+	}
+	
+	public boolean checkPassword(String password) {
+		return this.pass.equals(password);
 	}
 	
 }

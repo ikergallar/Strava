@@ -1,6 +1,6 @@
 package server.service;
 
-import server.data.domain.Usuario;
+import server.data.UsuarioGoogle;
 
 public class GoogleService {
 
@@ -14,9 +14,8 @@ public class GoogleService {
 	}
 	
 	public boolean loginGoogle(String email, String contrasenia) {
-		Usuario user = new Usuario();		
+		UsuarioGoogle user = new UsuarioGoogle();		
 		user.setEmail("xabster@gmail.com");
-		user.setUsername("xabster");		
 		String pass =("abcd");		
 		user.setPass(pass);
 		

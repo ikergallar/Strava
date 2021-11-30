@@ -1,10 +1,11 @@
 package server.remote;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
 import server.service.FacebookService;
 
-public class FacebookRemote {
+public class FacebookRemote extends UnicastRemoteObject implements IFacebookRemote{
 	
 	private static final long serialVersionUID = 1L;
 	public static FacebookRemote instance;

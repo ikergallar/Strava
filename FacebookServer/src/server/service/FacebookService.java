@@ -1,6 +1,6 @@
 package server.service;
 
-import server.data.domain.Usuario;
+import server.data.UsuarioFacebook;
 
 public class FacebookService {
 	
@@ -14,9 +14,8 @@ public static FacebookService instance = null;
 	}
 	
 	public boolean loginFacebook(String email, String contrasenia) {
-		Usuario user = new Usuario();		
+		UsuarioFacebook user = new UsuarioFacebook();		
 		user.setEmail("misi@gmail.com");
-		user.setUsername("micho");		
 		String pass =("1a2b");		
 		user.setPass(pass);
 		
