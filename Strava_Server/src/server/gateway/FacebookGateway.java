@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 
 import server.remote.IFacebookRemote;
 
-public class FacebookGateway {
+public class FacebookGateway implements ILoginGateway{
 	
 	private static FacebookGateway instance;
 	private IFacebookRemote facebookService;
@@ -28,7 +28,7 @@ public class FacebookGateway {
 	}
 	
 	
-	public boolean loginFacebook(String email,String pass) throws RemoteException {
+	public boolean login(String email,String pass) throws RemoteException {
 		if (this.facebookService.loginFacebook(email, pass)) {
 			return true;
 		}else{

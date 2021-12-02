@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 
 import server.remote.IGoogleRemote;
 
-public class GoogleGateway {
+public class GoogleGateway implements ILoginGateway{
 	
 
 	private static GoogleGateway instance;
@@ -29,7 +29,7 @@ public class GoogleGateway {
 	}
 	
 	
-	public boolean loginGoogle(String email,String pass) throws RemoteException {
+	public boolean login(String email,String pass) throws RemoteException {
 		if (this.googleService.loginGoogle(email, pass)) {
 			return true;
 		}else{

@@ -33,10 +33,10 @@ public class LoginService {
 	}
 	
 	public boolean loginGoogle(String email, String pass) throws RemoteException {
-		return GoogleGateway.getInstance().loginGoogle(email, pass);
+		return GoogleGateway.getInstance().login(email, pass);
 	}
 	
 	public boolean loginFacebook(String email, String pass) throws RemoteException {
-		return FacebookGateway.getInstance().loginFacebook(email, pass);
+		return FacebookGateway.getInstance().login(email, pass);
 	}
 }
