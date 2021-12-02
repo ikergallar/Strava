@@ -42,7 +42,7 @@ public class VentanaLogin extends JFrame{
 		textPass.setColumns(10);
 		
 		JButton btnLogin = new JButton("Iniciar Sesi\u00F3n");
-		btnLogin.setBounds(172, 244, 145, 23);
+		btnLogin.setBounds(154, 226, 145, 23);
 		getContentPane().add(btnLogin);
 		
 		btnLogin.addActionListener(new ActionListener() {
@@ -68,7 +68,7 @@ public class VentanaLogin extends JFrame{
 		});
 						
 		JLabel lblRegistro = new JLabel("No tienes una cuenta Strava?");
-		lblRegistro.setBounds(57, 300, 178, 14);
+		lblRegistro.setBounds(54, 314, 178, 14);
 		getContentPane().add(lblRegistro);
 		
 		JButton btnRegistro = new JButton("Registrate");
@@ -77,8 +77,30 @@ public class VentanaLogin extends JFrame{
 		btnRegistro.setContentAreaFilled(false);
 		btnRegistro.setBorderPainted(false);
 		btnRegistro.setForeground(Color.BLACK);
-		btnRegistro.setBounds(204, 296, 113, 23);
+		btnRegistro.setBounds(204, 310, 113, 23);
 		getContentPane().add(btnRegistro);
+		
+		JLabel lblResgitroGF = new JLabel("Registrate con");
+		lblResgitroGF.setBounds(154, 278, 76, 14);
+		getContentPane().add(lblResgitroGF);
+		
+		JButton btnGoogle = new JButton("Google");
+		btnGoogle.setOpaque(false);
+		btnGoogle.setForeground(Color.BLACK);
+		btnGoogle.setContentAreaFilled(false);
+		btnGoogle.setBorderPainted(false);
+		btnGoogle.setBackground(Color.LIGHT_GRAY);
+		btnGoogle.setBounds(227, 274, 72, 23);
+		getContentPane().add(btnGoogle);
+		
+		JButton btnOFacebook = new JButton("o Facebook");
+		btnOFacebook.setOpaque(false);
+		btnOFacebook.setForeground(Color.BLACK);
+		btnOFacebook.setContentAreaFilled(false);
+		btnOFacebook.setBorderPainted(false);
+		btnOFacebook.setBackground(Color.LIGHT_GRAY);
+		btnOFacebook.setBounds(293, 274, 94, 23);
+		getContentPane().add(btnOFacebook);
 		
 		btnRegistro.addActionListener(new ActionListener() {
 			
