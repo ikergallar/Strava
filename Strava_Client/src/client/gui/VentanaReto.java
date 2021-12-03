@@ -59,14 +59,14 @@ public class VentanaReto extends JFrame {
 		mntmCerrarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(loginController.getToken()==0) {
+					
 					System.out.println(" - Logout from the server..."); 
 					System.out.println("\t* Logout success!");
 					VentanaLogin vL = new VentanaLogin(loginController, retoController, sesionController);
 					vL.setVisible(true);
 					dispose();
-					
-					
 				}else {
+					
 					System.out.println(" - Logout from the server..."); 
 					loginController.logout();
 					System.out.println("\t* Logout success!");
@@ -74,9 +74,6 @@ public class VentanaReto extends JFrame {
 					vL.setVisible(true);
 					dispose();
 				}
-
-				
-				
 			}
 		});
 		mnNewMenu.add(mntmCerrarSesion);
