@@ -149,6 +149,7 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 			return true;
 		}else {
 			throw new RemoteException("loginFacebook() fails!");
+			
 		}	
 	}
 }

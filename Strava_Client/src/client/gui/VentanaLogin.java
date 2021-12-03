@@ -81,7 +81,7 @@ public class VentanaLogin extends JFrame{
 		getContentPane().add(btnRegistro);
 		
 		JLabel lblResgitroGF = new JLabel("Registrate con");
-		lblResgitroGF.setBounds(154, 278, 76, 14);
+		lblResgitroGF.setBounds(110, 278, 99, 14);
 		getContentPane().add(lblResgitroGF);
 		
 		JButton btnGoogle = new JButton("Google");
@@ -90,17 +90,17 @@ public class VentanaLogin extends JFrame{
 		btnGoogle.setContentAreaFilled(false);
 		btnGoogle.setBorderPainted(false);
 		btnGoogle.setBackground(Color.LIGHT_GRAY);
-		btnGoogle.setBounds(227, 274, 72, 23);
+		btnGoogle.setBounds(219, 274, 113, 23);
 		getContentPane().add(btnGoogle);
 		
-		JButton btnOFacebook = new JButton("o Facebook");
-		btnOFacebook.setOpaque(false);
-		btnOFacebook.setForeground(Color.BLACK);
-		btnOFacebook.setContentAreaFilled(false);
-		btnOFacebook.setBorderPainted(false);
-		btnOFacebook.setBackground(Color.LIGHT_GRAY);
-		btnOFacebook.setBounds(293, 274, 94, 23);
-		getContentPane().add(btnOFacebook);
+		JButton btnFacebook = new JButton("Facebook");
+		btnFacebook.setOpaque(false);
+		btnFacebook.setForeground(Color.BLACK);
+		btnFacebook.setContentAreaFilled(false);
+		btnFacebook.setBorderPainted(false);
+		btnFacebook.setBackground(Color.LIGHT_GRAY);
+		btnFacebook.setBounds(348, 274, 113, 23);
+		getContentPane().add(btnFacebook);
 		
 		btnRegistro.addActionListener(new ActionListener() {
 			
@@ -112,6 +112,31 @@ public class VentanaLogin extends JFrame{
 		
 			}
 		});
+		
+		btnGoogle.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VentanaLoginGoogle vlg = new VentanaLoginGoogle(loginController, retoController, sesionController);
+				vlg.setVisible(true);
+				dispose();
+				
+			}
+		});
+		
+	btnFacebook.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VentanaLoginFace vlg = new VentanaLoginFace(loginController, retoController, sesionController);
+				vlg.setVisible(true);
+				dispose();
+				
+			}
+		});
+		
 		
 		this.setTitle("Strava - Login");
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
