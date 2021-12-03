@@ -54,9 +54,20 @@ public class VentanaSesion extends JFrame {
 		JMenuItem mntmCerrarSesion = new JMenuItem("Cerrar Sesion");
 		mntmCerrarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaLogin vL = new VentanaLogin(loginController, retoController, sesionController);
-				vL.setVisible(true);
-				dispose();
+				if(loginController.getToken()==0) {
+					System.out.println(" - Logout from the server..."); 
+					System.out.println("\t* Logout success!");
+					VentanaLogin vL = new VentanaLogin(loginController, retoController, sesionController);
+					vL.setVisible(true);
+					dispose();	
+				}else {
+					System.out.println(" - Logout from the server..."); 
+					loginController.logout();
+					System.out.println("\t* Logout success!");
+					VentanaLogin vL = new VentanaLogin(loginController, retoController, sesionController);
+					vL.setVisible(true);
+					dispose();
+				}
 			}
 		});
 		mnNewMenu.add(mntmCerrarSesion);
@@ -67,16 +78,16 @@ public class VentanaSesion extends JFrame {
 		lblTitulo.setBounds(56, 33, 275, 50);
 		getContentPane().add(lblTitulo);
 
-		JButton btnCerrarSesion = new JButton("Crear Sesi\u00F3n");
-		btnCerrarSesion.addActionListener(new ActionListener() {
+		JButton btnCrearSesion = new JButton("Crear Sesi\u00F3n");
+		btnCrearSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanaCrearSesion vCS = new VentanaCrearSesion(loginController, retoController, sesionController);
 				vCS.setVisible(true);
 				dispose();
 			}
 		});
-		btnCerrarSesion.setBounds(202, 431, 142, 23);
-		getContentPane().add(btnCerrarSesion);
+		btnCrearSesion.setBounds(202, 431, 142, 23);
+		getContentPane().add(btnCrearSesion);
 
 		JList<SesionDTO> list = new JList<SesionDTO>();
 		getContentPane().add(list);

@@ -45,6 +45,9 @@ public class VentanaReto extends JFrame {
 		JMenuItem mntmReto = new JMenuItem("Sesiones");
 		mntmReto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println(" - Logout from the server..."); 
+				loginController.logout();
+				System.out.println("\t* Logout success!");
 				VentanaSesion vP = new VentanaSesion(loginController, retoController, sesionController);
 				vP.setVisible(true);
 				dispose();
@@ -55,9 +58,25 @@ public class VentanaReto extends JFrame {
 		JMenuItem mntmCerrarSesion = new JMenuItem("Cerrar Sesion");
 		mntmCerrarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaLogin vL = new VentanaLogin(loginController, retoController, sesionController);
-				vL.setVisible(true);
-				dispose();
+				if(loginController.getToken()==0) {
+					System.out.println(" - Logout from the server..."); 
+					System.out.println("\t* Logout success!");
+					VentanaLogin vL = new VentanaLogin(loginController, retoController, sesionController);
+					vL.setVisible(true);
+					dispose();
+					
+					
+				}else {
+					System.out.println(" - Logout from the server..."); 
+					loginController.logout();
+					System.out.println("\t* Logout success!");
+					VentanaLogin vL = new VentanaLogin(loginController, retoController, sesionController);
+					vL.setVisible(true);
+					dispose();
+				}
+
+				
+				
 			}
 		});
 		mnNewMenu.add(mntmCerrarSesion);
