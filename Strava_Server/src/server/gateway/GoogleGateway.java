@@ -11,7 +11,7 @@ public class GoogleGateway implements ILoginGateway{
 	private static GoogleGateway instance;
 	private IGoogleRemote googleService;
 		
-	private GoogleGateway() {
+	public GoogleGateway() {
 		try {		
 			String URL = "//127.0.0.1:1099/GoogleServer";
 			this.googleService = (IGoogleRemote) Naming.lookup(URL);

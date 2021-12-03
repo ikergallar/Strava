@@ -10,7 +10,7 @@ public class FacebookGateway implements ILoginGateway{
 	private static FacebookGateway instance;
 	private IFacebookRemote facebookService;
 		
-	private FacebookGateway() {
+	public FacebookGateway() {
 		try {		
 			String URL = "//127.0.0.1:1099/FacebookServer";
 			this.facebookService = (IFacebookRemote) Naming.lookup(URL);
