@@ -63,14 +63,14 @@ public class VentanaLoginFace extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				String email = "aticus@gmail.com";
-				String pass = "123";
+				String email = "misi@gmail.com";
+				String pass = "1a2b";
 				
-				System.out.println(" - Login into the server: '" + email + "' - '" + pass + "' ...");
+				System.out.println(" - Login with Facebook into the server: '" + email + "' - '" + pass + "' ...");
 				System.out.println("\t* Password : " + pass);		
-				boolean result = loginController.login(email, pass);
+				boolean result = loginController.loginFacebook(email, pass);
 				System.out.println("\t* Login result: " + result);
-				System.out.println("\t* Token: " + loginController.getToken());
+				
 				
 				JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Confirmacion", 1);
 				VentanaSesion vP = new VentanaSesion(loginController,retoController, sesionController);
