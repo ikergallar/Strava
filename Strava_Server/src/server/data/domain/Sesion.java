@@ -1,18 +1,28 @@
 package server.data.domain;
 
+import javax.jdo.annotations.ForeignKey;
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.InheritanceStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+
+@PersistenceCapable
+@Inheritance(strategy = InheritanceStrategy.NEW_TABLE)
 public class Sesion {
 	
-	private String idSesion;
+	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT)
+	private int idSesion;
 	private String titulo;
 	private Deporte deporte;
 	private int distancia;
 	private String fecha_ini;
 	private int duracion;
+	@ForeignKey
 	private Usuario creador;
 	
-	public Sesion(String idSesion, String titulo, Deporte deporte, int distancia, String fecha_ini, int duracion, Usuario creador) {
+	public Sesion(String titulo, Deporte deporte, int distancia, String fecha_ini, int duracion, Usuario creador) {
 		super();
-		this.idSesion = idSesion;
 		this.titulo = titulo;
 		this.deporte = deporte;
 		this.distancia = distancia;
@@ -24,7 +34,6 @@ public class Sesion {
 	
 	public Sesion() {
 		super();
-		this.idSesion = "";
 		this.titulo = "";
 		this.deporte = null;
 		this.distancia = 0;
@@ -34,11 +43,11 @@ public class Sesion {
 
 	}
 
-	public String getIdSesion() {
+	public int getIdSesion() {
 		return idSesion;
 	}
 
-	public void setIdSesion(String idSesion) {
+	public void setIdSesion(int idSesion) {
 		this.idSesion = idSesion;
 	}
 

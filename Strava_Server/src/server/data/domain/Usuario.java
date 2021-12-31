@@ -1,9 +1,22 @@
 package server.data.domain;
 
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.InheritanceStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.Unique;
+
+@PersistenceCapable
+@Inheritance(strategy = InheritanceStrategy.NEW_TABLE)
 public class Usuario {
 	
+	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT)
+	private int idUsuario;
+	@Unique
 	private String username;
 	private String pass;
+	@Unique
 	private String email;
 	private String bornDate;
 	private float peso;
@@ -34,6 +47,14 @@ public class Usuario {
 			this.altura = 0;
 			this.frecuenciaCardiacaMax = 0;
 			this.frecuenciaCardiacaReposo = 0;
+	}
+
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	public String getUsername() {

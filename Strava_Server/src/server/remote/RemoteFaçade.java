@@ -66,6 +66,13 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	}
 	
 	@Override
+	public void registro(String username, String pass, String email, float peso, int altura) throws RemoteException{
+		System.out.println(" * RemoteFaçade registrar usuario: " + username + "/ " + pass + "/ " + email + "/ " + peso+ "/ " + altura);
+	    loginService.registro(username, pass, email, peso, altura);
+		
+	}
+	
+	@Override
 	public ArrayList<RetoDTO> buscarRetos(String nombre, String fecha_ini, String fecha_fin, int distancia) throws RemoteException{
 		System.out.println(" * RemoteFaçade busqueda de retos: " + nombre + "/ " + fecha_ini + "/ " + fecha_fin);
 		
@@ -86,8 +93,6 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	    retoService.crearReto( nombre, fecha_ini, fecha_fin, distancia, deporte, this.serverState.get(token));
 		
 	}
-	
-	
 	
 	
 	@Override

@@ -3,21 +3,32 @@ package server.data.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.jdo.annotations.ForeignKey;
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.InheritanceStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+
+@PersistenceCapable
+@Inheritance(strategy = InheritanceStrategy.NEW_TABLE)
 public class Reto {
 	
+	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT)
 	private int idReto;
 	private String nombre;
 	private String fecha_ini;
 	private String fecha_fin;
 	private int distancia;
 	private Deporte deporte;
+	@ForeignKey
 	private Usuario creador;
+	@ForeignKey
 	private List<Usuario> participantes = new ArrayList<>();
 
 	
-	public Reto(int idReto, String nombre, String fecha_ini, String fecha_fin, int distancia, Deporte deporte, Usuario creador) {
+	public Reto(String nombre, String fecha_ini, String fecha_fin, int distancia, Deporte deporte, Usuario creador) {
 		super();
-		this.idReto = idReto;
 		this.nombre = nombre;
 		this.fecha_ini = fecha_ini;
 		this.fecha_fin = fecha_fin;
@@ -28,7 +39,6 @@ public class Reto {
 
 	public Reto() {
 		super();
-		this.idReto = 0;
 		this.nombre = "";
 		this.fecha_ini = null;
 		this.fecha_fin = null;

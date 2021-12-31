@@ -1,7 +1,9 @@
 package server.service;
 
 import java.rmi.RemoteException;
+import java.util.List;
 
+import server.data.dao.UsuarioDAO;
 import server.data.domain.Usuario;
 import server.gateway.FacebookGateway;
 import server.gateway.GoogleGateway;
@@ -19,13 +21,9 @@ public class LoginService {
 	}
 
 	public Usuario login(String email, String password) {
-		Usuario user = new Usuario();		
-		user.setEmail("aticus@gmail.com");
-		user.setUsername("Aticus");		
-		String pass =("123");		
-		user.setPass(pass);
+		Usuario user = UsuarioDAO.getInstance().find(email);
 		
-		if (user.getEmail().equals(email) && user.checkPassword(pass)) {		
+		if (user != null && user.checkPassword(password)) {
 			return user;
 		} else {
 			return null;
@@ -39,4 +37,18 @@ public class LoginService {
 	public boolean loginFacebook(String email, String pass) throws RemoteException {
 		return FacebookGateway.getInstance().login(email, pass);
 	}
+	
+	public void registro(String username, String pass, String email, float peso, int altura) {
+		Usuario user = new Usuario();
+		user.setUsername(username);
+		user.setPass(pass);
+		user.setEmail(email);
+		user.setPeso(peso);
+		user.setAltura(altura);
+		
+		List<Usuario> usuario = UsuarioDAO.getInstance().getAll();
+		
+		UsuarioDAO.getInstance().save(user);
+	}
+	
 }

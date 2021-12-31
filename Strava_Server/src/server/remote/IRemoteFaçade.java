@@ -10,6 +10,7 @@ import server.data.dto.SesionDTO;
 public interface IRemoteFaçade extends Remote{
 	public long login(String email, String pass) throws RemoteException;
 	public void logout(long token) throws RemoteException; 
+	public void registro(String username, String pass, String email, float peso, int altura) throws RemoteException;
 	
 	public boolean apuntarseReto(long token, int idReto) throws RemoteException;
 	public ArrayList<RetoDTO> buscarRetos(String nombre, String fecha_ini, String fecha_fin, int distancia) throws RemoteException;

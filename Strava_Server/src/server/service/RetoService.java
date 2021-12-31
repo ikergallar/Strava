@@ -3,36 +3,32 @@ package server.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import server.data.dao.RetoDAO;
 import server.data.domain.Deporte;
 import server.data.domain.Reto;
 import server.data.domain.Usuario;
 
 public class RetoService {
 	
-	private ArrayList<Reto> retos = new ArrayList<Reto>();
+	private static RetoService instance;
+
+	public RetoService() { }
 	
-	public RetoService() {
-		//TODO: remove when DAO Pattern is implemented
-		this.initilizeData();
+	public static RetoService getInstance() {
+		if (instance == null) {
+			instance = new RetoService();
+		}
+		
+		return instance;
 	}
 	
-	private void initilizeData() {
-		
-		Usuario user0 = new Usuario();
-		user0.setEmail("aticus@gmail.com");
-		user0.setUsername("aticus");
-		user0.setPass("123,");
-		
-		Reto reto = new Reto();		
-		reto.setIdReto(21);
-		reto.setNombre("aaa");
-		reto.setFecha_ini("12/12/12");
-		reto.setFecha_fin("12/12/13");
-		reto.setDistancia(12);
-		reto.setCreador(user0);
-		
-		this.retos.add(reto);
-	}	
+	public List<Reto> getRetos() {
+		//Get all the categories using DAO Pattern
+		return RetoDAO.getInstance().getAll();
+	}
+	
+	private ArrayList<Reto> retos = new ArrayList<Reto>();
+	
 	
 	public void crearReto(String nombre, String fecha_ini, String fecha_fin, int distancia,  String deporte, Usuario creador) {
 		
@@ -43,7 +39,7 @@ public class RetoService {
 		reto.setDistancia(distancia);
 		reto.setCreador(creador);
 		
-		this.retos.add(reto);
+		RetoDAO.getInstance().save(reto);
 			
 	}
 	
