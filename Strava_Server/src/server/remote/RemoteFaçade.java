@@ -24,11 +24,6 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	
 	private Map<Long, Usuario> serverState = new HashMap<>();
 	
-	private LoginService loginService = new LoginService();
-	private RetoService retoService = new RetoService();
-	private SesionService sesionService = new SesionService();
-
-
 	public RemoteFaçade() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
@@ -36,7 +31,7 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	
 	@Override
 	public synchronized long login(String email, String password) throws RemoteException {
-		Usuario user = loginService.login(email, password);
+		Usuario user = LoginService.getInstance().login(email, password);
 		
 		//If login() success user is stored in the Server State
 		if (user != null) {
@@ -68,7 +63,7 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	@Override
 	public void registro(String username, String pass, String email, float peso, int altura) throws RemoteException{
 		System.out.println(" * RemoteFaçade registrar usuario: " + username + "/ " + pass + "/ " + email + "/ " + peso+ "/ " + altura);
-	    loginService.registro(username, pass, email, peso, altura);
+	    LoginService.getInstance().registro(username, pass, email, peso, altura);
 		
 	}
 	
@@ -76,7 +71,7 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	public ArrayList<RetoDTO> buscarRetos(String nombre, String fecha_ini, String fecha_fin, int distancia) throws RemoteException{
 		System.out.println(" * RemoteFaçade busqueda de retos: " + nombre + "/ " + fecha_ini + "/ " + fecha_fin);
 		
-		ArrayList<Reto> retos = retoService.buscarReto(nombre, fecha_ini, fecha_fin, distancia);
+		ArrayList<Reto> retos = RetoService.getInstance().buscarReto(nombre, fecha_ini, fecha_fin, distancia);
 				
 		if (retos != null) {
 			//Convert domain object to DTO
@@ -90,7 +85,7 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	@Override
 	public void crearReto(String nombre, String fecha_ini, String fecha_fin, int distancia, String deporte, long token) throws RemoteException{
 		System.out.println(" * RemoteFaçade crear reto: " + nombre + "/ " + fecha_ini + "/ " + fecha_fin + "/ " + deporte+ "/ " + this.serverState.get(token));
-	    retoService.crearReto( nombre, fecha_ini, fecha_fin, distancia, deporte, this.serverState.get(token));
+	    RetoService.getInstance().crearReto( nombre, fecha_ini, fecha_fin, distancia, deporte, this.serverState.get(token));
 		
 	}
 	
@@ -101,7 +96,7 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 		
 		if (this.serverState.containsKey(token)) {						
 			//Make the bid using Bid Application Service
-			if (retoService.apuntarseReto(this.serverState.get(token), idReto)) {
+			if (RetoService.getInstance().apuntarseReto(this.serverState.get(token), idReto)) {
 				return true;
 			} else {
 				throw new RemoteException("error en apuntarseReto()!");
@@ -117,7 +112,7 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	public ArrayList<SesionDTO> buscarSesiones(String titulo, int distancia,  String fecha_ini, int duracion) throws RemoteException{
 		System.out.println(" * RemoteFaçade busqueda de sesiones: " + titulo + "/ " + distancia + "/ " + fecha_ini + "/ " + duracion + "/ ");
 		
-		ArrayList<Sesion> sesiones = sesionService.buscarSesion(titulo, distancia, fecha_ini, duracion);
+		ArrayList<Sesion> sesiones = SesionService.getInstance().buscarSesion(titulo, distancia, fecha_ini, duracion);
 				
 		if (sesiones != null) {
 			//Convert domain object to DTO
@@ -131,7 +126,7 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	@Override
 	public void crearSesion(long token ,String titulo, String deporte, int distancia, String fecha_ini, int duracion) throws RemoteException{
 		System.out.println(" * RemoteFaçade crear sesion: "  + titulo + "/ " + deporte + "/ " + distancia + "/ " + fecha_ini+ "/ " + duracion+ "/" +this.serverState.get(token));
-		sesionService.crearSesion( titulo,deporte, distancia, fecha_ini, duracion,this.serverState.get(token));
+		SesionService.getInstance().crearSesion( titulo,deporte, distancia, fecha_ini, duracion,this.serverState.get(token));
 		
 	}
 	

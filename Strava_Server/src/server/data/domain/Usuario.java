@@ -7,7 +7,7 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.Unique;
 
-@PersistenceCapable
+@PersistenceCapable(detachable="true")
 @Inheritance(strategy = InheritanceStrategy.NEW_TABLE)
 public class Usuario {
 	

@@ -5,12 +5,15 @@ import java.util.List;
 
 import server.data.dao.UsuarioDAO;
 import server.data.domain.Usuario;
+import server.data.dto.UsuarioDTO;
 import server.gateway.FacebookGateway;
 import server.gateway.GoogleGateway;
 
 public class LoginService {
 	
 	private static LoginService instance;
+	
+	private LoginService() { }
 
 	public static LoginService getInstance() {
 		if (instance == null) {
@@ -20,9 +23,8 @@ public class LoginService {
 		return instance;
 	}
 
-	public Usuario login(String email, String password) {
+	public Usuario login(String email, String password) { 
 		Usuario user = UsuarioDAO.getInstance().find(email);
-		
 		if (user != null && user.checkPassword(password)) {
 			return user;
 		} else {
@@ -46,7 +48,7 @@ public class LoginService {
 		user.setPeso(peso);
 		user.setAltura(altura);
 		
-		List<Usuario> usuario = UsuarioDAO.getInstance().getAll();
+		//List<Usuario> usuario = UsuarioDAO.getInstance().getAll();
 		
 		UsuarioDAO.getInstance().save(user);
 	}

@@ -36,6 +36,14 @@ public class LoginController {
 		}
 	}
 	
+	public void registro(String username, String pass, String email, float peso, int altura) {
+		try {
+			this.serviceLocator.getService().registro(username,pass,email,peso,altura);
+		} catch (RemoteException e) {
+			System.out.println("# Error during registro: " + e);
+		}
+	}
+	
 	public long getToken() {
 		return token;
 	}

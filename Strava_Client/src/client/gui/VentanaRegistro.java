@@ -82,6 +82,14 @@ public class VentanaRegistro extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				String username = textUsername.getText();
+				String email = textEmail.getText();
+				String pass = textPass.getText();
+				int altura = (Integer) spinnerAltura.getValue();
+			//	float peso = (Float) spinnerPeso.getValue();
+				
+				loginController.registro(username, pass, email, 0, altura);
+				
 				VentanaSesion vP = new VentanaSesion(loginController, retoController,sesionController);
 				vP.setVisible(true);
 				dispose();

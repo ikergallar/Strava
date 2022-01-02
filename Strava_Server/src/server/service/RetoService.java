@@ -28,8 +28,7 @@ public class RetoService {
 	}
 	
 	private ArrayList<Reto> retos = new ArrayList<Reto>();
-	
-	
+		
 	public void crearReto(String nombre, String fecha_ini, String fecha_fin, int distancia,  String deporte, Usuario creador) {
 		
 		Reto reto = new Reto();

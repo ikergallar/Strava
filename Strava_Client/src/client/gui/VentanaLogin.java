@@ -50,10 +50,10 @@ public class VentanaLogin extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				String email = "aticus@gmail.com";
-				String pass = "123";
+				String email = textEmail.getText();
+				String pass = textPass.getText();
 				
-				System.out.println(" - Login into the server: '" + email + "' - '" + pass + "' ...");
+				System.out.println(" - Login into the server: '" + email + "' - '" + "' ...");
 				System.out.println("\t* Password : " + pass);		
 				boolean result = loginController.login(email, pass);
 				System.out.println("\t* Login result: " + result);

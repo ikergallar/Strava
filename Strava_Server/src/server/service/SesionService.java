@@ -2,37 +2,29 @@ package server.service;
 
 import java.util.ArrayList;
 
+import server.data.dao.RetoDAO;
+import server.data.dao.SesionDAO;
 import server.data.domain.Deporte;
+import server.data.domain.Reto;
 import server.data.domain.Sesion;
 import server.data.domain.Usuario;
 import server.data.dto.DeporteDTO;
 
 public class SesionService {
 	
-private ArrayList<Sesion> sesiones = new ArrayList<Sesion>();
+	private static SesionService instance;
+	
+	private SesionService() { }
 
-	public SesionService() {
-	//TODO: remove when DAO Pattern is implemented
-		this.initilizeData();
+	public static SesionService getInstance() {
+		if (instance == null) {
+			instance = new SesionService();
+		}
+		
+		return instance;
 	}
 
-	private void initilizeData() {
-	
-		Usuario user0 = new Usuario();
-		user0.setEmail("aticus@gmail.com");
-		user0.setUsername("aticus");
-		user0.setPass("123,");
-	
-		Sesion sesion = new Sesion();		
-		sesion.setTitulo("aaa");
-		sesion.setFecha_ini("12/12/12");
-		sesion.setDistancia(12);
-		sesion.setDuracion(13);
-		sesion.setCreador(user0);
-	
-		this.sesiones.add(sesion);
-	}	
-
+	private ArrayList<Sesion> sesiones = new ArrayList<Sesion>();
 	
 	public void crearSesion(String titulo, String deporte, int distancia, String fecha_ini, int duracion, Usuario creador) {
 		
@@ -43,7 +35,7 @@ private ArrayList<Sesion> sesiones = new ArrayList<Sesion>();
 		sesion.setDuracion(duracion);
 		sesion.setCreador(creador);
 		
-		this.sesiones.add(sesion);
+		SesionDAO.getInstance().save(sesion);
 		
 	}
 	public ArrayList<Sesion> buscarSesion(String titulo, int distancia, String fecha_ini, int duracion) {
