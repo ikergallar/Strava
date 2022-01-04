@@ -25,5 +25,6 @@
 	<classpathentry kind="lib" path="Strava_Server/lib/datanucleus-rdbms-6.0.0-m2.jar"/>
 	<classpathentry kind="lib" path="Strava_Server/lib/mysql-connector-java-8.0.26.jar"/>
 	<classpathentry kind="lib" path="Strava_Server/lib/log4j-1.2.14.jar"/>
+	<classpathentry kind="lib" path="Strava_Client/lib/commons-codec-1.15.jar"/>
 	<classpathentry kind="output" path="Strava_Client/bin"/>
 </classpath>

@@ -65,10 +65,7 @@ public class LocalDataBaseTest {
 				}				
 			}
 			
-			System.out.println(" - Deleting all users ...");
-			for (Usuario u : users) {
-				UsuarioDAO.getInstance().delete(u);
-			}
+			
 			
 			System.out.println(" - Retreiving all users ...");
 			users = UsuarioDAO.getInstance().getAll();

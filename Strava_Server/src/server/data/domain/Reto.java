@@ -9,12 +9,12 @@ import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
-@Inheritance(strategy = InheritanceStrategy.NEW_TABLE)
 public class Reto {
 	
-	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT)
+	@PrimaryKey
 	private int idReto;
 	private String nombre;
 	private String fecha_ini;

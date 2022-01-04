@@ -33,7 +33,7 @@
 	                <include name="**/domain/*.class"/>
 	            </fileset>
 	   		</enhancer>
-	    </target>
+	</target>
 	
 	<target name="3.export" depends="1.build" description="Export classes into a .jar file">
 		<delete dir="${dist.dir}"/>

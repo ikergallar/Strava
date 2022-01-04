@@ -4,15 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.jdo.Extent;
+import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
+import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
+import server.data.domain.Sesion;
 import server.data.domain.Usuario;
 
-
 //This class implements Singleton and DAO patterns
-public class UsuarioDAO extends DataAccessObjectBase implements IDataAccessObject<Usuario> {
+public class UsuarioDAO extends DataAccessObjectBase implements IDataAccessObject<Usuario>{
 
 	private static UsuarioDAO instance;	
 	
@@ -26,6 +28,7 @@ public class UsuarioDAO extends DataAccessObjectBase implements IDataAccessObjec
 		return instance;
 	}	
 	
+
 	@Override
 	public void save(Usuario object) {
 		super.saveObject(object);
@@ -34,6 +37,34 @@ public class UsuarioDAO extends DataAccessObjectBase implements IDataAccessObjec
 	@Override
 	public void delete(Usuario object) {
 		super.deleteObject(object);
+	}
+	
+	@Override
+	public Usuario find(String email) {		
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+
+		Usuario result = null; 
+
+		try {
+			tx.begin();
+			
+			Query<?> query = pm.newQuery("SELECT FROM " + Usuario.class.getName() + " WHERE email =='" + email + "'");
+			query.setUnique(true);
+            result = (Usuario) query.execute();
+			
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("  $ Error querying a User: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+
+		return result;
 	}
 
 	@Override
@@ -65,32 +96,5 @@ public class UsuarioDAO extends DataAccessObjectBase implements IDataAccessObjec
 
 		return users;
 	}
-
-	@Override
-	public Usuario find(String email) {		
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
-
-		Usuario result = null; 
-
-		try {
-			tx.begin();
-			
-			Query<?> query = pm.newQuery("SELECT FROM  Usuario WHERE email == '" + email + "'");
-			query.setUnique(true);
-			result = (Usuario) query.execute();
-			
-			tx.commit();
-		} catch (Exception ex) {
-			System.out.println("  $ Error querying a User: " + ex.getMessage());
-		} finally {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-
-			pm.close();
-		}
-
-		return result;
-	}
+	
 }
