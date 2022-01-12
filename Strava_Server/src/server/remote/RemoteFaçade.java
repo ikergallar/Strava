@@ -5,6 +5,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import server.data.domain.Reto;
@@ -71,7 +72,7 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	public ArrayList<RetoDTO> buscarRetos(String nombre, String fecha_ini, String fecha_fin, int distancia) throws RemoteException{
 		System.out.println(" * RemoteFaçade busqueda de retos: " + nombre + "/ " + fecha_ini + "/ " + fecha_fin);
 		
-		ArrayList<Reto> retos = RetoService.getInstance().buscarReto(nombre, fecha_ini, fecha_fin, distancia);
+		List<Reto> retos = RetoService.getInstance().buscarReto(nombre, fecha_ini, fecha_fin, distancia);
 				
 		if (retos != null) {
 			//Convert domain object to DTO
@@ -112,7 +113,7 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	public ArrayList<SesionDTO> buscarSesiones(String titulo, int distancia,  String fecha_ini, int duracion) throws RemoteException{
 		System.out.println(" * RemoteFaçade busqueda de sesiones: " + titulo + "/ " + distancia + "/ " + fecha_ini + "/ " + duracion + "/ ");
 		
-		ArrayList<Sesion> sesiones = SesionService.getInstance().buscarSesion(titulo, distancia, fecha_ini, duracion);
+		List<Sesion> sesiones = SesionService.getInstance().buscarSesion(titulo, distancia, fecha_ini, duracion);
 				
 		if (sesiones != null) {
 			//Convert domain object to DTO

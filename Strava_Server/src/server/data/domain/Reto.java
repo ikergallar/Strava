@@ -15,6 +15,7 @@ import javax.jdo.annotations.PrimaryKey;
 public class Reto {
 	
 	@PrimaryKey
+	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT)
 	private int idReto;
 	private String nombre;
 	private String fecha_ini;
@@ -22,19 +23,19 @@ public class Reto {
 	private int distancia;
 	private Deporte deporte;
 	@ForeignKey
-	private Usuario creador;
+	private int idCreador;
 	@ForeignKey
 	private List<Usuario> participantes = new ArrayList<>();
 
 	
-	public Reto(String nombre, String fecha_ini, String fecha_fin, int distancia, Deporte deporte, Usuario creador) {
+	public Reto(String nombre, String fecha_ini, String fecha_fin, int distancia, Deporte deporte, int idCreador) {
 		super();
 		this.nombre = nombre;
 		this.fecha_ini = fecha_ini;
 		this.fecha_fin = fecha_fin;
 		this.distancia = distancia;
 		this.deporte = deporte;
-		this.creador = creador;
+		this.idCreador = idCreador;
 	}
 
 	public Reto() {
@@ -44,7 +45,7 @@ public class Reto {
 		this.fecha_fin = null;
 		this.distancia = 0;
 		this.deporte = null;
-		this.creador= null;
+		this.idCreador= 0;
 	}
 
 	public int getIdReto() {
@@ -95,12 +96,12 @@ public class Reto {
 		this.deporte = deporte;
 	}
 
-	public Usuario getCreador() {
-		return creador;
+	public int getIdCreador() {
+		return idCreador;
 	}
 
-	public void setCreador(Usuario creador) {
-		this.creador = creador;
+	public void setIdCreador(int idCreador) {
+		this.idCreador = idCreador;
 	}
 	
 	public List<Usuario> getParticipantes() {

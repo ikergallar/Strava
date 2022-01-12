@@ -9,10 +9,10 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
-
 public class Sesion {
 	
 	@PrimaryKey
+	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT)
 	private int idSesion;
 	private String titulo;
 	private Deporte deporte;
@@ -20,16 +20,16 @@ public class Sesion {
 	private String fecha_ini;
 	private int duracion;
 	@ForeignKey
-	private Usuario creador;
+	private int idCreador;
 	
-	public Sesion(String titulo, Deporte deporte, int distancia, String fecha_ini, int duracion, Usuario creador) {
+	public Sesion(String titulo, Deporte deporte, int distancia, String fecha_ini, int duracion, int idCreador) {
 		super();
 		this.titulo = titulo;
 		this.deporte = deporte;
 		this.distancia = distancia;
 		this.fecha_ini = fecha_ini;
 		this.duracion = duracion;
-		this.creador = creador;
+		this.idCreador = idCreador;
 
 	}
 	
@@ -40,7 +40,7 @@ public class Sesion {
 		this.distancia = 0;
 		this.fecha_ini = "";
 		this.duracion = 0;
-		this.creador = null;
+		this.idCreador = 0;
 
 	}
 
@@ -92,12 +92,12 @@ public class Sesion {
 		this.duracion = duracion;
 	}
 
-	public Usuario getCreador() {
-		return creador;
+	public int getIdCreador() {
+		return idCreador;
 	}
 
-	public void setCreador(Usuario creador) {
-		this.creador = creador;
+	public void setIdCreador(int idCreador) {
+		this.idCreador = idCreador;
 	}
 	
 }

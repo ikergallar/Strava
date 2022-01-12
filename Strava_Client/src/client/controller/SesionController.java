@@ -16,7 +16,7 @@ public class SesionController {
 	
 	public ArrayList<SesionDTO> buscarSesiones(String titulo, int distancia,String fecha_ini, int duracion){
 	        try {
-	            return this.serviceLocator.getService().buscarSesiones(titulo,distancia, fecha_ini,   duracion);
+	            return this.serviceLocator.getService().buscarSesiones(titulo,distancia,fecha_ini,duracion);
 	        }catch (RemoteException e){
 	            System.out.println("# Error buscando sesiones: " + e);
 	            return null;
@@ -24,7 +24,7 @@ public class SesionController {
 	    }
 	public void crearSesion(long token ,String titulo, String deporte, int distancia, String fecha_ini, int duracion) {
 		try {
-			this.serviceLocator.getService().crearSesion(token, titulo, deporte, distancia, fecha_ini, duracion);;
+			this.serviceLocator.getService().crearSesion(token, titulo, deporte, distancia, fecha_ini, duracion);
 		}catch (RemoteException e){
 			System.out.println("# Error creando sesiones: " + e);
 		}

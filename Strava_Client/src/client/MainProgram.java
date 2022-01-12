@@ -1,5 +1,7 @@
 package client;
 
+import java.rmi.RemoteException;
+
 import client.controller.LoginController;
 import client.controller.RetoController;
 import client.controller.SesionController;

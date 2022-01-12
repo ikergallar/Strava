@@ -1,13 +1,16 @@
 package server.data.domain;
 
+import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.Unique;
 
-@PersistenceCapable(detachable="true")
+@PersistenceCapable
 public class Usuario {
 	
 	@PrimaryKey
+	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT)
 	private int idUsuario;
 	@Unique
 	private String username;

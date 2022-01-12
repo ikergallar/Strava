@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.jdo.Extent;
 import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
 import javax.jdo.Transaction;
 
 import server.data.domain.Sesion;
@@ -28,46 +29,77 @@ public class SesionDAO extends DataAccessObjectBase implements IDataAccessObject
 		super.saveObject(object);
 	}
 
-	@Override
-	public void delete(Sesion object) {
-		super.deleteObject(object);
-	}
 
-	@Override
-	public List<Sesion> getAll() {
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
-		
-		List<Sesion> sesiones = new ArrayList<>();
-
-		try {
-			tx.begin();
-			
-			Extent<Sesion> sesionExtent = pm.getExtent(Sesion.class, true);
-			
-			for (Sesion sesion : sesionExtent) {
-				sesiones.add(sesion);
-			}
-						
-			tx.commit();
-		} catch (Exception ex) {
-			System.out.println("  $ Error querying all retos: " + ex.getMessage());
-		} finally {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-
-			pm.close();
-		}
-
-		return sesiones;
-	}
-
-	@Override
-	public Sesion find(String param) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	
+	 public List<Sesion> getFiltros(String titulo, int distancia, String fechaIni, int duracion) {
+         PersistenceManager pm = pmf.getPersistenceManager();
+         Transaction tx = pm.currentTransaction();
+
+         List<Sesion> sesiones = new ArrayList<Sesion>();
+ 
+
+         try {
+             System.out.println("* Viendo todas las Sesiones filtradas");
+             tx.begin();
+
+             Extent<Sesion> sesionExtent = pm.getExtent(Sesion.class, true);
+
+             for (Sesion sesion : sesionExtent) {           
+                     
+            	 Sesion s = new Sesion(sesion.getTitulo(), null, sesion.getDistancia(), sesion.getFecha_ini(), 
+                 sesion.getDuracion(),sesion.getIdCreador());  
+            	 
+            	 int cont = 0;
+                 int contV = 0;
+                 
+            	 if (!s.getTitulo().equals("")) {
+                     cont++;
+                     if (s.getTitulo().contains(titulo) || s.getTitulo().toLowerCase().contains(titulo)) {
+                         contV++;
+                     }
+                 }
+            	 
+            	 if (!s.getFecha_ini().equals("")) {
+                     cont++;
+                     if (s.getFecha_ini().contains(fechaIni) || s.getFecha_ini().toLowerCase().contains(fechaIni)) {
+                         contV++;
+                     }
+                 }
+            	 
+            	 if (distancia != 0) {
+                     cont ++;
+                     if (s.getDistancia() == distancia) {
+                         contV++;
+                     }
+                 }
+            	 
+            	 if (duracion != 0) {
+                     cont ++;
+                     if (s.getDuracion() == duracion) {
+                         contV++;
+                     }
+                 }
+            	 
+            	 if (cont == contV) {
+            		 sesiones.add(s);
+            	 }
+                     
+            }
+
+             tx.commit();
+         } catch (Exception ex) {
+             System.out.println("$ Error viendo todos Anuncios: " + ex.getMessage());
+         } finally {
+             if (tx != null && tx.isActive()) {
+                 tx.rollback();
+             }
+
+             pm.close();
+         }
+         
+         return sesiones;
+
+     }
+
 }

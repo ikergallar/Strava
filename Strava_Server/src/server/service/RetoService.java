@@ -22,11 +22,6 @@ public class RetoService {
 		return instance;
 	}
 	
-	public List<Reto> getRetos() {
-		//Get all the categories using DAO Pattern
-		return RetoDAO.getInstance().getAll();
-	}
-	
 	private ArrayList<Reto> retos = new ArrayList<Reto>();
 		
 	public void crearReto(String nombre, String fecha_ini, String fecha_fin, int distancia,  String deporte, Usuario creador) {
@@ -36,22 +31,15 @@ public class RetoService {
 		reto.setFecha_ini(fecha_ini);
 		reto.setFecha_fin(fecha_fin);
 		reto.setDistancia(distancia);
-		reto.setCreador(creador);
+		reto.setIdCreador(creador.getIdUsuario());
 		
 		RetoDAO.getInstance().save(reto);
 			
 	}
 	
-	public ArrayList<Reto> buscarReto(String nombre, String fecha_ini, String fecha_fin, int distancia) {
+	public List<Reto> buscarReto(String nombre, String fecha_ini, String fecha_fin, int distancia) {
 		
-        ArrayList<Reto> reto = new ArrayList<Reto>();
-		
-		for (Reto re : this.retos) {
-			if (re.getNombre().equals(nombre) || re.getFecha_ini().equals(fecha_ini) || re.getFecha_fin().equals(fecha_fin) || re.getDistancia() == distancia) {
-				reto.add(re);
-				break;
-			}
-		}
+        List<Reto> reto = RetoDAO.getInstance().getFiltros(nombre, fecha_ini, fecha_fin, distancia);
 		
 		return reto;
 	

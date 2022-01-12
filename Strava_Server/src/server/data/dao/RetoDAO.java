@@ -9,6 +9,7 @@ import javax.jdo.Query;
 import javax.jdo.Transaction;
 
 import server.data.domain.Reto;
+import server.data.domain.Sesion;
 
 public class RetoDAO extends DataAccessObjectBase implements IDataAccessObject<Reto> {
 
@@ -28,46 +29,74 @@ public class RetoDAO extends DataAccessObjectBase implements IDataAccessObject<R
 	public void save(Reto object) {
 		super.saveObject(object);
 	}
+	
+	public List<Reto> getFiltros(String nombre, String fechaIni, String fechaFin, int distancia) {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx = pm.currentTransaction();
 
-	@Override
-	public void delete(Reto object) {
-		super.deleteObject(object);
-	}
+        List<Reto> retos = new ArrayList<Reto>();
 
-	@Override
-	public List<Reto> getAll() {
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
-		
-		List<Reto> retos = new ArrayList<>();
+        try {
+            System.out.println("* Viendo todos las Retos filtrados");
+            tx.begin();
 
-		try {
-			tx.begin();
-			
-			Extent<Reto> retoExtent = pm.getExtent(Reto.class, true);
-			
-			for (Reto reto : retoExtent) {
-				retos.add(reto);
-			}
-						
-			tx.commit();
-		} catch (Exception ex) {
-			System.out.println("  $ Error querying all retos: " + ex.getMessage());
-		} finally {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
+            Extent<Reto> retoExtent = pm.getExtent(Reto.class, true);
 
-			pm.close();
-		}
+            for (Reto reto : retoExtent) {           
+                    
+            	Reto r = new Reto(reto.getNombre(), reto.getFecha_ini(), reto.getFecha_fin(), reto.getDistancia(), 
+                null, reto.getIdCreador());  
+           	 
+           	   int cont = 0;
+               int contV = 0;
+                
+           	 if (!r.getNombre().equals("")) {
+                    cont++;
+                    if (r.getNombre().contains(nombre) || r.getNombre().toLowerCase().contains(nombre)) {
+                        contV++;
+                    }
+             }
+           	 
+           	 if (!r.getFecha_ini().equals("")) {
+                    cont++;
+                    if (r.getFecha_ini().contains(fechaIni) || r.getFecha_ini().toLowerCase().contains(fechaIni)) {
+                        contV++;
+                    }
+             }
+           	 
+           	if (!r.getFecha_fin().equals("")) {
+                cont++;
+                if (r.getFecha_fin().contains(fechaIni) || r.getFecha_fin().toLowerCase().contains(fechaIni)) {
+                    contV++;
+                }
+           	}
+           	 
+           	 if (distancia != 0) {
+                    cont ++;
+                    if (r.getDistancia() == distancia) {
+                        contV++;
+                    }
+             }
+           	      	 
+           	 if (cont == contV) {
+           		 retos.add(r);
+           	 }
+                    
+           }
 
-		return retos;
-	}
+            tx.commit();
+        } catch (Exception ex) {
+            System.out.println("$ Error viendo todos Anuncios: " + ex.getMessage());
+        } finally {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
 
-	@Override
-	public Reto find(String param) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+            pm.close();
+        }
+        
+        return retos;
+
+    }
 
 }

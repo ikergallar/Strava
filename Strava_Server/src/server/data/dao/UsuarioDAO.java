@@ -33,13 +33,7 @@ public class UsuarioDAO extends DataAccessObjectBase implements IDataAccessObjec
 	public void save(Usuario object) {
 		super.saveObject(object);
 	}
-
-	@Override
-	public void delete(Usuario object) {
-		super.deleteObject(object);
-	}
 	
-	@Override
 	public Usuario find(String email) {		
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
@@ -67,34 +61,4 @@ public class UsuarioDAO extends DataAccessObjectBase implements IDataAccessObjec
 		return result;
 	}
 
-	@Override
-	public List<Usuario> getAll() {
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
-		
-		List<Usuario> users = new ArrayList<>();
-
-		try {
-			tx.begin();
-			
-			Extent<Usuario> userExtent = pm.getExtent(Usuario.class, true);
-			
-			for (Usuario user : userExtent) {
-				users.add(user);
-			}
-						
-			tx.commit();
-		} catch (Exception ex) {
-			System.out.println("  $ Error querying all users: " + ex.getMessage());
-		} finally {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-
-			pm.close();
-		}
-
-		return users;
-	}
-	
 }

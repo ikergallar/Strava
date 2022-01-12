@@ -150,9 +150,7 @@ public class VentanaSesion extends JFrame {
 						list.setModel(modelo);
 					}
 				} else {
-					JOptionPane.showMessageDialog(null, "No existe ninguna sesion con esas caracteristicas",
-							"Confirmacion", 1);
-
+					JOptionPane.showMessageDialog(null, "No existe ninguna sesion con esas caracteristicas","Confirmacion", 1);
 				}
 
 			}
