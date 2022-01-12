@@ -20,10 +20,15 @@ import java.awt.event.ActionListener;
 
 public class VentanaCrearReto extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField textNombre;
 	private JTextField textFechaini;
 	private JTextField textFin;
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public VentanaCrearReto(LoginController loginController, RetoController retoController,
 			SesionController sesionController) {
 		getContentPane().setLayout(null);

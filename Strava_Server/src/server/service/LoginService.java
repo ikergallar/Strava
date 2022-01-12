@@ -47,9 +47,7 @@ public class LoginService {
 		user.setEmail(email);
 		user.setPeso(peso);
 		user.setAltura(altura);
-		
-		//List<Usuario> usuario = UsuarioDAO.getInstance().getAll();
-		
+				
 		UsuarioDAO.getInstance().save(user);
 	}
 	

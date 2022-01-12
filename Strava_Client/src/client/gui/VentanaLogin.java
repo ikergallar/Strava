@@ -11,6 +11,10 @@ import java.awt.event.*;
 
 public class VentanaLogin extends JFrame{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField textEmail;
 	private JTextField textPass;
 	

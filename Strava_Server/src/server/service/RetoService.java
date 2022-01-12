@@ -58,7 +58,6 @@ public class RetoService {
 
 		if (reto != null) {
 			reto.addParticipante(user);
-			
 			return true;
 		} else {
 			return false;

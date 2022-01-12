@@ -24,10 +24,8 @@ public class Reto {
 	private Deporte deporte;
 	@ForeignKey
 	private int idCreador;
-	@ForeignKey
 	private List<Usuario> participantes = new ArrayList<>();
 
-	
 	public Reto(String nombre, String fecha_ini, String fecha_fin, int distancia, Deporte deporte, int idCreador) {
 		super();
 		this.nombre = nombre;

@@ -9,7 +9,6 @@ import javax.swing.JTextField;
 import client.controller.LoginController;
 import client.controller.RetoController;
 import client.controller.SesionController;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -17,6 +16,10 @@ import java.awt.event.ActionListener;
 
 public class VentanaLoginFace extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField textEmail;
 	private JTextField textPass;
 	

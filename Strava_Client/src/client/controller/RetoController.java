@@ -2,7 +2,6 @@ package client.controller;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.List;
 
 import client.serviceLocator.ServiceLocator;
 import server.data.dto.RetoDTO;

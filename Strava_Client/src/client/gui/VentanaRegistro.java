@@ -2,6 +2,8 @@ package client.gui;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -18,6 +20,10 @@ import javax.swing.JButton;
 
 public class VentanaRegistro extends JFrame{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField textUsername;
 	private JTextField textEmail;
 	private JTextField textPass;
@@ -90,8 +96,10 @@ public class VentanaRegistro extends JFrame{
 				
 				loginController.registro(username, pass, email, 0, altura);
 				
-				VentanaSesion vP = new VentanaSesion(loginController, retoController,sesionController);
-				vP.setVisible(true);
+				JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Confirmacion", 1);
+				
+				VentanaLogin vL = new VentanaLogin(loginController, retoController,sesionController);
+				vL.setVisible(true);
 				dispose();
 		
 			}

@@ -28,6 +28,10 @@ import javax.swing.JTextField;
 
 public class VentanaSesion extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField textFechaIni;
 
 	public VentanaSesion(LoginController loginController, RetoController retoController,

@@ -17,6 +17,10 @@ import client.controller.SesionController;
 
 public class VentanaLoginGoogle extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField textEmail;
 	private JTextField textPass;
 	

@@ -27,6 +27,10 @@ import javax.swing.JSpinner;
 
 public class VentanaReto extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField textNombre;
 	private JTextField textFechaini;
 	private JTextField textFin;
@@ -170,6 +174,10 @@ public class VentanaReto extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				RetoDTO reto = (RetoDTO) list.getSelectedValue();
+				
+				System.out.println(loginController.getToken()); 
+				System.out.println(reto.getIdReto()); 
+
 
 				if(retoController.apuntarseReto(loginController.getToken(), reto.getIdReto()) == true) {
 					JOptionPane.showMessageDialog(null, "Apuntado al reto", "Confirmacion", 1);

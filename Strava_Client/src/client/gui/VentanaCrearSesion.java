@@ -1,10 +1,8 @@
 package client.gui;
 
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -13,17 +11,20 @@ import client.controller.LoginController;
 import client.controller.RetoController;
 import client.controller.SesionController;
 
-import com.toedter.calendar.JDateChooser;
 import javax.swing.JSpinner;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Calendar;
 
 public class VentanaCrearSesion extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField textNombre;
 	private JTextField textFechaIni;
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public VentanaCrearSesion(LoginController loginController, RetoController retoController,
 			SesionController sesionController) {
 		getContentPane().setLayout(null);
@@ -41,7 +42,7 @@ public class VentanaCrearSesion extends JFrame {
 		getContentPane().add(textNombre);
 		textNombre.setColumns(10);
 
-		JComboBox comDeporte = new JComboBox();
+		JComboBox<?> comDeporte = new JComboBox();
 		comDeporte.setModel(new DefaultComboBoxModel(new String[] { "Running", "Ciclismo" }));
 		comDeporte.setToolTipText("");
 		comDeporte.setBounds(37, 127, 255, 28);
