@@ -44,6 +44,20 @@ public class LoginController {
 		}
 	}
 	
+	public boolean existeUsuario(String username, String email) {
+		boolean existe = false;	
+		try {
+			if(this.serviceLocator.getService().existeUsuario(username, email)){
+				return true;
+			}
+		} catch (RemoteException e) {
+			System.out.println("# Error during existeUsuario: " + e);
+		}
+		
+		return existe;
+		
+	}
+	
 	public long getToken() {
 		return token;
 	}

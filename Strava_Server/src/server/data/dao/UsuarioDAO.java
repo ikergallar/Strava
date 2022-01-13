@@ -10,6 +10,7 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
+import server.data.domain.Reto;
 import server.data.domain.Sesion;
 import server.data.domain.Usuario;
 
@@ -59,6 +60,50 @@ public class UsuarioDAO extends DataAccessObjectBase implements IDataAccessObjec
 		}
 
 		return result;
+	}
+	
+	public static List<Usuario> getUsuarios() {				
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+
+		List<Usuario> usuarios = new ArrayList<>();
+		
+		try {
+			tx.begin();
+			
+			Extent<Usuario> extent = pm.getExtent(Usuario.class, true);
+
+			for (Usuario usuario : extent) {
+				usuarios.add(usuario);
+			}
+
+			tx.commit();
+		} catch (Exception ex) {
+			System.out.println("  $ Error retrieving all users: " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+
+		return usuarios;
+	}
+	
+	public static boolean existeUsuario(String username, String email) {
+
+		boolean existe = false;
+		List<Usuario> usuarios = getUsuarios();
+
+		for (Usuario user : usuarios) {
+			if (user.getUsername().equals(username) || user.getEmail().equals(email)) {
+				existe = true;
+			}
+		}
+
+		return existe;
+
 	}
 
 }

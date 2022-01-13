@@ -69,6 +69,18 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	}
 	
 	@Override
+	public boolean existeUsuario(String username, String email)throws RemoteException{
+		System.out.println(" * RemoteFacade get ExisteUsuario");
+		
+		boolean existe = false;
+
+		if(LoginService.getInstance().existeUsuario(username,email)) {
+			existe = true;
+		}
+		return existe;
+	}
+	
+	@Override
 	public ArrayList<RetoDTO> getRetos() throws RemoteException{
 		System.out.println(" * RemoteFaçade busqueda de retos: " );
 		

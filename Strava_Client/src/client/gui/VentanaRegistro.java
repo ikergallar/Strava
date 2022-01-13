@@ -94,14 +94,32 @@ public class VentanaRegistro extends JFrame{
 				int altura = (Integer) spinnerAltura.getValue();
 			//	float peso = (Float) spinnerPeso.getValue();
 				
-				loginController.registro(username, pass, email, 0, altura);
-				
-				JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Confirmacion", 1);
-				
-				VentanaLogin vL = new VentanaLogin(loginController, retoController,sesionController);
-				vL.setVisible(true);
-				dispose();
-		
+				if (username.equals("") || email.equals("") || pass.equals("")) {
+					JOptionPane.showMessageDialog(null, "Es necesario rellenar todos los campos", "Error", 0);
+
+				} else {
+
+					if (email.contains("@") && email.contains(".")) {	
+						
+						if(!loginController.existeUsuario(username,email)) {
+							
+							loginController.registro(username, pass, email, 0, altura);
+							
+							JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Confirmacion", 1);
+							
+							VentanaLogin vL = new VentanaLogin(loginController, retoController,sesionController);
+							vL.setVisible(true);
+							dispose();
+							
+						} else {
+							JOptionPane.showMessageDialog(null, "El usuario ya existe", "Error", 0);
+						}
+
+					} else {
+					JOptionPane.showMessageDialog(null, "Direccion de correo no valida", "Error", 0);
+
+					}
+				}
 			}
 		});
 		

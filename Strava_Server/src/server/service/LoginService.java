@@ -1,7 +1,6 @@
 package server.service;
 
 import java.rmi.RemoteException;
-import java.util.List;
 
 import server.data.dao.UsuarioDAO;
 import server.data.domain.Usuario;
@@ -30,6 +29,10 @@ public class LoginService {
 		} else {
 			return null;
 		}
+	}
+	
+	public boolean existeUsuario(String username, String email) throws RemoteException {
+		return UsuarioDAO.existeUsuario(username, email);
 	}
 	
 	public boolean loginGoogle(String email, String pass) throws RemoteException {
