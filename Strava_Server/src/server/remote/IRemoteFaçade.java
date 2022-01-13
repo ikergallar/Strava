@@ -13,7 +13,7 @@ public interface IRemoteFaçade extends Remote{
 	public void registro(String username, String pass, String email, float peso, int altura) throws RemoteException;
 	
 	public boolean apuntarseReto(long token, int idReto) throws RemoteException;
-	public ArrayList<RetoDTO> buscarRetos(String nombre, String fecha_ini, String fecha_fin, int distancia) throws RemoteException;
+	public ArrayList<RetoDTO> getRetos() throws RemoteException;
 	public void crearReto(String nombre, String fecha_ini, String fecha_fin, int distancia, String deporte, long token) throws RemoteException;
 	
 	public ArrayList<SesionDTO> buscarSesiones(String titulo, int distancia,String fecha_ini,  int duracion) throws RemoteException;

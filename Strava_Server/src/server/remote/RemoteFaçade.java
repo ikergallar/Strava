@@ -69,10 +69,10 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	}
 	
 	@Override
-	public ArrayList<RetoDTO> buscarRetos(String nombre, String fecha_ini, String fecha_fin, int distancia) throws RemoteException{
-		System.out.println(" * RemoteFaçade busqueda de retos: " + nombre + "/ " + fecha_ini + "/ " + fecha_fin);
+	public ArrayList<RetoDTO> getRetos() throws RemoteException{
+		System.out.println(" * RemoteFaçade busqueda de retos: " );
 		
-		List<Reto> retos = RetoService.getInstance().buscarReto(nombre, fecha_ini, fecha_fin, distancia);
+		List<Reto> retos = RetoService.getInstance().getRetos();
 				
 		if (retos != null) {
 			//Convert domain object to DTO
@@ -93,10 +93,9 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	
 	@Override
 	public boolean apuntarseReto(long token, int idReto) throws RemoteException{
-		System.out.println(" * RemoteFaçade apuntarse a un reto: " + this.serverState.get(token) );
+		System.out.println(" * RemoteFaçade apuntarse a un reto: " + idReto + this.serverState.get(token) );
 		
-		if (this.serverState.containsKey(token)) {						
-			//Make the bid using Bid Application Service
+		if (this.serverState.containsKey(token)) {	
 			if (RetoService.getInstance().apuntarseReto(this.serverState.get(token), idReto)) {
 				return true;
 			} else {

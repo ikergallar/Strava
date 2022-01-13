@@ -7,11 +7,12 @@ import javax.jdo.annotations.ForeignKey;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
+import javax.jdo.annotations.Join;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
-@PersistenceCapable
+@PersistenceCapable(detachable="true")
 public class Reto {
 	
 	@PrimaryKey
@@ -24,6 +25,8 @@ public class Reto {
 	private Deporte deporte;
 	@ForeignKey
 	private int idCreador;
+	@Join
+	@Persistent(mappedBy="reto", dependentElement="true", defaultFetchGroup="true")
 	private List<Usuario> participantes = new ArrayList<>();
 
 	public Reto(String nombre, String fecha_ini, String fecha_fin, int distancia, Deporte deporte, int idCreador) {

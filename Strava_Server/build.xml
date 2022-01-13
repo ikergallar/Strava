@@ -61,7 +61,7 @@
 	        </schematool>
 	</target>
 	
-	<target name="6.server" description="Runs the Server">
+	<target name="6.server" depends="2.enhance-classes" description="Runs the Server">
 		<java classname="server.MainProgram" classpathref="classpath" fork="true">
         	<jvmarg value="-Djava.rmi.server.codebase=file:${bin.dir}/"/>
 			<jvmarg value="-Djava.security.policy=${policy.file}"/>

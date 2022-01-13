@@ -31,9 +31,9 @@ public class RetoController {
 		}
 	}
 	
-	public ArrayList<RetoDTO> buscarRetos(String nombre, String fecha_ini, String fecha_fin, int distancia){
+	public ArrayList<RetoDTO> getRetos(){
 		try {
-			return this.serviceLocator.getService().buscarRetos(nombre, fecha_ini, fecha_fin, distancia);
+			return this.serviceLocator.getService().getRetos();
 		}catch (RemoteException e){
 			System.out.println("# Error buscando retos: " + e);
 			return null;			

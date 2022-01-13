@@ -22,8 +22,6 @@ public class RetoService {
 		return instance;
 	}
 	
-	private ArrayList<Reto> retos = new ArrayList<Reto>();
-		
 	public void crearReto(String nombre, String fecha_ini, String fecha_fin, int distancia,  String deporte, Usuario creador) {
 		
 		Reto reto = new Reto();
@@ -37,9 +35,9 @@ public class RetoService {
 			
 	}
 	
-	public List<Reto> buscarReto(String nombre, String fecha_ini, String fecha_fin, int distancia) {
+	public List<Reto> getRetos() {
 		
-        List<Reto> reto = RetoDAO.getInstance().getFiltros(nombre, fecha_ini, fecha_fin, distancia);
+        List<Reto> reto = RetoDAO.getInstance().getRetos();
 		
 		return reto;
 	
@@ -48,8 +46,9 @@ public class RetoService {
 	public boolean apuntarseReto(Usuario user, int idReto) {
 			
 		Reto reto = null;
-		
-		for (Reto re : this.retos) {
+        List<Reto> retos = RetoDAO.getInstance().getRetos();
+
+		for (Reto re : retos) {
 			if (re.getIdReto() == idReto ) {
 				reto = re;
 				break;
@@ -58,6 +57,7 @@ public class RetoService {
 
 		if (reto != null) {
 			reto.addParticipante(user);
+			RetoDAO.getInstance().save(reto);
 			return true;
 		} else {
 			return false;

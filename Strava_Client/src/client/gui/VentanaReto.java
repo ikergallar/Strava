@@ -22,8 +22,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.JSpinner;
 
 public class VentanaReto extends JFrame {
 
@@ -31,9 +29,6 @@ public class VentanaReto extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JTextField textNombre;
-	private JTextField textFechaini;
-	private JTextField textFin;
 
 	public VentanaReto(LoginController loginController, RetoController retoController,
 			SesionController sesionController) {
@@ -49,9 +44,6 @@ public class VentanaReto extends JFrame {
 		JMenuItem mntmReto = new JMenuItem("Sesiones");
 		mntmReto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(" - Logout from the server..."); 
-				loginController.logout();
-				System.out.println("\t* Logout success!");
 				VentanaSesion vP = new VentanaSesion(loginController, retoController, sesionController);
 				vP.setVisible(true);
 				dispose();
@@ -103,22 +95,7 @@ public class VentanaReto extends JFrame {
 		btnCrearReto.setBounds(285, 501, 140, 23);
 		getContentPane().add(btnCrearReto);
 
-		textNombre = new JTextField();
-		textNombre.setBounds(190, 97, 96, 20);
-		getContentPane().add(textNombre);
-		textNombre.setColumns(10);
-
-		textFechaini = new JTextField();
-		textFechaini.setBounds(190, 151, 96, 20);
-		getContentPane().add(textFechaini);
-		textFechaini.setColumns(10);
-
-		textFin = new JTextField();
-		textFin.setBounds(190, 211, 96, 20);
-		getContentPane().add(textFin);
-		textFin.setColumns(10);
-
-		JButton btnBuscarReto = new JButton("Buscar reto");
+		JButton btnBuscarReto = new JButton("Obtener retos");
 		btnBuscarReto.setBounds(170, 343, 128, 23);
 		getContentPane().add(btnBuscarReto);
 
@@ -126,39 +103,14 @@ public class VentanaReto extends JFrame {
 		btnApuntarse.setBounds(490, 397, 128, 23);
 		getContentPane().add(btnApuntarse);
 
-		JSpinner spinner = new JSpinner();
-		spinner.setBounds(212, 275, 74, 20);
-		getContentPane().add(spinner);
-		
-		JLabel lblNewLabel = new JLabel("Nombre");
-		lblNewLabel.setBounds(20, 97, 123, 20);
-		getContentPane().add(lblNewLabel);
-		
-		JLabel lblFechaInicioddmmaaaa = new JLabel("Fecha inicio(dd/MM/aaaa)");
-		lblFechaInicioddmmaaaa.setBounds(20, 151, 140, 20);
-		getContentPane().add(lblFechaInicioddmmaaaa);
-		
-		JLabel lblFechaFinddmmaaaa = new JLabel("Fecha fin(dd/MM/aaaa)");
-		lblFechaFinddmmaaaa.setBounds(20, 211, 140, 20);
-		getContentPane().add(lblFechaFinddmmaaaa);
-		
-		JLabel lblNewLabel_2_1 = new JLabel("Duraci\u00F3n");
-		lblNewLabel_2_1.setBounds(20, 275, 123, 20);
-		getContentPane().add(lblNewLabel_2_1);
-
 		btnBuscarReto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				String nombre = textNombre.getText();
-				String fechaIni = textFechaini.getText();
-				String fechaFin = textFin.getText();
-				int duracion = (Integer) spinner.getValue();
 
 				DefaultListModel<RetoDTO> modelo;
 				List<RetoDTO> lista;
 
 				modelo = new DefaultListModel<RetoDTO>();
-				lista = retoController.buscarRetos(nombre, fechaIni, fechaFin, duracion);
+				lista = retoController.getRetos();
 
 				if (lista != null) {
 					for (RetoDTO re : lista) {
@@ -177,7 +129,6 @@ public class VentanaReto extends JFrame {
 				
 				System.out.println(loginController.getToken()); 
 				System.out.println(reto.getIdReto()); 
-
 
 				if(retoController.apuntarseReto(loginController.getToken(), reto.getIdReto()) == true) {
 					JOptionPane.showMessageDialog(null, "Apuntado al reto", "Confirmacion", 1);

@@ -6,7 +6,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.Unique;
 
-@PersistenceCapable
+@PersistenceCapable(detachable="true")
 public class Usuario {
 	
 	@PrimaryKey
@@ -22,6 +22,9 @@ public class Usuario {
 	private int altura;
 	private int frecuenciaCardiacaMax;
 	private int frecuenciaCardiacaReposo;
+	
+	@Persistent(defaultFetchGroup="true")
+	private Reto reto;
 
 	public Usuario(String username, String pass, String email, String bornDate, float peso, int altura,
 		int frecuenciaCardiacaMax, int frecuenciaCardiacaReposo) {
