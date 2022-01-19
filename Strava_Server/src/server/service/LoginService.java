@@ -54,4 +54,7 @@ public class LoginService {
 		UsuarioDAO.getInstance().save(user);
 	}
 	
+	public void registroGoogle(String email, String pass) throws RemoteException {
+		GoogleGateway.getInstance().registro(email, pass);
+	}
 }

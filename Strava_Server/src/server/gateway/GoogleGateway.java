@@ -38,4 +38,8 @@ public class GoogleGateway implements ILoginGateway{
 		
 	}
 
+	public void registro(String email,String pass) throws RemoteException {
+		this.googleService.registrarUsuarioGoogle(email, pass);
+	}
+	
 }

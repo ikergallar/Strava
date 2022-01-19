@@ -67,19 +67,22 @@ public class VentanaLoginGoogle extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				String email = "xabster@gmail.com";
-				String pass = "abcd";
+				String email = textEmail.getText();
+				String pass = textPass.getText();
 				
 				System.out.println(" - Login with Google into the server: '" + email + "' - '" + pass + "' ...");
 				System.out.println("\t* Password : " + pass);		
 				boolean result = loginController.loginGoogle(email, pass);
 				System.out.println("\t* Login result: " + result);
-				
-				
-				JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Confirmacion", 1);
-				VentanaSesion vP = new VentanaSesion(loginController,retoController, sesionController);
-				vP.setVisible(true);
-				dispose();
+				if (result) {
+					JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Confirmacion", 1);
+					VentanaSesion vP = new VentanaSesion(loginController,retoController, sesionController);
+					vP.setVisible(true);
+					dispose();
+				} else {
+					JOptionPane.showMessageDialog(null, "Error", "Error", 0);
+				}
+	
 												
 			}
 		});

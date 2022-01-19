@@ -2,6 +2,7 @@ package server.remote;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import server.dataUsuario.*;
 
 import server.service.GoogleService;
 
@@ -32,5 +33,9 @@ public class GoogleRemote extends UnicastRemoteObject implements IGoogleRemote {
 		return GoogleService.getInstance().loginGoogle(email, contrasenia);
 	}
 
-
+	@Override
+	public void registrarUsuarioGoogle(String email, String contrasenia) throws RemoteException {
+		GoogleService.getInstance().registrarseGoogle(email, contrasenia);
+	}
+	
 }
