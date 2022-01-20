@@ -1,6 +1,7 @@
 package server.service;
 
 import server.data.UsuarioFacebook;
+import server.dataUsuario.FacebookUsers;
 
 public class FacebookService {
 	
@@ -14,16 +15,21 @@ public static FacebookService instance = null;
 	}
 	
 	public boolean loginFacebook(String email, String contrasenia) {
-		UsuarioFacebook user = new UsuarioFacebook();		
-		user.setEmail("misi@gmail.com");
-		String pass =("1a2b");		
-		user.setPass(pass);
-		
-		if (user.getEmail().equals(email) && user.checkPassword(pass)) {		
-			return true;
-		} else {
-			return false;
+		boolean acceso = false;
+		for(UsuarioFacebook u : FacebookUsers.getInstance().getUsuarios()) {
+			if (u.getEmail().equals(email) && u.getPass().equals(contrasenia)) {
+				acceso= true;
+			}else {
+				System.out.println("El usuario no existe");
+			}
 		}
+		
+		return acceso;
+	}
+	
+	public void registrarseFacebook(String email, String contrasenia) {
+		UsuarioFacebook u = new UsuarioFacebook(email, contrasenia);
+		FacebookUsers.getInstance().getUsuarios().add(u);
 	}
 
 }

@@ -36,5 +36,9 @@ public class FacebookGateway implements ILoginGateway{
 		}
 		
 	}
+	
+	public void registro(String email,String pass) throws RemoteException {
+		this.facebookService.registrarUsuarioFacebook(email, pass);
+	}
 
 }

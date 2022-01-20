@@ -6,5 +6,7 @@ import java.rmi.RemoteException;
 public interface IFacebookRemote extends Remote{
 	
 	public boolean loginFacebook(String email, String pass) throws RemoteException;
+	
+	public void registrarUsuarioFacebook(String email, String contrasenia) throws RemoteException;
 
 }

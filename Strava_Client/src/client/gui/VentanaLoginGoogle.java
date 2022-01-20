@@ -47,19 +47,19 @@ public class VentanaLoginGoogle extends JFrame {
 		textPass.setColumns(10);
 		
 		JButton btnLogin = new JButton("Entrar");
-		btnLogin.setForeground(Color.BLACK);
 		btnLogin.setBounds(158, 226, 145, 23);
+		btnLogin.setForeground(Color.BLACK);
 		getContentPane().add(btnLogin);
 		
 		JLabel lblFacebook = new JLabel("GOOGLE");
+		lblFacebook.setBounds(175, 24, 153, 38);
 		lblFacebook.setFont(new Font("Tahoma", Font.ITALIC, 22));
 		lblFacebook.setForeground(Color.RED);
-		lblFacebook.setBounds(175, 24, 153, 38);
 		getContentPane().add(lblFacebook);
 		
 		JButton btnAtras = new JButton("Atras");
-		btnAtras.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnAtras.setBounds(25, 307, 89, 23);
+		btnAtras.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		getContentPane().add(btnAtras);
 		
         btnLogin.addActionListener(new ActionListener() {

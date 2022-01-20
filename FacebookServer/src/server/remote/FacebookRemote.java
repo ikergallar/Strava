@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 import server.service.FacebookService;
+import server.service.GoogleService;
 
 public class FacebookRemote extends UnicastRemoteObject implements IFacebookRemote{
 	
@@ -29,6 +30,11 @@ public class FacebookRemote extends UnicastRemoteObject implements IFacebookRemo
 	
 	public boolean loginFacebook(String email, String pass) throws RemoteException {
 		return FacebookService.getInstance().loginFacebook(email, pass);
+	}
+	
+	@Override
+	public void registrarUsuarioFacebook(String email, String contrasenia) throws RemoteException {
+		FacebookService.getInstance().registrarseFacebook(email, contrasenia);
 	}
 
 }
