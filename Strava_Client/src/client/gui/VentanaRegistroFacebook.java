@@ -59,7 +59,7 @@ public class VentanaRegistroFacebook extends JFrame {
 		btnAtras.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		getContentPane().add(btnAtras);
 		
-		JLabel lblInfo = new JLabel("Registrese en Strava utilizan un email y contrase\u00F1a asociadas\r\n a una cuenta de Google");
+		JLabel lblInfo = new JLabel("Registrese en Strava utilizan un email y contrase\u00F1a asociadas\r\n a una cuenta de Facebook");
 		lblInfo.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblInfo.setBounds(10, 60, 464, 68);
 		getContentPane().add(lblInfo);
