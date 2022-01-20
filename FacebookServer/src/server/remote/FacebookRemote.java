@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 import server.service.FacebookService;
-import server.service.GoogleService;
+
 
 public class FacebookRemote extends UnicastRemoteObject implements IFacebookRemote{
 	

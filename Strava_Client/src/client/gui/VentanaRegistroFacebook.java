@@ -64,6 +64,16 @@ public class VentanaRegistroFacebook extends JFrame {
 		lblInfo.setBounds(10, 60, 464, 68);
 		getContentPane().add(lblInfo);
 		
+		btnRegistro.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				
+			}
+		});
+		
 		btnAtras.addActionListener(new ActionListener() {
 			
 			@Override

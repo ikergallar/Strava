@@ -57,4 +57,8 @@ public class LoginService {
 	public void registroGoogle(String email, String pass) throws RemoteException {
 		GoogleGateway.getInstance().registro(email, pass);
 	}
+	
+	public void registroFacebook(String email, String pass ) throws RemoteException{
+		FacebookGateway.getInstance().registro(email, pass);
+	}
 }
