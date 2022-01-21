@@ -46,7 +46,7 @@ public class VentanaLogin extends JFrame{
 		textPass.setColumns(10);
 		
 		JButton btnLogin = new JButton("Iniciar Sesi\u00F3n");
-		btnLogin.setBounds(154, 226, 145, 23);
+		btnLogin.setBounds(164, 226, 145, 23);
 		getContentPane().add(btnLogin);
 		
 		btnLogin.addActionListener(new ActionListener() {
@@ -80,7 +80,7 @@ public class VentanaLogin extends JFrame{
 		});
 						
 		JLabel lblRegistro = new JLabel("No tienes una cuenta Strava?");
-		lblRegistro.setBounds(54, 314, 178, 14);
+		lblRegistro.setBounds(54, 288, 178, 14);
 		getContentPane().add(lblRegistro);
 		
 		JButton btnRegistro = new JButton("Registrate");
@@ -89,11 +89,11 @@ public class VentanaLogin extends JFrame{
 		btnRegistro.setContentAreaFilled(false);
 		btnRegistro.setBorderPainted(false);
 		btnRegistro.setForeground(Color.BLACK);
-		btnRegistro.setBounds(204, 310, 113, 23);
+		btnRegistro.setBounds(204, 284, 113, 23);
 		getContentPane().add(btnRegistro);
 		
 		JLabel lblResgitroGF = new JLabel("Registrate con");
-		lblResgitroGF.setBounds(110, 278, 99, 14);
+		lblResgitroGF.setBounds(54, 328, 99, 14);
 		getContentPane().add(lblResgitroGF);
 		
 		JButton btnGoogle = new JButton("Google");
@@ -102,7 +102,7 @@ public class VentanaLogin extends JFrame{
 		btnGoogle.setContentAreaFilled(false);
 		btnGoogle.setBorderPainted(false);
 		btnGoogle.setBackground(Color.LIGHT_GRAY);
-		btnGoogle.setBounds(219, 274, 113, 23);
+		btnGoogle.setBounds(122, 324, 113, 23);
 		getContentPane().add(btnGoogle);
 		
 		JButton btnFacebook = new JButton("Facebook");
@@ -111,8 +111,32 @@ public class VentanaLogin extends JFrame{
 		btnFacebook.setContentAreaFilled(false);
 		btnFacebook.setBorderPainted(false);
 		btnFacebook.setBackground(Color.LIGHT_GRAY);
-		btnFacebook.setBounds(348, 274, 113, 23);
+		btnFacebook.setBounds(204, 324, 113, 23);
 		getContentPane().add(btnFacebook);
+		
+		JButton btnLFacebook = new JButton("Facebook");
+		btnLFacebook.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaLoginFace vLF = new VentanaLoginFace(loginController, retoController,sesionController);
+				vLF.setVisible(true);
+				dispose();
+			}
+		});
+		btnLFacebook.setBounds(368, 197, 99, 52);
+		//ImageIcon facebook = new ImageIcon("../img/Facebook.png");
+		//btnLFacebook.setIcon(new ImageIcon(facebook.getImage().getScaledInstance(btnLFacebook.getWidth(), btnLFacebook.getHeight(), Image.SCALE_SMOOTH)));;
+		getContentPane().add(btnLFacebook);
+		
+		JButton btnLGoogle = new JButton("Google");
+		btnLGoogle.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaLoginGoogle vLG = new VentanaLoginGoogle(loginController, retoController,sesionController);
+				vLG.setVisible(true);
+				dispose();
+			}
+		});
+		btnLGoogle.setBounds(368, 107, 99, 51);
+		getContentPane().add(btnLGoogle);
 		
 		btnRegistro.addActionListener(new ActionListener() {
 			
@@ -130,8 +154,8 @@ public class VentanaLogin extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				VentanaLoginGoogle vlg = new VentanaLoginGoogle(loginController, retoController, sesionController);
-				vlg.setVisible(true);
+				VentanaRegistroGoogle vrg = new VentanaRegistroGoogle(loginController, retoController, sesionController);
+				vrg.setVisible(true);
 				dispose();
 				
 			}
@@ -142,8 +166,8 @@ public class VentanaLogin extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				VentanaLoginFace vlg = new VentanaLoginFace(loginController, retoController, sesionController);
-				vlg.setVisible(true);
+				VentanaRegistroFacebook vrf = new VentanaRegistroFacebook(loginController, retoController, sesionController);
+				vrf.setVisible(true);
 				dispose();
 				
 			}

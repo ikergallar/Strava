@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import client.controller.LoginController;
@@ -42,6 +43,39 @@ public class VentanaRegistroGoogle extends JFrame {
 		textPass.setColumns(10);
 		
 		JButton btnRegistro = new JButton("Registrarse");
+		btnRegistro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String email = textEmail.getText();
+				String pass = textPass.getText();
+				
+				if (email.equals("") || pass.equals("")) {
+					JOptionPane.showMessageDialog(null, "Es necesario rellenar todos los campos", "Error", 0);
+
+				} else {
+
+					if (email.contains("@") && email.contains(".")) {	
+						
+						if(!loginController.existeUsuario(pass,email)) {
+							
+							loginController.registroGoogle(email, pass);
+							
+							JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Confirmacion", 1);
+							
+							VentanaLoginGoogle vLG = new VentanaLoginGoogle(loginController, retoController,sesionController);
+							vLG.setVisible(true);
+							dispose();
+							
+						} else {
+							JOptionPane.showMessageDialog(null, "El usuario ya existe", "Error", 0);
+						}
+
+					} else {
+					JOptionPane.showMessageDialog(null, "Direccion de correo no valida", "Error", 0);
+
+					}
+				}
+			}
+		});
 		btnRegistro.setBounds(169, 274, 145, 23);
 		btnRegistro.setForeground(Color.BLACK);
 		getContentPane().add(btnRegistro);
@@ -67,8 +101,8 @@ public class VentanaRegistroGoogle extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					VentanaLoginGoogle vl = new VentanaLoginGoogle(loginController, retoController, sesionController);
-					vl.setVisible(true);
+					VentanaLogin vL = new VentanaLogin(loginController, retoController, sesionController);
+					vL.setVisible(true);
 					dispose();
 					
 				}

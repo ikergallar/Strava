@@ -84,6 +84,17 @@ public class VentanaRegistro extends JFrame{
 		btnRegistrarse.setBounds(159, 327, 107, 23);
 		getContentPane().add(btnRegistrarse);
 		
+		JButton btnAtras = new JButton("Atras");
+		btnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaLogin vL = new VentanaLogin(loginController, retoController, sesionController);
+				vL.setVisible(true);
+				dispose();
+			}
+		});
+		btnAtras.setBounds(298, 327, 107, 23);
+		getContentPane().add(btnAtras);
+		
 		btnRegistrarse.addActionListener(new ActionListener() {
 			
 			@Override

@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import client.controller.LoginController;
@@ -48,10 +49,10 @@ public class VentanaRegistroFacebook extends JFrame {
 		btnRegistro.setForeground(Color.BLACK);
 		getContentPane().add(btnRegistro);
 		
-		JLabel lblFacebook = new JLabel("Registro con Google");
+		JLabel lblFacebook = new JLabel("Registro con Facebook");
 		lblFacebook.setBounds(141, 11, 208, 38);
 		lblFacebook.setFont(new Font("Tahoma", Font.ITALIC, 22));
-		lblFacebook.setForeground(Color.RED);
+		lblFacebook.setForeground(Color.BLUE);
 		getContentPane().add(lblFacebook);
 		
 		JButton btnAtras = new JButton("Atras");
@@ -65,12 +66,36 @@ public class VentanaRegistroFacebook extends JFrame {
 		getContentPane().add(lblInfo);
 		
 		btnRegistro.addActionListener(new ActionListener() {
-			
-			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				String email = textEmail.getText();
+				String pass = textPass.getText();
 				
-				
+				if (email.equals("") || pass.equals("")) {
+					JOptionPane.showMessageDialog(null, "Es necesario rellenar todos los campos", "Error", 0);
+
+				} else {
+
+					if (email.contains("@") && email.contains(".")) {	
+						
+						if(!loginController.existeUsuario(pass,email)) {
+							
+							loginController.registroFacebook(email, pass);
+							
+							JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Confirmacion", 1);
+							
+							VentanaLoginFace vLF = new VentanaLoginFace(loginController, retoController,sesionController);
+							vLF.setVisible(true);
+							dispose();
+							
+						} else {
+							JOptionPane.showMessageDialog(null, "El usuario ya existe", "Error", 0);
+						}
+
+					} else {
+					JOptionPane.showMessageDialog(null, "Direccion de correo no valida", "Error", 0);
+
+					}
+				}
 			}
 		});
 		
@@ -79,8 +104,8 @@ public class VentanaRegistroFacebook extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				VentanaLoginGoogle vl = new VentanaLoginGoogle(loginController, retoController, sesionController);
-				vl.setVisible(true);
+				VentanaLogin vL = new VentanaLogin(loginController, retoController, sesionController);
+				vL.setVisible(true);
 				dispose();
 				
 			}
