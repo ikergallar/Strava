@@ -33,8 +33,12 @@ public class GoogleRemote extends UnicastRemoteObject implements IGoogleRemote {
 	}
 
 	@Override
-	public void registrarUsuarioGoogle(String email, String contrasenia) throws RemoteException {
-		GoogleService.getInstance().registrarseGoogle(email, contrasenia);
+	public boolean registrarUsuarioGoogle(String email, String contrasenia) throws RemoteException {
+		if(GoogleService.getInstance().registrarseGoogle(email, contrasenia)) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 }

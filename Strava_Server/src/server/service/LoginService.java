@@ -54,8 +54,12 @@ public class LoginService {
 		UsuarioDAO.getInstance().save(user);
 	}
 	
-	public void registroGoogle(String email, String pass) throws RemoteException {
-		GoogleGateway.getInstance().registro(email, pass);
+	public boolean registroGoogle(String email, String pass) throws RemoteException {
+		if(GoogleGateway.getInstance().registro(email, pass)) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 	public void registroFacebook(String email, String pass ) throws RemoteException{

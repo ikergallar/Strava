@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 
 import client.controller.LoginController;
@@ -18,67 +19,111 @@ import client.controller.SesionController;
 public class VentanaRegistroGoogle extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
+	private JTextField textUsername;
 	private JTextField textEmail;
 	private JTextField textPass;
 	
 	public VentanaRegistroGoogle(LoginController loginController, RetoController retoController, SesionController sesionController) {
 		getContentPane().setLayout(null);
 		
-		JLabel lblEmail = new JLabel("Email: ");
-		lblEmail.setBounds(93, 160, 46, 14);
+		JLabel lblUsername = new JLabel("Nombre de usuario:");
+		lblUsername.setBounds(115, 71, 114, 14);
+		getContentPane().add(lblUsername);
+		
+		JLabel lblEmail = new JLabel("Correo:");
+		lblEmail.setBounds(115, 114, 84, 14);
 		getContentPane().add(lblEmail);
 		
+		JLabel lblPass = new JLabel("Contrase\u00F1a:");
+		lblPass.setBounds(115, 158, 84, 14);
+		getContentPane().add(lblPass);
+		
+		JLabel lblPeso = new JLabel("Peso:");
+		lblPeso.setBounds(115, 207, 60, 14);
+		getContentPane().add(lblPeso);
+		
+		JLabel lblAltura = new JLabel("Altura:");
+		lblAltura.setBounds(115, 253, 46, 14);
+		getContentPane().add(lblAltura);
+		
+		textUsername = new JTextField();
+		textUsername.setBounds(274, 68, 86, 20);
+		getContentPane().add(textUsername);
+		textUsername.setColumns(10);
+		
 		textEmail = new JTextField();
-		textEmail.setBounds(175, 157, 124, 20);
+		textEmail.setBounds(274, 111, 86, 20);
 		getContentPane().add(textEmail);
 		textEmail.setColumns(10);
 		
-		JLabel lblPass = new JLabel("Contrase\u00F1a:");
-		lblPass.setBounds(93, 227, 72, 14);
-		getContentPane().add(lblPass);
-		
 		textPass = new JTextField();
-		textPass.setBounds(175, 224, 124, 20);
+		textPass.setBounds(274, 155, 86, 20);
 		getContentPane().add(textPass);
 		textPass.setColumns(10);
 		
-		JButton btnRegistro = new JButton("Registrarse");
-		btnRegistro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		JSpinner spinnerPeso = new JSpinner();
+		spinnerPeso.setBounds(298, 204, 30, 20);
+		getContentPane().add(spinnerPeso);
+		
+		JSpinner spinnerAltura = new JSpinner();
+		spinnerAltura.setBounds(298, 250, 30, 20);
+		getContentPane().add(spinnerAltura);
+		
+		JButton btnRegistrarse = new JButton("Registrarse");
+		btnRegistrarse.setBounds(159, 327, 107, 23);
+		getContentPane().add(btnRegistrarse);
+				
+		btnRegistrarse.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String username = textUsername.getText();
 				String email = textEmail.getText();
 				String pass = textPass.getText();
+				int altura = (Integer) spinnerAltura.getValue();
+			//	float peso = (Float) spinnerPeso.getValue();
 				
-				if (email.equals("") || pass.equals("")) {
+				if (username.equals("") || email.equals("") || pass.equals("")) {
 					JOptionPane.showMessageDialog(null, "Es necesario rellenar todos los campos", "Error", 0);
 
 				} else {
 
 					if (email.contains("@") && email.contains(".")) {	
 						
-						if(!loginController.existeUsuario(pass,email)) {
+						if(email.contains("gmail")) {
 							
-							loginController.registroGoogle(email, pass);
-							
-							JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Confirmacion", 1);
-							
-							VentanaLoginGoogle vLG = new VentanaLoginGoogle(loginController, retoController,sesionController);
-							vLG.setVisible(true);
-							dispose();
-							
+							if(!loginController.existeUsuario(username,email)) {
+								
+								if(loginController.registroGoogle(email, pass)) {
+									loginController.registro(username, pass, email, 0, altura);
+									
+									JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Confirmacion", 1);
+									
+									VentanaLogin vL = new VentanaLogin(loginController, retoController,sesionController);
+									vL.setVisible(true);
+									dispose();
+								} else {
+									JOptionPane.showMessageDialog(null, "Error en el registro", "Error", 0);
+								}
+								
+							} else {
+								JOptionPane.showMessageDialog(null, "El usuario ya existe", "Error", 0);
+							}
 						} else {
-							JOptionPane.showMessageDialog(null, "El usuario ya existe", "Error", 0);
-						}
+							JOptionPane.showMessageDialog(null, "Dominio de google no valido, use @gmail", "Error", 0);
+
+						}			
 
 					} else {
-					JOptionPane.showMessageDialog(null, "Direccion de correo no valida", "Error", 0);
+						JOptionPane.showMessageDialog(null, "Direccion de correo no valida", "Error", 0);
 
 					}
 				}
 			}
 		});
-		btnRegistro.setBounds(169, 274, 145, 23);
-		btnRegistro.setForeground(Color.BLACK);
-		getContentPane().add(btnRegistro);
+		btnRegistrarse.setBounds(169, 274, 145, 23);
+		btnRegistrarse.setForeground(Color.BLACK);
+		getContentPane().add(btnRegistrarse);
 		
 		JLabel lblFacebook = new JLabel("Registro con Google");
 		lblFacebook.setBounds(141, 11, 208, 38);
@@ -107,13 +152,8 @@ public class VentanaRegistroGoogle extends JFrame {
 					
 				}
 			});
-		 
-		 
+		  
 		 this.setSize(500, 405);
-		
-		
-		
-		
 	
 	}
 }

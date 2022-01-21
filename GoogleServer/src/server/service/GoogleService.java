@@ -28,10 +28,31 @@ public class GoogleService {
 
 		return acceso;
 	}
+	
+	public boolean existeUsuario(String email) {
+		boolean acceso = false;
+		for (UsuarioGoogle u : GoogleUsers.getInstance().getUsuarios()) {
+			if (u.getEmail().equals(email)) {
+				acceso = true;
+			}
 
-	public void registrarseGoogle(String email, String contrasenia) {
-		UsuarioGoogle u = new UsuarioGoogle(email, contrasenia);
-		GoogleUsers.getInstance().getUsuarios().add(u);
+			if (!acceso) {
+				System.out.println("El usuario no existe");
+			}
+		}
+
+		return acceso;
+	}
+
+	public boolean registrarseGoogle(String email, String contrasenia) {
+		if(!existeUsuario(email)) {
+			UsuarioGoogle u = new UsuarioGoogle(email, contrasenia);
+			GoogleUsers.getInstance().getUsuarios().add(u);
+			return true;
+		}else {
+			System.out.println("El usuario ya existe");
+			return false;
+		}
 	}
 
 }

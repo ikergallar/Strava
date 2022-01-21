@@ -72,9 +72,10 @@ public class VentanaLoginGoogle extends JFrame {
 				
 				System.out.println(" - Login with Google into the server: '" + email + "' - '" + pass + "' ...");
 				System.out.println("\t* Password : " + pass);		
-				boolean result = loginController.loginGoogle(email, pass);
-				System.out.println("\t* Login result: " + result);
-				if (result) {
+				boolean resultado = loginController.loginGoogle(email, pass);
+				boolean result = loginController.login(email, pass);
+				System.out.println("\t* Login result: " + resultado);
+				if (result && resultado) {
 					JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Confirmacion", 1);
 					VentanaSesion vP = new VentanaSesion(loginController,retoController, sesionController);
 					vP.setVisible(true);
@@ -90,7 +91,7 @@ public class VentanaLoginGoogle extends JFrame {
         btnAtras.addActionListener(new ActionListener() {
 			
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {	
 				// TODO Auto-generated method stub
 				VentanaLogin vl = new VentanaLogin(loginController, retoController, sesionController);
 				vl.setVisible(true);

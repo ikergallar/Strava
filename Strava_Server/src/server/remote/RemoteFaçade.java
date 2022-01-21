@@ -166,15 +166,19 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	}
 	
 	@Override
-	public void registroGoogle(String email, String pass) throws RemoteException {
-		System.out.println(" * RemoteFaçade registrar usuario: " + email + "/ " + pass + "/ ");
-	    LoginService.getInstance().registroGoogle(email, pass);
+	public boolean registroGoogle(String email, String pass) throws RemoteException {
+		System.out.println(" * RemoteFaçade registrar usuario de Google: " + email + "/ " + pass + "/ ");
+	    if(LoginService.getInstance().registroGoogle(email, pass)) {
+	    	return true;
+	    }else {
+	    	return false;
+	    }
 		
 	}
 	
 	@Override
 	public void registroFacebook(String email, String pass) throws RemoteException{
-		System.out.println(" * RemoteFaçade registrar usuario: " + email + "/ " + pass + "/ ");
+		System.out.println(" * RemoteFaçade registrar usuario de Facebook: " + email + "/ " + pass + "/ ");
 		LoginService.getInstance().registroFacebook(email, pass);
 		
 	}
