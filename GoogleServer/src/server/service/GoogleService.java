@@ -19,7 +19,9 @@ public class GoogleService {
 		for (UsuarioGoogle u : GoogleUsers.getInstance().getUsuarios()) {
 			if (u.getEmail().equals(email) && u.getPass().equals(contrasenia)) {
 				acceso = true;
-			} else {
+			}
+
+			if (!acceso) {
 				System.out.println("El usuario no existe");
 			}
 		}
