@@ -1,6 +1,7 @@
 package server.data.dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.jdo.Extent;
@@ -32,7 +33,7 @@ public class SesionDAO extends DataAccessObjectBase implements IDataAccessObject
 
 
 	
-	 public List<Sesion> getFiltros(String titulo, int distancia, String fechaIni, int duracion) {
+	 public List<Sesion> getFiltros(String titulo, int distancia, Date fechaIni, int duracion) {
          PersistenceManager pm = pmf.getPersistenceManager();
          Transaction tx = pm.currentTransaction();
 
@@ -60,12 +61,12 @@ public class SesionDAO extends DataAccessObjectBase implements IDataAccessObject
                      }
                  }
             	 
-            	 if (!s.getFecha_ini().equals("")) {
-                     cont++;
-                     if (s.getFecha_ini().contains(fechaIni) || s.getFecha_ini().toLowerCase().contains(fechaIni)) {
-                         contV++;
-                     }
-                 }
+        //    	 if (!s.getFecha_ini().equals("")) {
+          //           cont++;
+            //         if (s.getFecha_ini().contains(fechaIni) || s.getFecha_ini().toLowerCase().contains(fechaIni)) {
+              //           contV++;
+                //     }
+                 //}
             	 
             	 if (distancia != 0) {
                      cont ++;

@@ -15,6 +15,9 @@ import javax.swing.JSpinner;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
+
+import com.toedter.calendar.JDateChooser;
 
 public class VentanaCrearSesion extends JFrame {
 	/**
@@ -22,7 +25,6 @@ public class VentanaCrearSesion extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTextField textNombre;
-	private JTextField textFechaIni;
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public VentanaCrearSesion(LoginController loginController, RetoController retoController,
@@ -58,11 +60,6 @@ public class VentanaCrearSesion extends JFrame {
 		lblTitulo.setBounds(37, 11, 350, 38);
 		getContentPane().add(lblTitulo);
 
-		textFechaIni = new JTextField();
-		textFechaIni.setBounds(37, 198, 174, 30);
-		getContentPane().add(textFechaIni);
-		textFechaIni.setColumns(10);
-
 		JLabel lblDur = new JLabel("Duraci\u00F3n de la sesi\u00F3n");
 		lblDur.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblDur.setBounds(37, 239, 174, 21);
@@ -85,6 +82,11 @@ public class VentanaCrearSesion extends JFrame {
 		btnCrearSesion.setBounds(79, 399, 118, 23);
 		getContentPane().add(btnCrearSesion);
 
+
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setBounds(37, 198, 117, 30);
+		getContentPane().add(dateChooser);
+		
 		btnCrearSesion.addActionListener(new ActionListener() {
 
 			@Override
@@ -94,7 +96,7 @@ public class VentanaCrearSesion extends JFrame {
 				String nombre = textNombre.getText();
 				String Deporte = (String) comDeporte.getSelectedItem();
 				int distancia = (Integer) spinnerDis.getValue();
-				String fecha_ini = textFechaIni.getText();
+				Date fecha_ini = dateChooser.getDate();
 				int duracion = (Integer) spinnerDur.getValue();
 
 				System.out.println(" - Creando una sesion " + nombre + "'");

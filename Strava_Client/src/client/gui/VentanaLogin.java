@@ -57,36 +57,41 @@ public class VentanaLogin extends JFrame{
 				String email = textEmail.getText();
 				String pass = textPass.getText();
 				
-				boolean user = loginController.getUserExt(email, pass);
-				System.out.println(user);
+				String user = loginController.getUserTipo(email);
+				boolean existeUsuario = loginController.existeUsuario("",email);
 
-				if(user) {
-					
-					System.out.println(" - Login into the server: '" + email + "' - '" + "' ...");
-					System.out.println("\t* Password : " + pass);		
-					boolean result = loginController.login(email, pass);
-					System.out.println("\t* Login result: " + result);
-					System.out.println("\t* Token: " + loginController.getToken());
-					
-					if(result) {
-						JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Confirmacion", 1);
-						VentanaSesion vP = new VentanaSesion(loginController,retoController, sesionController);
-						vP.setVisible(true);
-						dispose();
+				if(existeUsuario) {
+					if(user.equals("Email")) {
+						
+						System.out.println(" - Login into the server: '" + email + "' - '" + "' ...");
+						System.out.println("\t* Password : " + pass);		
+						boolean result = loginController.login(email, pass);
+						System.out.println("\t* Login result: " + result);
+						System.out.println("\t* Token: " + loginController.getToken());
+						
+						if(result) {
+							JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Confirmacion", 1);
+							VentanaSesion vP = new VentanaSesion(loginController,retoController, sesionController);
+							vP.setVisible(true);
+							dispose();
+						}else {
+							JOptionPane.showMessageDialog(null, "Datos incorrectos", "Error", 2);
+							textEmail.setText("");
+							textPass.setText("");
+
+						}
 					}else {
-						JOptionPane.showMessageDialog(null, "Datos incorrectos", "Error", 2);
+						JOptionPane.showMessageDialog(null, "Usuario incorrecto", "Error", 2);
 						textEmail.setText("");
 						textPass.setText("");
 
 					}
 				}else {
-					JOptionPane.showMessageDialog(null, "Usuario incorrecto", "Error", 2);
-
+					JOptionPane.showMessageDialog(null, "Debe registrarse antes de iniciar sesion", "Error", 2);
+					textEmail.setText("");
+					textPass.setText("");
 				}
-
-				
-				
-												
+													
 			}
 		});
 						

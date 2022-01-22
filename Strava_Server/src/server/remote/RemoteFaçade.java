@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -64,7 +65,7 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	@Override
 	public void registro(String username, String email, String pass, float peso, int altura) throws RemoteException{
 		System.out.println(" * RemoteFaçade registrar usuario: " + username + "/ " + pass + "/ " + email + "/ " + peso+ "/ " + altura);
-	    LoginService.getInstance().registro(username, email, pass, peso, altura, false);
+	    LoginService.getInstance().registro(username, email, pass, peso, altura, "Email");
 		
 	}
 	
@@ -75,9 +76,9 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 		}
 	
 	@Override
-	public boolean getUserExt(String username, String email)throws RemoteException{
-		System.out.println(" * RemoteFacade get getUserExt" + LoginService.getInstance().getUserExt(username,email));
-		return LoginService.getInstance().getUserExt(username,email);
+	public String getUserTipo(String email)throws RemoteException{
+		System.out.println(" * RemoteFacade get getUserTipo" + LoginService.getInstance().getUserTipo(email));
+		return LoginService.getInstance().getUserTipo(email);
 	}
 	
 	@Override
@@ -121,7 +122,7 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 
 	
 	@Override
-	public ArrayList<SesionDTO> buscarSesiones(String titulo, int distancia,  String fecha_ini, int duracion) throws RemoteException{
+	public ArrayList<SesionDTO> buscarSesiones(String titulo, int distancia,  Date fecha_ini, int duracion) throws RemoteException{
 		System.out.println(" * RemoteFaçade busqueda de sesiones: " + titulo + "/ " + distancia + "/ " + fecha_ini + "/ " + duracion + "/ ");
 		
 		List<Sesion> sesiones = SesionService.getInstance().buscarSesion(titulo, distancia, fecha_ini, duracion);
@@ -136,7 +137,7 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	}
 	
 	@Override
-	public void crearSesion(long token ,String titulo, String deporte, int distancia, String fecha_ini, int duracion) throws RemoteException{
+	public void crearSesion(long token ,String titulo, String deporte, int distancia, Date fecha_ini, int duracion) throws RemoteException{
 		System.out.println(" * RemoteFaçade crear sesion: "  + titulo + "/ " + deporte + "/ " + distancia + "/ " + fecha_ini+ "/ " + duracion+ "/" +this.serverState.get(token));
 		SesionService.getInstance().crearSesion( titulo,deporte, distancia, fecha_ini, duracion,this.serverState.get(token));
 		
@@ -169,13 +170,13 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	public void registroGoogle(String username, String email, String pass, float peso, int altura) throws RemoteException {
 		System.out.println(" * RemoteFaçade registrar usuario de Google: " + email + "/ " + pass + "/ ");
 	    LoginService.getInstance().registroGoogle(username, email, pass, peso, altura);
-	    LoginService.getInstance().registro(username, email, pass, peso, altura, true);
+	    LoginService.getInstance().registro(username, email, pass, peso, altura, "Google");
 	}
 	
 	@Override
 	public void registroFacebook(String username, String email, String pass, float peso, int altura) throws RemoteException{
 		System.out.println(" * RemoteFaçade registrar usuario de Facebook: " + email + "/ " + pass + "/ ");
 		LoginService.getInstance().registroFacebook(username, email, pass, peso, altura);
-	    LoginService.getInstance().registro(username, email, pass, peso, altura, true);
+	    LoginService.getInstance().registro(username, email, pass, peso, altura, "Facebook");
 	}
 }

@@ -22,7 +22,7 @@ public class Usuario {
 	private int altura;
 	private int frecuenciaCardiacaMax;
 	private int frecuenciaCardiacaReposo;
-	boolean usuarioExt;
+	private String usuarioExt;
 	
 	@Persistent(defaultFetchGroup="true")
 	private Reto reto;
@@ -103,11 +103,11 @@ public class Usuario {
 		return this.pass.equals(password);
 	}
 
-	public boolean isUsuarioExt() {
+	public String getUsuarioExt() {
 		return usuarioExt;
 	}
 
-	public void setUsuarioExt(boolean usuarioExt) {
+	public void setUsuarioExt(String usuarioExt) {
 		this.usuarioExt = usuarioExt;
 	}
 

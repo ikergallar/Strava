@@ -10,6 +10,7 @@ import server.data.dto.SesionDTO;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
@@ -24,7 +25,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JTextPane;
 import javax.swing.JSpinner;
-import javax.swing.JTextField;
+import com.toedter.calendar.JDateChooser;
 
 public class VentanaSesion extends JFrame {
 	
@@ -32,7 +33,6 @@ public class VentanaSesion extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JTextField textFechaIni;
 
 	public VentanaSesion(LoginController loginController, RetoController retoController,
 			SesionController sesionController) {
@@ -117,11 +117,6 @@ public class VentanaSesion extends JFrame {
 		spinnerDis.setBounds(29, 162, 110, 22);
 		getContentPane().add(spinnerDis);
 
-		textFechaIni = new JTextField();
-		textFechaIni.setBounds(29, 220, 110, 20);
-		getContentPane().add(textFechaIni);
-		textFechaIni.setColumns(10);
-
 		JLabel lblFechaIni = new JLabel("Fecha de inicio");
 		lblFechaIni.setBounds(29, 195, 100, 14);
 		getContentPane().add(lblFechaIni);
@@ -133,13 +128,17 @@ public class VentanaSesion extends JFrame {
 		JSpinner spinnerDur = new JSpinner();
 		spinnerDur.setBounds(29, 283, 110, 22);
 		getContentPane().add(spinnerDur);
+		
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setBounds(29, 220, 110, 20);
+		getContentPane().add(dateChooser);
 
 		btnBuscarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				String nombre = textNombre.getText();
 				int distancia = (Integer) spinnerDis.getValue();
-				String fechaIni = textFechaIni.getText();
+				Date fechaIni = dateChooser.getDate();
 				int duracion = (Integer) spinnerDur.getValue();
 
 				DefaultListModel<SesionDTO> modelo;

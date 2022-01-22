@@ -1,18 +1,17 @@
 package server.data.dto;
 
 import java.io.Serializable;
-
-import server.data.domain.Deporte;
+import java.util.Date;
 
 public class SesionDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private String titulo;
 	private int distancia;
-	private String fecha_ini;
+	private Date fecha_ini;
 	private int duracion;
 
-	public SesionDTO(String titulo, int distancia, String fecha_ini, int duracion) {
+	public SesionDTO(String titulo, int distancia, Date fecha_ini, int duracion) {
 		super();
 		this.titulo = titulo;
 		this.distancia = distancia;
@@ -24,7 +23,7 @@ public class SesionDTO implements Serializable {
 		super();
 		this.titulo = "";
 		this.distancia = 0;
-		this.fecha_ini = "";
+		this.fecha_ini = null;
 		this.duracion = 0;
 	}
 
@@ -44,11 +43,11 @@ public class SesionDTO implements Serializable {
 		this.distancia = distancia;
 	}
 
-	public String getFecha_ini() {
+	public Date getFecha_ini() {
 		return fecha_ini;
 	}
 
-	public void setFecha_ini(String fecha_ini) {
+	public void setFecha_ini(Date fecha_ini) {
 		this.fecha_ini = fecha_ini;
 	}
 

@@ -1,5 +1,7 @@
 package server.data.domain;
 
+import java.util.Date;
+
 import javax.jdo.annotations.ForeignKey;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
@@ -15,12 +17,12 @@ public class Sesion {
 	private String titulo;
 	private Deporte deporte;
 	private int distancia;
-	private String fecha_ini;
+	private Date fecha_ini;
 	private int duracion;
 	@ForeignKey
 	private int idCreador;
 	
-	public Sesion(String titulo, Deporte deporte, int distancia, String fecha_ini, int duracion, int idCreador) {
+	public Sesion(String titulo, Deporte deporte, int distancia, Date fecha_ini, int duracion, int idCreador) {
 		super();
 		this.titulo = titulo;
 		this.deporte = deporte;
@@ -36,7 +38,7 @@ public class Sesion {
 		this.titulo = "";
 		this.deporte = null;
 		this.distancia = 0;
-		this.fecha_ini = "";
+		this.fecha_ini = null;
 		this.duracion = 0;
 		this.idCreador = 0;
 	}
@@ -73,11 +75,11 @@ public class Sesion {
 		this.distancia = distancia;
 	}
 
-	public String getFecha_ini() {
+	public Date getFecha_ini() {
 		return fecha_ini;
 	}
 
-	public void setFecha_ini(String fecha_ini) {
+	public void setFecha_ini(Date fecha_ini) {
 		this.fecha_ini = fecha_ini;
 	}
 

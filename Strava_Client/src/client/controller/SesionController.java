@@ -2,6 +2,7 @@ package client.controller;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import client.serviceLocator.ServiceLocator;
 import server.data.dto.SesionDTO;
@@ -14,7 +15,7 @@ public class SesionController {
 		this.serviceLocator = serviceLocator; 
 	}
 	
-	public ArrayList<SesionDTO> buscarSesiones(String titulo, int distancia,String fecha_ini, int duracion){
+	public ArrayList<SesionDTO> buscarSesiones(String titulo, int distancia,Date fecha_ini, int duracion){
 	        try {
 	            return this.serviceLocator.getService().buscarSesiones(titulo,distancia,fecha_ini,duracion);
 	        }catch (RemoteException e){
@@ -22,7 +23,7 @@ public class SesionController {
 	            return null;
 	        }
 	    }
-	public void crearSesion(long token ,String titulo, String deporte, int distancia, String fecha_ini, int duracion) {
+	public void crearSesion(long token ,String titulo, String deporte, int distancia, Date fecha_ini, int duracion) {
 		try {
 			this.serviceLocator.getService().crearSesion(token, titulo, deporte, distancia, fecha_ini, duracion);
 		}catch (RemoteException e){

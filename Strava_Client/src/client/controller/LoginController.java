@@ -58,12 +58,12 @@ public class LoginController {
 		
 	}
 	
-	public boolean getUserExt(String username, String email) {
+	public String getUserTipo(String email) {
 		try {
-			return this.serviceLocator.getService().getUserExt(username, email);
+			return this.serviceLocator.getService().getUserTipo(email);
 		} catch (RemoteException e) {
 			System.out.println("# Error during existeUsuario: " + e);
-			return false;
+			return "";
 		}
 		
 		

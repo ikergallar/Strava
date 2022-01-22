@@ -1,6 +1,7 @@
 package server.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import server.data.dao.RetoDAO;
@@ -24,10 +25,8 @@ public class SesionService {
 		
 		return instance;
 	}
-
-	private ArrayList<Sesion> sesiones = new ArrayList<Sesion>();
 	
-	public void crearSesion(String titulo, String deporte, int distancia, String fecha_ini, int duracion, Usuario creador) {
+	public void crearSesion(String titulo, String deporte, int distancia, Date fecha_ini, int duracion, Usuario creador) {
 		
 		Sesion sesion = new Sesion();
 		sesion.setTitulo(titulo);
@@ -39,7 +38,7 @@ public class SesionService {
 		SesionDAO.getInstance().save(sesion);
 		
 	}
-	public List<Sesion> buscarSesion(String titulo, int distancia, String fecha_ini, int duracion) {
+	public List<Sesion> buscarSesion(String titulo, int distancia, Date fecha_ini, int duracion) {
 		
         List<Sesion> sesion = SesionDAO.getInstance().getFiltros(titulo, distancia, fecha_ini, duracion);
 		
