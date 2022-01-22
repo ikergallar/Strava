@@ -62,22 +62,22 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	}
 	
 	@Override
-	public void registro(String username, String pass, String email, float peso, int altura) throws RemoteException{
+	public void registro(String username, String email, String pass, float peso, int altura) throws RemoteException{
 		System.out.println(" * RemoteFaçade registrar usuario: " + username + "/ " + pass + "/ " + email + "/ " + peso+ "/ " + altura);
-	    LoginService.getInstance().registro(username, pass, email, peso, altura);
+	    LoginService.getInstance().registro(username, email, pass, peso, altura, false);
 		
 	}
 	
 	@Override
 	public boolean existeUsuario(String username, String email)throws RemoteException{
 		System.out.println(" * RemoteFacade get ExisteUsuario");
-		
-		boolean existe = false;
-
-		if(LoginService.getInstance().existeUsuario(username,email)) {
-			existe = true;
+		return LoginService.getInstance().existeUsuario(username,email);
 		}
-		return existe;
+	
+	@Override
+	public boolean getUserExt(String username, String email)throws RemoteException{
+		System.out.println(" * RemoteFacade get getUserExt" + LoginService.getInstance().getUserExt(username,email));
+		return LoginService.getInstance().getUserExt(username,email);
 	}
 	
 	@Override
@@ -166,16 +166,16 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	}
 	
 	@Override
-	public void registroGoogle(String username, String pass, String email, float peso, int altura) throws RemoteException {
+	public void registroGoogle(String username, String email, String pass, float peso, int altura) throws RemoteException {
 		System.out.println(" * RemoteFaçade registrar usuario de Google: " + email + "/ " + pass + "/ ");
-	    LoginService.getInstance().registroGoogle(username, pass, email, peso, altura);
-	    registro(username, email, pass, peso, altura);
+	    LoginService.getInstance().registroGoogle(username, email, pass, peso, altura);
+	    LoginService.getInstance().registro(username, email, pass, peso, altura, true);
 	}
 	
 	@Override
 	public void registroFacebook(String username, String email, String pass, float peso, int altura) throws RemoteException{
 		System.out.println(" * RemoteFaçade registrar usuario de Facebook: " + email + "/ " + pass + "/ ");
-		LoginService.getInstance().registroFacebook(username, email, pass, peso, altura);;
-		registro(username, email, pass, peso, altura);
+		LoginService.getInstance().registroFacebook(username, email, pass, peso, altura);
+	    LoginService.getInstance().registro(username, email, pass, peso, altura, true);
 	}
 }

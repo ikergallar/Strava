@@ -57,23 +57,34 @@ public class VentanaLogin extends JFrame{
 				String email = textEmail.getText();
 				String pass = textPass.getText();
 				
-				System.out.println(" - Login into the server: '" + email + "' - '" + "' ...");
-				System.out.println("\t* Password : " + pass);		
-				boolean result = loginController.login(email, pass);
-				System.out.println("\t* Login result: " + result);
-				System.out.println("\t* Token: " + loginController.getToken());
-				
-				if(result) {
-					JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Confirmacion", 1);
-					VentanaSesion vP = new VentanaSesion(loginController,retoController, sesionController);
-					vP.setVisible(true);
-					dispose();
+				boolean user = loginController.getUserExt(email, pass);
+				System.out.println(user);
+
+				if(user) {
+					
+					System.out.println(" - Login into the server: '" + email + "' - '" + "' ...");
+					System.out.println("\t* Password : " + pass);		
+					boolean result = loginController.login(email, pass);
+					System.out.println("\t* Login result: " + result);
+					System.out.println("\t* Token: " + loginController.getToken());
+					
+					if(result) {
+						JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Confirmacion", 1);
+						VentanaSesion vP = new VentanaSesion(loginController,retoController, sesionController);
+						vP.setVisible(true);
+						dispose();
+					}else {
+						JOptionPane.showMessageDialog(null, "Datos incorrectos", "Error", 2);
+						textEmail.setText("");
+						textPass.setText("");
+
+					}
 				}else {
-					JOptionPane.showMessageDialog(null, "Datos incorrectos", "Error", 2);
-					textEmail.setText("");
-					textPass.setText("");
+					JOptionPane.showMessageDialog(null, "Usuario incorrecto", "Error", 2);
 
 				}
+
+				
 				
 												
 			}

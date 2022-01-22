@@ -4,14 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.jdo.Extent;
-import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
-import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
-import server.data.domain.Reto;
-import server.data.domain.Sesion;
 import server.data.domain.Usuario;
 
 //This class implements Singleton and DAO patterns
@@ -29,8 +25,6 @@ public class UsuarioDAO extends DataAccessObjectBase implements IDataAccessObjec
 		return instance;
 	}	
 	
-
-	@Override
 	public void save(Usuario object) {
 		super.saveObject(object);
 	}
@@ -101,9 +95,18 @@ public class UsuarioDAO extends DataAccessObjectBase implements IDataAccessObjec
 				existe = true;
 			}
 		}
-
 		return existe;
+	}
+	
+	public static boolean getUserExt(String username, String email) {
+		List<Usuario> usuarios = getUsuarios();
 
+		for (Usuario user : usuarios) {
+			if (user.getUsername().equals(username) || user.getEmail().equals(email)) {
+				return user.isUsuarioExt();
+			}
+		}
+		return false;
 	}
 
 }

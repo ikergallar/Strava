@@ -114,7 +114,7 @@ public class VentanaRegistro extends JFrame{
 						
 						if(!loginController.existeUsuario(username,email)) {
 							
-							loginController.registro(username, pass, email, 0, altura);
+							loginController.registro(username, email, pass, 0, altura);
 							
 							JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Confirmacion", 1);
 							

@@ -14,42 +14,18 @@ public class Usuario {
 	private int idUsuario;
 	@Unique
 	private String username;
-	private String pass;
 	@Unique
 	private String email;
+	private String pass;
 	private String bornDate;
 	private float peso;
 	private int altura;
 	private int frecuenciaCardiacaMax;
 	private int frecuenciaCardiacaReposo;
+	boolean usuarioExt;
 	
 	@Persistent(defaultFetchGroup="true")
 	private Reto reto;
-
-	public Usuario(String username, String pass, String email, String bornDate, float peso, int altura,
-		int frecuenciaCardiacaMax, int frecuenciaCardiacaReposo) {
-		super();
-		this.username = username;
-		this.pass = pass;
-		this.email = email;
-		this.bornDate = bornDate;
-		this.peso = peso;
-		this.altura = altura;
-		this.frecuenciaCardiacaMax = frecuenciaCardiacaMax;
-		this.frecuenciaCardiacaReposo = frecuenciaCardiacaReposo;
-	}
-	
-	public Usuario() {
-			super();
-			this.username = "";
-			this.pass = "";
-			this.email = "";
-			this.bornDate = null;
-			this.peso = 0;
-			this.altura = 0;
-			this.frecuenciaCardiacaMax = 0;
-			this.frecuenciaCardiacaReposo = 0;
-	}
 
 	public int getIdUsuario() {
 		return idUsuario;
@@ -125,6 +101,14 @@ public class Usuario {
 	
 	public boolean checkPassword(String password) {
 		return this.pass.equals(password);
+	}
+
+	public boolean isUsuarioExt() {
+		return usuarioExt;
+	}
+
+	public void setUsuarioExt(boolean usuarioExt) {
+		this.usuarioExt = usuarioExt;
 	}
 
 }

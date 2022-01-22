@@ -36,9 +36,9 @@ public class LoginController {
 		}
 	}
 	
-	public void registro(String username, String pass, String email, float peso, int altura) {
+	public void registro(String username, String email, String pass, float peso, int altura) {
 		try {
-			this.serviceLocator.getService().registro(username,pass,email,peso,altura);
+			this.serviceLocator.getService().registro(username,email,pass,peso,altura);
 		} catch (RemoteException e) {
 			System.out.println("# Error during registro: " + e);
 		}
@@ -48,13 +48,24 @@ public class LoginController {
 		boolean existe = false;	
 		try {
 			if(this.serviceLocator.getService().existeUsuario(username, email)){
-				return true;
+				existe = true;
 			}
 		} catch (RemoteException e) {
 			System.out.println("# Error during existeUsuario: " + e);
 		}
 		
 		return existe;
+		
+	}
+	
+	public boolean getUserExt(String username, String email) {
+		try {
+			return this.serviceLocator.getService().getUserExt(username, email);
+		} catch (RemoteException e) {
+			System.out.println("# Error during existeUsuario: " + e);
+			return false;
+		}
+		
 		
 	}
 	
@@ -84,9 +95,9 @@ public class LoginController {
 		}
 	}
 	
-	public boolean registroGoogle(String username, String pass, String email, float peso, int altura) {
+	public boolean registroGoogle(String username, String email, String pass, float peso, int altura) {
 		try {
-			this.serviceLocator.getService().registroGoogle(username, pass, email, peso, altura);;
+			this.serviceLocator.getService().registroGoogle(username, email, pass, peso, altura);
 			return true;
 		}catch(RemoteException e) {
 			System.out.println("# Error during registro: " + e);
@@ -94,9 +105,9 @@ public class LoginController {
 		}
 		
 	}
-	 public boolean registroFacebook(String username, String pass, String email, float peso, int altura) {
+	 public boolean registroFacebook(String username, String email, String pass, float peso, int altura) {
 		 try {
-			 this.serviceLocator.getService().registroFacebook(username, email, pass, peso, altura);;
+			 this.serviceLocator.getService().registroFacebook(username, email, pass, peso, altura);
 			 return true;
 		 }catch(RemoteException e) {
 			 System.out.println("# Error during registro: " + e);
