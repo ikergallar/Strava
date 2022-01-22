@@ -22,10 +22,10 @@ public class FacebookUsers {
 	public FacebookUsers() {
 		usuarios = new ArrayList<UsuarioFacebook>();
 		
-		UsuarioFacebook u1 = new UsuarioFacebook("anton@gmail.com", "1234");
-		UsuarioFacebook u2 = new UsuarioFacebook("falsificus@gmail.com", "1234");
-		UsuarioFacebook u3 = new UsuarioFacebook("minicoper@gmail.com", "1234");
-		UsuarioFacebook u4 = new UsuarioFacebook("misaga@gmail.com", "1234");
+		UsuarioFacebook u1 = new UsuarioFacebook("tony","anton@gmail.com", "1234",0,0);
+		UsuarioFacebook u2 = new UsuarioFacebook("falsi","falsificus@gmail.com", "1234",0,0);
+		UsuarioFacebook u3 = new UsuarioFacebook("mini","minicoper@gmail.com", "1234",0,0);
+		UsuarioFacebook u4 = new UsuarioFacebook("michobetis","misaga@gmail.com", "1234",0,0);
 		
 		usuarios.add(u1);
 		usuarios.add(u2);

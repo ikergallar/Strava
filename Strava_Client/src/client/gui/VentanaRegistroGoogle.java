@@ -94,9 +94,7 @@ public class VentanaRegistroGoogle extends JFrame {
 							
 							if(!loginController.existeUsuario(username,email)) {
 								
-								if(loginController.registroGoogle(email, pass)) {
-									loginController.registro(username, pass, email, 0, altura);
-									
+								if(loginController.registroGoogle(username, email, pass, altura, 0)) {									
 									JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Confirmacion", 1);
 									
 									VentanaLogin vL = new VentanaLogin(loginController, retoController,sesionController);

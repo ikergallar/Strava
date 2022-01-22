@@ -20,10 +20,10 @@ public class GoogleUsers {
 	public GoogleUsers() {
 		usuarios = new ArrayList<UsuarioGoogle>();
 		
-		UsuarioGoogle u1 = new UsuarioGoogle("papa@gmail.com", "1234");
-		UsuarioGoogle u2 = new UsuarioGoogle("xabster@gmail.com", "1234");
-		UsuarioGoogle u3 = new UsuarioGoogle("galar@gmail.com", "1234");
-		UsuarioGoogle u4 = new UsuarioGoogle("ranton@gmail.com", "1234");
+		UsuarioGoogle u1 = new UsuarioGoogle("jhohn", "papa@gmail.com", "1234", 0,0);
+		UsuarioGoogle u2 = new UsuarioGoogle("xabster", "xabster@gmail.com", "1234",0,0);
+		UsuarioGoogle u3 = new UsuarioGoogle("galar","galar@gmail.com", "1234",0,0);
+		UsuarioGoogle u4 = new UsuarioGoogle("tony","ranton@gmail.com", "1234",0,0);
 		
 		usuarios.add(u1);
 		usuarios.add(u2);

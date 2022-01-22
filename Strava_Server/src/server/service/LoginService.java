@@ -43,7 +43,7 @@ public class LoginService {
 		return FacebookGateway.getInstance().login(email, pass);
 	}
 	
-	public void registro(String username, String pass, String email, float peso, int altura) {
+	public void registro(String username, String pass, String email, float peso, int altura)throws RemoteException {
 		Usuario user = new Usuario();
 		user.setUsername(username);
 		user.setPass(pass);
@@ -54,15 +54,11 @@ public class LoginService {
 		UsuarioDAO.getInstance().save(user);
 	}
 	
-	public boolean registroGoogle(String email, String pass) throws RemoteException {
-		if(GoogleGateway.getInstance().registro(email, pass)) {
-			return true;
-		}else {
-			return false;
-		}
+	public void registroGoogle(String username, String pass, String email, float peso, int altura)throws RemoteException {
+		GoogleGateway.getInstance().registro(username, pass, email, peso, altura);;
 	}
 	
-	public void registroFacebook(String email, String pass ) throws RemoteException{
-		FacebookGateway.getInstance().registro(email, pass);
+	public void registroFacebook(String username, String email, String pass, float peso, int altura) throws RemoteException{
+		FacebookGateway.getInstance().registro(username, email, pass, peso, altura);;
 	}
 }

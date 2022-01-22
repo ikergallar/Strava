@@ -23,7 +23,7 @@ public interface IRemoteFaçade extends Remote{
 	public boolean loginGoogle(String email, String pass)throws RemoteException;
 	public boolean loginFacebook(String email, String pass)throws RemoteException;
 	
-	public boolean registroGoogle(String email,String pass) throws RemoteException;
-	public void registroFacebook(String email, String pass) throws RemoteException;
+	public void registroGoogle(String username, String pass, String email, float peso, int altura) throws RemoteException;
+	public void registroFacebook(String username, String email, String pass, float peso, int altura) throws RemoteException;
 
 }

@@ -84,9 +84,9 @@ public class LoginController {
 		}
 	}
 	
-	public boolean registroGoogle(String email, String pass) {
+	public boolean registroGoogle(String username, String pass, String email, float peso, int altura) {
 		try {
-			this.serviceLocator.getService().registroGoogle(email, pass);
+			this.serviceLocator.getService().registroGoogle(username, pass, email, peso, altura);;
 			return true;
 		}catch(RemoteException e) {
 			System.out.println("# Error during registro: " + e);
@@ -94,9 +94,9 @@ public class LoginController {
 		}
 		
 	}
-	 public boolean registroFacebook(String email, String pass) {
+	 public boolean registroFacebook(String username, String pass, String email, float peso, int altura) {
 		 try {
-			 this.serviceLocator.getService().registroFacebook(email, pass);
+			 this.serviceLocator.getService().registroFacebook(username, email, pass, peso, altura);;
 			 return true;
 		 }catch(RemoteException e) {
 			 System.out.println("# Error during registro: " + e);

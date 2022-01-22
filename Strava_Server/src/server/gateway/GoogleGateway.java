@@ -40,12 +40,8 @@ public class GoogleGateway implements ILoginGateway{
 		
 	}
 
-	public boolean registro(String email,String pass) throws RemoteException {
-		if(this.googleService.registrarUsuarioGoogle(email, pass)) {
-			return true;
-		}else {
-			return false;
-		}
+	public void registro(String username, String pass, String email, float peso, int altura) throws RemoteException{
+		this.googleService.registrarUsuarioGoogle(username, email, email, peso, altura);
 	}
 	
 }

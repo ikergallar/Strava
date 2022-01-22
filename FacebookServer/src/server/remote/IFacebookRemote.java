@@ -7,6 +7,6 @@ public interface IFacebookRemote extends Remote{
 	
 	public boolean loginFacebook(String email, String pass) throws RemoteException;
 	
-	public void registrarUsuarioFacebook(String email, String contrasenia) throws RemoteException;
+	public void registrarUsuarioFacebook(String username, String email, String pass, float peso, int altura) throws RemoteException;
 
 }

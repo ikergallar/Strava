@@ -17,6 +17,8 @@ public class GoogleService {
 	public boolean loginGoogle(String email, String contrasenia) {
 		boolean acceso = false;
 		for (UsuarioGoogle u : GoogleUsers.getInstance().getUsuarios()) {
+			System.out.println(u.getEmail());
+
 			if (u.getEmail().equals(email) && u.getPass().equals(contrasenia)) {
 				acceso = true;
 			}
@@ -35,24 +37,16 @@ public class GoogleService {
 			if (u.getEmail().equals(email)) {
 				acceso = true;
 			}
-
-			if (!acceso) {
-				System.out.println("El usuario no existe");
-			}
 		}
 
 		return acceso;
 	}
 
-	public boolean registrarseGoogle(String email, String contrasenia) {
-		if(!existeUsuario(email)) {
-			UsuarioGoogle u = new UsuarioGoogle(email, contrasenia);
+	public boolean registrarseGoogle(String username, String email, String contrasenia, float peso, int altura) {
+			UsuarioGoogle u = new UsuarioGoogle(username,email, contrasenia, peso, altura);
 			GoogleUsers.getInstance().getUsuarios().add(u);
 			return true;
-		}else {
-			System.out.println("El usuario ya existe");
-			return false;
-		}
+		
 	}
 
 }

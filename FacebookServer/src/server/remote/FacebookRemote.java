@@ -33,8 +33,8 @@ public class FacebookRemote extends UnicastRemoteObject implements IFacebookRemo
 	}
 
 	@Override
-	public void registrarUsuarioFacebook(String email, String contrasenia) throws RemoteException {
-		FacebookService.getInstance().registrarseFacebook(email, contrasenia);
+	public void registrarUsuarioFacebook(String username, String email, String pass, float peso, int altura) throws RemoteException {
+		FacebookService.getInstance().registrarseFacebook(username, email, pass, peso, altura);;
 	}
 
 }

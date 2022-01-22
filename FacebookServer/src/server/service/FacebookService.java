@@ -29,9 +29,30 @@ public class FacebookService {
 		return acceso;
 	}
 
-	public void registrarseFacebook(String email, String contrasenia) {
-		UsuarioFacebook u = new UsuarioFacebook(email, contrasenia);
-		FacebookUsers.getInstance().getUsuarios().add(u);
+	public boolean existeUsuario(String email) {
+		boolean acceso = false;
+		for (UsuarioFacebook u : FacebookUsers.getInstance().getUsuarios()) {
+			if (u.getEmail().equals(email)) {
+				acceso = true;
+			}
+
+			if (!acceso) {
+				System.out.println("El usuario no existe");
+			}
+		}
+
+		return acceso;
+	}
+	
+	public boolean registrarseFacebook(String username, String email, String pass, float peso, int altura) {
+		if(!existeUsuario(email)) {
+			UsuarioFacebook u = new UsuarioFacebook(username,email, pass, peso, altura);
+			FacebookUsers.getInstance().getUsuarios().add(u);
+			return true;
+		}else {
+			System.out.println("El usuario ya existe");
+			return false;
+		}
 	}
 
 }
