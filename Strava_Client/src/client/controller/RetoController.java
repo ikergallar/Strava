@@ -2,6 +2,7 @@ package client.controller;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import client.serviceLocator.ServiceLocator;
 import server.data.dto.RetoDTO;
@@ -14,7 +15,7 @@ public class RetoController {
 		this.serviceLocator = serviceLocator; 
 	}
 	
-	public void crearReto(String nombre, String fecha_ini, String fecha_fin, int distancia, String deporte, long token) {
+	public void crearReto(String nombre, Date fecha_ini, Date fecha_fin, int distancia, String deporte, long token) {
 		try {
 			this.serviceLocator.getService().crearReto(nombre, fecha_ini, fecha_fin, distancia, deporte, token);
 		} catch (RemoteException e) {

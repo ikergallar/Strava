@@ -1,16 +1,16 @@
 package server.data.dao;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.jdo.Extent;
 import javax.jdo.PersistenceManager;
-import javax.jdo.Query;
 import javax.jdo.Transaction;
 
 import server.data.domain.Reto;
-import server.data.domain.Sesion;
-import server.data.domain.Usuario;
 
 public class RetoDAO extends DataAccessObjectBase implements IDataAccessObject<Reto> {
 
@@ -37,13 +37,26 @@ public class RetoDAO extends DataAccessObjectBase implements IDataAccessObject<R
 
 		List<Reto> retos = new ArrayList<>();
 		
+		SimpleDateFormat formatter= new SimpleDateFormat("dd/mm/yyyy 'at' HH:mm:ss z");
+		Date date = new Date(System.currentTimeMillis());
+		String fechaString = formatter.format(date);
+		Date today = null;
+		try {
+			today = formatter.parse(fechaString);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		try {
 			tx.begin();
 			
 			Extent<Reto> extent = pm.getExtent(Reto.class, true);
 
 			for (Reto reto : extent) {
-				retos.add(reto);
+				if(reto.getFecha_fin().after(today)) {
+					retos.add(reto);
+				}
 			}
 
 			tx.commit();

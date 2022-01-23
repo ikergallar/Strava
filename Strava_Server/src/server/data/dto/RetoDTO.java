@@ -1,6 +1,8 @@
 package server.data.dto;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import server.data.domain.Deporte;
 import server.data.domain.Usuario;
@@ -10,11 +12,11 @@ public class RetoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int idReto;
 	private String nombre;
-	private String fecha_ini;
-	private String fecha_fin;
+	private Date fecha_ini;
+	private Date fecha_fin;
 	private int distancia;
 
-	public RetoDTO(int idReto, String nombre, String fecha_ini, String fecha_fin, int distancia) {
+	public RetoDTO(int idReto, String nombre, Date fecha_ini, Date fecha_fin, int distancia) {
 		super();
 		this.idReto = idReto;
 		this.nombre = nombre;
@@ -27,8 +29,8 @@ public class RetoDTO implements Serializable {
 		super();
 		this.idReto = 0;
 		this.nombre = "";
-		this.fecha_ini = "";
-		this.fecha_fin = "";
+		this.fecha_ini = null;
+		this.fecha_fin = null;
 		this.distancia = 0;
 	}
 
@@ -48,19 +50,19 @@ public class RetoDTO implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public String getFecha_ini() {
+	public Date getFecha_ini() {
 		return fecha_ini;
 	}
 
-	public void setFecha_ini(String fecha_ini) {
+	public void setFecha_ini(Date fecha_ini) {
 		this.fecha_ini = fecha_ini;
 	}
 
-	public String getFecha_fin() {
+	public Date getFecha_fin() {
 		return fecha_fin;
 	}
 
-	public void setFecha_fin(String fecha_fin) {
+	public void setFecha_fin(Date fecha_fin) {
 		this.fecha_fin = fecha_fin;
 	}
 
@@ -74,7 +76,10 @@ public class RetoDTO implements Serializable {
 
 	@Override
 	public String toString() {
-		return  nombre + ", fecha de expiración=" + fecha_fin + ", " +  distancia + "km.";
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+		String fechaIni= formatter.format(fecha_ini);
+		String fechaFin= formatter.format(fecha_fin); 
+		return  nombre + ", fecha de inicio: " + fechaIni + ", fecha de expiración: " + fechaFin + ", " +  distancia + "km.";
 	}
 
 }

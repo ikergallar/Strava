@@ -1,6 +1,6 @@
 package server.service;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import server.data.dao.RetoDAO;
@@ -22,7 +22,7 @@ public class RetoService {
 		return instance;
 	}
 	
-	public void crearReto(String nombre, String fecha_ini, String fecha_fin, int distancia,  String deporte, Usuario creador) {
+	public void crearReto(String nombre, Date fecha_ini, Date fecha_fin, int distancia,  String deporte, Usuario creador) {
 		
 		Reto reto = new Reto();
 		reto.setNombre(nombre);

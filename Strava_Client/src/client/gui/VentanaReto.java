@@ -15,6 +15,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
@@ -29,6 +30,7 @@ public class VentanaReto extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 	public VentanaReto(LoginController loginController, RetoController retoController,
 			SesionController sesionController) {

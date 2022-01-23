@@ -1,12 +1,11 @@
 package server.data.domain;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.jdo.annotations.ForeignKey;
 import javax.jdo.annotations.IdGeneratorStrategy;
-import javax.jdo.annotations.Inheritance;
-import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.Join;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -19,8 +18,8 @@ public class Reto {
 	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT)
 	private int idReto;
 	private String nombre;
-	private String fecha_ini;
-	private String fecha_fin;
+	private Date fecha_ini;
+	private Date fecha_fin;
 	private int distancia;
 	private Deporte deporte;
 	@ForeignKey
@@ -29,7 +28,7 @@ public class Reto {
 	@Persistent(mappedBy="reto", dependentElement="true", defaultFetchGroup="true")
 	private List<Usuario> participantes = new ArrayList<>();
 
-	public Reto(String nombre, String fecha_ini, String fecha_fin, int distancia, Deporte deporte, int idCreador) {
+	public Reto(String nombre, Date fecha_ini, Date fecha_fin, int distancia, Deporte deporte, int idCreador) {
 		super();
 		this.nombre = nombre;
 		this.fecha_ini = fecha_ini;
@@ -65,19 +64,19 @@ public class Reto {
 		this.nombre = nombre;
 	}
 
-	public String getFecha_ini() {
+	public Date getFecha_ini() {
 		return fecha_ini;
 	}
 
-	public void setFecha_ini(String fecha_ini) {
+	public void setFecha_ini(Date fecha_ini) {
 		this.fecha_ini = fecha_ini;
 	}
 
-	public String getFecha_fin() {
+	public Date getFecha_fin() {
 		return fecha_fin;
 	}
 
-	public void setFecha_fin(String fecha_fin) {
+	public void setFecha_fin(Date fecha_fin) {
 		this.fecha_fin = fecha_fin;
 	}
 

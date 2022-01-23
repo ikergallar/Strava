@@ -3,6 +3,7 @@ package client.gui;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -15,6 +16,8 @@ import javax.swing.JSpinner;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.toedter.calendar.JDateChooser;
@@ -25,6 +28,8 @@ public class VentanaCrearSesion extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTextField textNombre;
+	private JTextField textField;
+	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public VentanaCrearSesion(LoginController loginController, RetoController retoController,
@@ -50,9 +55,9 @@ public class VentanaCrearSesion extends JFrame {
 		comDeporte.setBounds(37, 127, 255, 28);
 		getContentPane().add(comDeporte);
 
-		JLabel lblFecha = new JLabel("Fecha de inicio de la sesi\u00F3n");
+		JLabel lblFecha = new JLabel("Fecha de inicio de la sesi\u00F3n(dd/MM/yyyy)");
 		lblFecha.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblFecha.setBounds(37, 166, 174, 21);
+		lblFecha.setBounds(37, 166, 315, 21);
 		getContentPane().add(lblFecha);
 
 		JLabel lblTitulo = new JLabel("Crea tu sesi\u00F3n personalizada de entrenamiento");
@@ -60,18 +65,18 @@ public class VentanaCrearSesion extends JFrame {
 		lblTitulo.setBounds(37, 11, 350, 38);
 		getContentPane().add(lblTitulo);
 
-		JLabel lblDur = new JLabel("Duraci\u00F3n de la sesi\u00F3n");
+		JLabel lblDur = new JLabel("Duraci\u00F3n de la sesi\u00F3n(min)");
 		lblDur.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblDur.setBounds(37, 239, 174, 21);
+		lblDur.setBounds(37, 239, 255, 21);
 		getContentPane().add(lblDur);
 
 		JSpinner spinnerDur = new JSpinner();
 		spinnerDur.setBounds(37, 271, 118, 28);
 		getContentPane().add(spinnerDur);
 
-		JLabel lblDistanciaDeLa = new JLabel("Distancia de la sesi\u00F3n");
+		JLabel lblDistanciaDeLa = new JLabel("Distancia de la sesi\u00F3n(km)");
 		lblDistanciaDeLa.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblDistanciaDeLa.setBounds(37, 310, 174, 21);
+		lblDistanciaDeLa.setBounds(37, 310, 255, 21);
 		getContentPane().add(lblDistanciaDeLa);
 
 		JSpinner spinnerDis = new JSpinner();
@@ -81,12 +86,16 @@ public class VentanaCrearSesion extends JFrame {
 		JButton btnCrearSesion = new JButton("Crear Sesi\u00F3n");
 		btnCrearSesion.setBounds(79, 399, 118, 23);
 		getContentPane().add(btnCrearSesion);
-
-
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(37, 198, 117, 30);
-		getContentPane().add(dateChooser);
 		
+		textField = new JTextField();
+		textField.setBounds(37, 208, 152, 20);
+		getContentPane().add(textField);
+		textField.setColumns(10);
+
+//		JDateChooser dateChooser = new JDateChooser();
+//		dateChooser.setBounds(37, 198, 117, 30);
+//		getContentPane().add(dateChooser);
+//		
 		btnCrearSesion.addActionListener(new ActionListener() {
 
 			@Override
@@ -96,7 +105,13 @@ public class VentanaCrearSesion extends JFrame {
 				String nombre = textNombre.getText();
 				String Deporte = (String) comDeporte.getSelectedItem();
 				int distancia = (Integer) spinnerDis.getValue();
-				Date fecha_ini = dateChooser.getDate();
+				Date fecha_ini = null;
+				try {
+					fecha_ini = sdf.parse(textField.getText());
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				int duracion = (Integer) spinnerDur.getValue();
 
 				System.out.println(" - Creando una sesion " + nombre + "'");
@@ -104,13 +119,17 @@ public class VentanaCrearSesion extends JFrame {
 						duracion);
 				System.out.println(" - Sesion creada correctamente " + nombre + "'");
 
+				JOptionPane.showMessageDialog(null, "Sesion creada correctamente", "Confirmacion", 1);
+				textNombre.setText("");
+				spinnerDis.setValue(0);
+				textField.setText("");
+				spinnerDur.setValue(0);
 			}
 		});
 
 		JButton btnAtras = new JButton("Atras");
 		btnAtras.setBounds(207, 399, 104, 23);
 		getContentPane().add(btnAtras);
-		
 		
 		btnAtras.addActionListener(new ActionListener() {
 

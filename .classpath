@@ -21,9 +21,9 @@
 	<classpathentry kind="lib" path="Strava_Server/lib/mysql-connector-java-8.0.26.jar"/>
 	<classpathentry kind="lib" path="Strava_Server/lib/log4j-1.2.14.jar"/>
 	<classpathentry kind="lib" path="Strava_Client/lib/commons-codec-1.15.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ikerg/Documents/lib/jcalendar-1.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ikerg/Documents/lib/jgoodies-common-1.2.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ikerg/Documents/lib/jgoodies-looks-2.4.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ikerg/Documents/lib/junit-4.6.jar"/>
+	<classpathentry kind="lib" path="Strava_Client/lib/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="Strava_Client/lib/jgoodies-common-1.2.0.jar"/>
+	<classpathentry kind="lib" path="Strava_Client/lib/jgoodies-looks-2.4.1.jar"/>
+	<classpathentry kind="lib" path="Strava_Client/lib/junit-4.6.jar"/>
 	<classpathentry kind="output" path="Strava_Client/bin"/>
 </classpath>

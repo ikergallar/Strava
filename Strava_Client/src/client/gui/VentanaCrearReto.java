@@ -17,6 +17,9 @@ import javax.swing.JSpinner;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class VentanaCrearReto extends JFrame {
 	
@@ -27,6 +30,7 @@ public class VentanaCrearReto extends JFrame {
 	private JTextField textNombre;
 	private JTextField textFechaini;
 	private JTextField textFin;
+	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public VentanaCrearReto(LoginController loginController, RetoController retoController,
@@ -91,8 +95,21 @@ public class VentanaCrearReto extends JFrame {
 				// TODO Auto-generated method stub
 
 				String nombre = textNombre.getText();
-				String fechaIni = textFechaini.getText();
-				String fechaFin = textFin.getText();
+				Date fechaIni = null;
+				try {
+					fechaIni = sdf.parse(textFechaini.getText());
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				Date fechaFin = null;
+				try {
+					fechaFin = sdf.parse(textFin.getText());
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}				
 				String Deporte = (String) comDeporte.getSelectedItem();
 				int distancia = (Integer) spinner.getValue();
 
@@ -101,7 +118,10 @@ public class VentanaCrearReto extends JFrame {
 				System.out.println(" - Reto creado correctamente " + nombre + "'");
 				
 				JOptionPane.showMessageDialog(null, "Reto creado correctamente", "Confirmacion", 1);
-
+				textNombre.setText("");
+				textFechaini.setText("");
+				textFin.setText("");
+				spinner.setValue(0);
 
 			}
 		});

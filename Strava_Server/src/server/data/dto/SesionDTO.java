@@ -1,6 +1,7 @@
 package server.data.dto;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class SesionDTO implements Serializable {
@@ -61,7 +62,9 @@ public class SesionDTO implements Serializable {
 
 	@Override
 	public String toString() {
-		return  titulo + ", " + distancia + " km , " + duracion + " minutos.";
+		 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+		 String fechaIni= formatter.format(fecha_ini);  
+		return  titulo + ", Fecha de inicio:" + fechaIni + ", " + distancia + " km , " + duracion + " minutos.";
 	}
 
 

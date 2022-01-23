@@ -10,6 +10,8 @@ import server.data.dto.SesionDTO;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -23,9 +25,12 @@ import javax.swing.JList;
 
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import com.toedter.calendar.JDateChooser;
+
 import javax.swing.JTextPane;
 import javax.swing.JSpinner;
-import com.toedter.calendar.JDateChooser;
+import javax.swing.JTextField;
 
 public class VentanaSesion extends JFrame {
 	
@@ -33,6 +38,9 @@ public class VentanaSesion extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private JTextField textField;
+	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
 
 	public VentanaSesion(LoginController loginController, RetoController retoController,
 			SesionController sesionController) {
@@ -117,8 +125,8 @@ public class VentanaSesion extends JFrame {
 		spinnerDis.setBounds(29, 162, 110, 22);
 		getContentPane().add(spinnerDis);
 
-		JLabel lblFechaIni = new JLabel("Fecha de inicio");
-		lblFechaIni.setBounds(29, 195, 100, 14);
+		JLabel lblFechaIni = new JLabel("Fecha de inicio(dd/MM/yyyy)");
+		lblFechaIni.setBounds(29, 195, 233, 14);
 		getContentPane().add(lblFechaIni);
 
 		JLabel lblDuracion = new JLabel("Duraci\u00F3n");
@@ -129,16 +137,41 @@ public class VentanaSesion extends JFrame {
 		spinnerDur.setBounds(29, 283, 110, 22);
 		getContentPane().add(spinnerDur);
 		
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(29, 220, 110, 20);
-		getContentPane().add(dateChooser);
+		textField = new JTextField();
+		textField.setBounds(33, 220, 106, 20);
+		getContentPane().add(textField);
+		textField.setColumns(10);
+		
+//		JDateChooser dateChooser = new JDateChooser();
+//		dateChooser.setBounds(29, 220, 110, 20);
+//		getContentPane().add(dateChooser);
+//		
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//		Date fechaM = new Date(System.currentTimeMillis());
+//		String fechaMin = sdf.format(fechaM);
+//		String fechaMax = "2022-12-31";
+//		try {
+//			Date fMin = sdf.parse(fechaMin);
+//			Date fMax = sdf.parse(fechaMax);
+//			dateChooser.setMinSelectableDate(fMin);
+//			dateChooser.setMaxSelectableDate(fMax);
+//		} catch (ParseException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
 
 		btnBuscarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				String nombre = textNombre.getText();
 				int distancia = (Integer) spinnerDis.getValue();
-				Date fechaIni = dateChooser.getDate();
+				Date fechaIni = null;
+				try {
+					fechaIni = sdf.parse(textField.getText());
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				int duracion = (Integer) spinnerDur.getValue();
 
 				DefaultListModel<SesionDTO> modelo;
