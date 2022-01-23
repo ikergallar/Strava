@@ -9,9 +9,11 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
+import client.controller.DeporteController;
 import client.controller.LoginController;
 import client.controller.RetoController;
 import client.controller.SesionController;
+import server.data.dto.DeporteDTO;
 
 import javax.swing.JSpinner;
 import java.awt.Font;
@@ -34,7 +36,7 @@ public class VentanaCrearReto extends JFrame {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public VentanaCrearReto(LoginController loginController, RetoController retoController,
-			SesionController sesionController) {
+			SesionController sesionController, DeporteController deporteController) {
 		getContentPane().setLayout(null);
 
 		JLabel lblTitulo = new JLabel("<html>Crea tus propios retos y compartelos con los usuarios de Strava<html>");
@@ -69,7 +71,7 @@ public class VentanaCrearReto extends JFrame {
 		textNombre.setColumns(10);
 
 		JComboBox comDeporte = new JComboBox();
-		comDeporte.setModel(new DefaultComboBoxModel(new String[] { "Running", "Ciclismo", "Ambos" }));
+		comDeporte.setModel(new DefaultComboBoxModel(deporteController.getNombres().toArray()));
 		comDeporte.setToolTipText("");
 		comDeporte.setBounds(189, 169, 255, 28);
 		getContentPane().add(comDeporte);
@@ -111,10 +113,11 @@ public class VentanaCrearReto extends JFrame {
 					e1.printStackTrace();
 				}				
 				String Deporte = (String) comDeporte.getSelectedItem();
+				DeporteDTO dep = deporteController.getDeporte(Deporte);
 				int distancia = (Integer) spinner.getValue();
 
 				System.out.println(" - Creando un reto " + nombre + "'");
-				retoController.crearReto(nombre, fechaIni, fechaFin, distancia, Deporte, loginController.getToken());
+				retoController.crearReto(nombre, fechaIni, fechaFin, distancia, dep, loginController.getToken());
 				System.out.println(" - Reto creado correctamente " + nombre + "'");
 				
 				JOptionPane.showMessageDialog(null, "Reto creado correctamente", "Confirmacion", 1);
@@ -135,7 +138,7 @@ public class VentanaCrearReto extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				VentanaReto C = new VentanaReto(loginController, retoController, sesionController);
+				VentanaReto C = new VentanaReto(loginController, retoController, sesionController,deporteController);
 				C.setVisible(true);
 				dispose();
 

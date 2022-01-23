@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import client.controller.DeporteController;
 import client.controller.LoginController;
 import client.controller.RetoController;
 import client.controller.SesionController;
@@ -25,7 +26,7 @@ public class VentanaLoginGoogle extends JFrame {
 	private JTextField textPass;
 	
 	
-	public VentanaLoginGoogle(LoginController loginController, RetoController retoController, SesionController sesionController) {
+	public VentanaLoginGoogle(LoginController loginController, RetoController retoController, SesionController sesionController,DeporteController deporteController) {
 		getContentPane().setLayout(null);
 		
 		JLabel lblEmail = new JLabel("Email: ");
@@ -77,7 +78,7 @@ public class VentanaLoginGoogle extends JFrame {
 				System.out.println("\t* Login result: " + resultado);
 				if (result && resultado) {
 					JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Confirmacion", 1);
-					VentanaSesion vP = new VentanaSesion(loginController,retoController, sesionController);
+					VentanaSesion vP = new VentanaSesion(loginController,retoController, sesionController,deporteController);
 					vP.setVisible(true);
 					dispose();
 				} else {
@@ -93,7 +94,7 @@ public class VentanaLoginGoogle extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {	
 				// TODO Auto-generated method stub
-				VentanaLogin vl = new VentanaLogin(loginController, retoController, sesionController);
+				VentanaLogin vl = new VentanaLogin(loginController, retoController, sesionController,deporteController);
 				vl.setVisible(true);
 				dispose();
 				

@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 
+import client.controller.DeporteController;
 import client.controller.LoginController;
 import client.controller.RetoController;
 import client.controller.SesionController;
@@ -23,7 +24,7 @@ public class VentanaRegistroGoogle extends JFrame {
 	private JTextField textEmail;
 	private JTextField textPass;
 	
-	public VentanaRegistroGoogle(LoginController loginController, RetoController retoController, SesionController sesionController) {
+	public VentanaRegistroGoogle(LoginController loginController, RetoController retoController, SesionController sesionController,DeporteController deporteController) {
 		getContentPane().setLayout(null);
 		
 		JLabel lblUsername = new JLabel("Nombre de usuario:");
@@ -97,7 +98,7 @@ public class VentanaRegistroGoogle extends JFrame {
 								if(loginController.registroGoogle(username, email, pass, altura, 0)) {									
 									JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Confirmacion", 1);
 									
-									VentanaLogin vL = new VentanaLogin(loginController, retoController,sesionController);
+									VentanaLogin vL = new VentanaLogin(loginController, retoController,sesionController,deporteController);
 									vL.setVisible(true);
 									dispose();
 								} else {
@@ -144,7 +145,7 @@ public class VentanaRegistroGoogle extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					VentanaLogin vL = new VentanaLogin(loginController, retoController, sesionController);
+					VentanaLogin vL = new VentanaLogin(loginController, retoController, sesionController,deporteController);
 					vL.setVisible(true);
 					dispose();
 					

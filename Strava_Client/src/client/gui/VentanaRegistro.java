@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
 
+import client.controller.DeporteController;
 import client.controller.LoginController;
 import client.controller.RetoController;
 import client.controller.SesionController;
@@ -28,7 +29,7 @@ public class VentanaRegistro extends JFrame{
 	private JTextField textEmail;
 	private JTextField textPass;
 	
-	public VentanaRegistro(LoginController loginController, RetoController retoController,SesionController sesionController) {
+	public VentanaRegistro(LoginController loginController, RetoController retoController,SesionController sesionController,DeporteController deporteController) {
 		getContentPane().setLayout(null);
 		
 		JLabel lblTitulo = new JLabel("STRAVA");
@@ -87,7 +88,7 @@ public class VentanaRegistro extends JFrame{
 		JButton btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaLogin vL = new VentanaLogin(loginController, retoController, sesionController);
+				VentanaLogin vL = new VentanaLogin(loginController, retoController, sesionController,deporteController);
 				vL.setVisible(true);
 				dispose();
 			}
@@ -118,7 +119,7 @@ public class VentanaRegistro extends JFrame{
 							
 							JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Confirmacion", 1);
 							
-							VentanaLogin vL = new VentanaLogin(loginController, retoController,sesionController);
+							VentanaLogin vL = new VentanaLogin(loginController, retoController,sesionController,deporteController);
 							vL.setVisible(true);
 							dispose();
 							

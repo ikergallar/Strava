@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import client.serviceLocator.ServiceLocator;
+import server.data.dto.DeporteDTO;
 import server.data.dto.SesionDTO;
 
 public class SesionController {
@@ -23,7 +24,7 @@ public class SesionController {
 	            return null;
 	        }
 	    }
-	public void crearSesion(long token ,String titulo, String deporte, int distancia, Date fecha_ini, int duracion) {
+	public void crearSesion(long token ,String titulo, DeporteDTO deporte, int distancia, Date fecha_ini, int duracion) {
 		try {
 			this.serviceLocator.getService().crearSesion(token, titulo, deporte, distancia, fecha_ini, duracion);
 		}catch (RemoteException e){

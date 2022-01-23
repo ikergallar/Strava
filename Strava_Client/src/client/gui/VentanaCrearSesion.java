@@ -8,9 +8,11 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
+import client.controller.DeporteController;
 import client.controller.LoginController;
 import client.controller.RetoController;
 import client.controller.SesionController;
+import server.data.dto.DeporteDTO;
 
 import javax.swing.JSpinner;
 import java.awt.Font;
@@ -19,8 +21,6 @@ import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import com.toedter.calendar.JDateChooser;
 
 public class VentanaCrearSesion extends JFrame {
 	/**
@@ -33,7 +33,7 @@ public class VentanaCrearSesion extends JFrame {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public VentanaCrearSesion(LoginController loginController, RetoController retoController,
-			SesionController sesionController) {
+			SesionController sesionController, DeporteController deporteController) {
 		getContentPane().setLayout(null);
 
 		this.setBounds(150, 100, 450, 500);
@@ -50,7 +50,7 @@ public class VentanaCrearSesion extends JFrame {
 		textNombre.setColumns(10);
 
 		JComboBox<?> comDeporte = new JComboBox();
-		comDeporte.setModel(new DefaultComboBoxModel(new String[] { "Running", "Ciclismo" }));
+		comDeporte.setModel(new DefaultComboBoxModel(deporteController.getNombres().toArray()));
 		comDeporte.setToolTipText("");
 		comDeporte.setBounds(37, 127, 255, 28);
 		getContentPane().add(comDeporte);
@@ -92,10 +92,6 @@ public class VentanaCrearSesion extends JFrame {
 		getContentPane().add(textField);
 		textField.setColumns(10);
 
-//		JDateChooser dateChooser = new JDateChooser();
-//		dateChooser.setBounds(37, 198, 117, 30);
-//		getContentPane().add(dateChooser);
-//		
 		btnCrearSesion.addActionListener(new ActionListener() {
 
 			@Override
@@ -104,6 +100,7 @@ public class VentanaCrearSesion extends JFrame {
 
 				String nombre = textNombre.getText();
 				String Deporte = (String) comDeporte.getSelectedItem();
+				DeporteDTO dep = deporteController.getDeporte(Deporte);
 				int distancia = (Integer) spinnerDis.getValue();
 				Date fecha_ini = null;
 				try {
@@ -115,7 +112,7 @@ public class VentanaCrearSesion extends JFrame {
 				int duracion = (Integer) spinnerDur.getValue();
 
 				System.out.println(" - Creando una sesion " + nombre + "'");
-				sesionController.crearSesion(loginController.getToken(), nombre, Deporte, distancia, fecha_ini,
+				sesionController.crearSesion(loginController.getToken(), nombre, dep, distancia, fecha_ini,
 						duracion);
 				System.out.println(" - Sesion creada correctamente " + nombre + "'");
 
@@ -136,7 +133,7 @@ public class VentanaCrearSesion extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				VentanaSesion C = new VentanaSesion(loginController, retoController, sesionController);
+				VentanaSesion C = new VentanaSesion(loginController, retoController, sesionController,deporteController);
 				C.setVisible(true);
 				dispose();
 

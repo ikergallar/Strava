@@ -24,6 +24,12 @@ public class DeporteAssembler {
 		dto.setNombre(deporte.getNombre());
 		return dto;
 	}
+	
+	public Deporte DTOTodeporte(DeporteDTO dto) {
+		Deporte deporte = new Deporte();		
+		deporte.setNombre(dto.getNombre());
+		return deporte;
+	}
 
 	public List<DeporteDTO> deporteToDTO(List<Deporte> deportes) {		
 		List<DeporteDTO> dtos = new ArrayList<>();

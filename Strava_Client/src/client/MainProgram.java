@@ -1,5 +1,6 @@
 package client;
 
+import client.controller.DeporteController;
 import client.controller.LoginController;
 import client.controller.RetoController;
 import client.controller.SesionController;
@@ -15,7 +16,8 @@ public class MainProgram {
 		LoginController loginController = new LoginController(serviceLocator);
 		RetoController retoController = new RetoController(serviceLocator);
 		SesionController sesionController = new SesionController(serviceLocator);
-		VentanaLogin ventanaLogin = new VentanaLogin(loginController,retoController, sesionController);
+		DeporteController deporteController = new DeporteController(serviceLocator);
+		VentanaLogin ventanaLogin = new VentanaLogin(loginController,retoController, sesionController,deporteController);
 		ventanaLogin.setVisible(true);
 	}
 

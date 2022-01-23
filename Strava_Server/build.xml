@@ -72,4 +72,10 @@
         </java>
     </target>
 	
+	<target name="7.local.test" depends="5.delete-db-schema, 4.create-db-schema" description="Runs local repository test">
+			<java classname="server.test.LocalDatabaseTest" classpathref="classpath" fork="true">
+				<jvmarg value="-Dlog4j.configuration=log4j.properties"/>
+			</java>
+	    </target>
+	
 </project>

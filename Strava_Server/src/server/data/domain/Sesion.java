@@ -15,14 +15,14 @@ public class Sesion {
 	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT)
 	private int idSesion;
 	private String titulo;
-	private Deporte deporte;
+	private String deporte;
 	private int distancia;
 	private Date fecha_ini;
 	private int duracion;
 	@ForeignKey
 	private int idCreador;
 	
-	public Sesion(String titulo, Deporte deporte, int distancia, Date fecha_ini, int duracion, int idCreador) {
+	public Sesion(String titulo, String deporte, int distancia, Date fecha_ini, int duracion, int idCreador) {
 		super();
 		this.titulo = titulo;
 		this.deporte = deporte;
@@ -36,7 +36,7 @@ public class Sesion {
 	public Sesion() {
 		super();
 		this.titulo = "";
-		this.deporte = null;
+		this.deporte = "";
 		this.distancia = 0;
 		this.fecha_ini = null;
 		this.duracion = 0;
@@ -59,11 +59,11 @@ public class Sesion {
 		this.titulo = titulo;
 	}
 
-	public Deporte getDeporte() {
+	public String getDeporte() {
 		return deporte;
 	}
 
-	public void setDeporte(Deporte deporte) {
+	public void setDeporte(String deporte) {
 		this.deporte = deporte;
 	}
 

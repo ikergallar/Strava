@@ -21,14 +21,14 @@ public class Reto {
 	private Date fecha_ini;
 	private Date fecha_fin;
 	private int distancia;
-	private Deporte deporte;
+	private String deporte;
 	@ForeignKey
 	private int idCreador;
 	@Join
 	@Persistent(mappedBy="reto", dependentElement="true", defaultFetchGroup="true")
 	private List<Usuario> participantes = new ArrayList<>();
 
-	public Reto(String nombre, Date fecha_ini, Date fecha_fin, int distancia, Deporte deporte, int idCreador) {
+	public Reto(String nombre, Date fecha_ini, Date fecha_fin, int distancia, String deporte, int idCreador) {
 		super();
 		this.nombre = nombre;
 		this.fecha_ini = fecha_ini;
@@ -44,7 +44,7 @@ public class Reto {
 		this.fecha_ini = null;
 		this.fecha_fin = null;
 		this.distancia = 0;
-		this.deporte = null;
+		this.deporte = "";
 		this.idCreador= 0;
 	}
 
@@ -88,11 +88,11 @@ public class Reto {
 		this.distancia = distancia;
 	}
 
-	public Deporte getDeporte() {
+	public String getDeporte() {
 		return deporte;
 	}
 
-	public void setDeporte(Deporte deporte) {
+	public void setDeporte(String deporte) {
 		this.deporte = deporte;
 	}
 

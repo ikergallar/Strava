@@ -10,11 +10,13 @@ public class SesionDTO implements Serializable {
 	private String titulo;
 	private int distancia;
 	private Date fecha_ini;
+	private String deporte;
 	private int duracion;
 
-	public SesionDTO(String titulo, int distancia, Date fecha_ini, int duracion) {
+	public SesionDTO(String titulo, String deporte, int distancia, Date fecha_ini, int duracion) {
 		super();
 		this.titulo = titulo;
+		this.deporte = deporte;
 		this.distancia = distancia;
 		this.fecha_ini = fecha_ini;
 		this.duracion = duracion;
@@ -23,6 +25,7 @@ public class SesionDTO implements Serializable {
 	public SesionDTO() {
 		super();
 		this.titulo = "";
+		this.deporte = "";
 		this.distancia = 0;
 		this.fecha_ini = null;
 		this.duracion = 0;
@@ -34,6 +37,14 @@ public class SesionDTO implements Serializable {
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+	}
+
+	public String getDeporte() {
+		return deporte;
+	}
+
+	public void setDeporte(String deporte) {
+		this.deporte = deporte;
 	}
 
 	public int getDistancia() {
@@ -64,7 +75,7 @@ public class SesionDTO implements Serializable {
 	public String toString() {
 		 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
 		 String fechaIni= formatter.format(fecha_ini);  
-		return  titulo + ", Fecha de inicio:" + fechaIni + ", " + distancia + " km , " + duracion + " minutos.";
+		return  titulo + ", " + deporte +  ", Fecha de inicio:" + fechaIni + ", " + distancia + " km , " + duracion + " minutos.";
 	}
 
 

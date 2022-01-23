@@ -22,13 +22,14 @@ public class RetoService {
 		return instance;
 	}
 	
-	public void crearReto(String nombre, Date fecha_ini, Date fecha_fin, int distancia,  String deporte, Usuario creador) {
+	public void crearReto(String nombre, Date fecha_ini, Date fecha_fin, int distancia,Deporte deporte, Usuario creador) {
 		
 		Reto reto = new Reto();
 		reto.setNombre(nombre);
 		reto.setFecha_ini(fecha_ini);
 		reto.setFecha_fin(fecha_fin);
 		reto.setDistancia(distancia);
+		reto.setDeporte(deporte.getNombre());
 		reto.setIdCreador(creador.getIdUsuario());
 		
 		RetoDAO.getInstance().save(reto);

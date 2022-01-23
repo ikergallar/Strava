@@ -2,6 +2,7 @@ package client.gui;
 
 import javax.swing.*;
 
+import client.controller.DeporteController;
 import client.controller.LoginController;
 import client.controller.RetoController;
 import client.controller.SesionController;
@@ -18,7 +19,7 @@ public class VentanaLogin extends JFrame{
 	private JTextField textEmail;
 	private JTextField textPass;
 	
-	public VentanaLogin(LoginController loginController, RetoController retoController, SesionController sesionController) {
+	public VentanaLogin(LoginController loginController, RetoController retoController, SesionController sesionController, DeporteController deporteController) {
 		getContentPane().setLayout(null);
 				
 		JLabel lblTitulo = new JLabel("STRAVA");
@@ -71,7 +72,7 @@ public class VentanaLogin extends JFrame{
 						
 						if(result) {
 							JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Confirmacion", 1);
-							VentanaSesion vP = new VentanaSesion(loginController,retoController, sesionController);
+							VentanaSesion vP = new VentanaSesion(loginController,retoController, sesionController,deporteController);
 							vP.setVisible(true);
 							dispose();
 						}else {
@@ -133,7 +134,7 @@ public class VentanaLogin extends JFrame{
 		JButton btnLFacebook = new JButton("Facebook");
 		btnLFacebook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaLoginFace vLF = new VentanaLoginFace(loginController, retoController,sesionController);
+				VentanaLoginFace vLF = new VentanaLoginFace(loginController, retoController,sesionController,deporteController);
 				vLF.setVisible(true);
 				dispose();
 			}
@@ -146,7 +147,7 @@ public class VentanaLogin extends JFrame{
 		JButton btnLGoogle = new JButton("Google");
 		btnLGoogle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaLoginGoogle vLG = new VentanaLoginGoogle(loginController, retoController,sesionController);
+				VentanaLoginGoogle vLG = new VentanaLoginGoogle(loginController, retoController,sesionController,deporteController);
 				vLG.setVisible(true);
 				dispose();
 			}
@@ -158,7 +159,7 @@ public class VentanaLogin extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				VentanaRegistro vR = new VentanaRegistro(loginController, retoController,sesionController);
+				VentanaRegistro vR = new VentanaRegistro(loginController, retoController,sesionController, deporteController);
 				vR.setVisible(true);
 				dispose();
 		
@@ -170,7 +171,7 @@ public class VentanaLogin extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				VentanaRegistroGoogle vrg = new VentanaRegistroGoogle(loginController, retoController, sesionController);
+				VentanaRegistroGoogle vrg = new VentanaRegistroGoogle(loginController, retoController, sesionController,deporteController);
 				vrg.setVisible(true);
 				dispose();
 				
@@ -182,7 +183,7 @@ public class VentanaLogin extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				VentanaRegistroFacebook vrf = new VentanaRegistroFacebook(loginController, retoController, sesionController);
+				VentanaRegistroFacebook vrf = new VentanaRegistroFacebook(loginController, retoController, sesionController,deporteController);
 				vrf.setVisible(true);
 				dispose();
 				

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import server.data.dao.DeporteDAO;
 import server.data.dao.RetoDAO;
 import server.data.dao.SesionDAO;
 import server.data.domain.Deporte;
@@ -26,10 +27,11 @@ public class SesionService {
 		return instance;
 	}
 	
-	public void crearSesion(String titulo, String deporte, int distancia, Date fecha_ini, int duracion, Usuario creador) {
+	public void crearSesion(String titulo, Deporte deporte, int distancia, Date fecha_ini, int duracion, Usuario creador) {
 		
 		Sesion sesion = new Sesion();
 		sesion.setTitulo(titulo);
+		sesion.setDeporte(deporte.getNombre());
 		sesion.setDistancia(distancia);
 		sesion.setFecha_ini(fecha_ini);
 		sesion.setDuracion(duracion);

@@ -2,6 +2,7 @@ package client.gui;
 
 import javax.swing.JFrame;
 
+import client.controller.DeporteController;
 import client.controller.LoginController;
 import client.controller.RetoController;
 import client.controller.SesionController;
@@ -30,10 +31,9 @@ public class VentanaReto extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 	public VentanaReto(LoginController loginController, RetoController retoController,
-			SesionController sesionController) {
+			SesionController sesionController, DeporteController deporteController) {
 		getContentPane().setLayout(null);
 
 		JMenuBar menuBar = new JMenuBar();
@@ -46,7 +46,7 @@ public class VentanaReto extends JFrame {
 		JMenuItem mntmReto = new JMenuItem("Sesiones");
 		mntmReto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaSesion vP = new VentanaSesion(loginController, retoController, sesionController);
+				VentanaSesion vP = new VentanaSesion(loginController, retoController, sesionController, deporteController);
 				vP.setVisible(true);
 				dispose();
 			}
@@ -60,7 +60,7 @@ public class VentanaReto extends JFrame {
 					
 					System.out.println(" - Logout from the server..."); 
 					System.out.println("\t* Logout success!");
-					VentanaLogin vL = new VentanaLogin(loginController, retoController, sesionController);
+					VentanaLogin vL = new VentanaLogin(loginController, retoController, sesionController, deporteController);
 					vL.setVisible(true);
 					dispose();
 				}else {
@@ -68,7 +68,7 @@ public class VentanaReto extends JFrame {
 					System.out.println(" - Logout from the server..."); 
 					loginController.logout();
 					System.out.println("\t* Logout success!");
-					VentanaLogin vL = new VentanaLogin(loginController, retoController, sesionController);
+					VentanaLogin vL = new VentanaLogin(loginController, retoController, sesionController, deporteController);
 					vL.setVisible(true);
 					dispose();
 				}
@@ -89,7 +89,7 @@ public class VentanaReto extends JFrame {
 		JButton btnCrearReto = new JButton("Crear Reto");
 		btnCrearReto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaCrearReto vCR = new VentanaCrearReto(loginController, retoController, sesionController);
+				VentanaCrearReto vCR = new VentanaCrearReto(loginController, retoController, sesionController,deporteController);
 				vCR.setVisible(true);
 				dispose();
 			}

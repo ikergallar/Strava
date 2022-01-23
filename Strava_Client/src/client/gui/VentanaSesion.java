@@ -3,6 +3,7 @@ package client.gui;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import client.controller.DeporteController;
 import client.controller.LoginController;
 import client.controller.RetoController;
 import client.controller.SesionController;
@@ -43,7 +44,7 @@ public class VentanaSesion extends JFrame {
 
 
 	public VentanaSesion(LoginController loginController, RetoController retoController,
-			SesionController sesionController) {
+			SesionController sesionController, DeporteController deporteController) {
 		getContentPane().setLayout(null);
 
 		JMenuBar menuBar = new JMenuBar();
@@ -56,7 +57,7 @@ public class VentanaSesion extends JFrame {
 		JMenuItem mntmReto = new JMenuItem("Retos");
 		mntmReto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaReto vR = new VentanaReto(loginController, retoController, sesionController);
+				VentanaReto vR = new VentanaReto(loginController, retoController, sesionController,deporteController);
 				vR.setVisible(true);
 				dispose();
 			}
@@ -69,14 +70,14 @@ public class VentanaSesion extends JFrame {
 				if(loginController.getToken()==0) {
 					System.out.println(" - Logout from the server..."); 
 					System.out.println("\t* Logout success!");
-					VentanaLogin vL = new VentanaLogin(loginController, retoController, sesionController);
+					VentanaLogin vL = new VentanaLogin(loginController, retoController, sesionController,deporteController);
 					vL.setVisible(true);
 					dispose();	
 				}else {
 					System.out.println(" - Logout from the server..."); 
 					loginController.logout();
 					System.out.println("\t* Logout success!");
-					VentanaLogin vL = new VentanaLogin(loginController, retoController, sesionController);
+					VentanaLogin vL = new VentanaLogin(loginController, retoController, sesionController,deporteController);
 					vL.setVisible(true);
 					dispose();
 				}
@@ -93,7 +94,7 @@ public class VentanaSesion extends JFrame {
 		JButton btnCrearSesion = new JButton("Crear Sesi\u00F3n");
 		btnCrearSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaCrearSesion vCS = new VentanaCrearSesion(loginController, retoController, sesionController);
+				VentanaCrearSesion vCS = new VentanaCrearSesion(loginController, retoController, sesionController,deporteController);
 				vCS.setVisible(true);
 				dispose();
 			}

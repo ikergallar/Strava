@@ -9,14 +9,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import server.data.domain.Deporte;
 import server.data.domain.Reto;
 import server.data.domain.Sesion;
 import server.data.domain.Usuario;
+import server.data.dto.DeporteAssembler;
+import server.data.dto.DeporteDTO;
 import server.data.dto.RetoAssembler;
 import server.data.dto.RetoDTO;
 import server.data.dto.SesionAssembler;
 import server.data.dto.SesionDTO;
 import server.service.SesionService;
+import server.service.DeporteService;
 import server.service.LoginService;
 import server.service.RetoService;
 
@@ -97,9 +101,10 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	}
 	
 	@Override
-	public void crearReto(String nombre, Date fecha_ini, Date fecha_fin, int distancia, String deporte, long token) throws RemoteException{
+	public void crearReto(String nombre, Date fecha_ini, Date fecha_fin, int distancia, DeporteDTO deporte, long token) throws RemoteException{
+		Deporte dep = DeporteAssembler.getInstance().DTOTodeporte(deporte);
 		System.out.println(" * RemoteFaçade crear reto: " + nombre + "/ " + fecha_ini + "/ " + fecha_fin + "/ " + deporte+ "/ " + this.serverState.get(token));
-	    RetoService.getInstance().crearReto( nombre, fecha_ini, fecha_fin, distancia, deporte, this.serverState.get(token));
+	    RetoService.getInstance().crearReto( nombre, fecha_ini, fecha_fin, distancia, dep, this.serverState.get(token));
 		
 	}
 	
@@ -137,9 +142,10 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	}
 	
 	@Override
-	public void crearSesion(long token ,String titulo, String deporte, int distancia, Date fecha_ini, int duracion) throws RemoteException{
+	public void crearSesion(long token ,String titulo, DeporteDTO deporte, int distancia, Date fecha_ini, int duracion) throws RemoteException{
+		Deporte dep = DeporteAssembler.getInstance().DTOTodeporte(deporte);
 		System.out.println(" * RemoteFaçade crear sesion: "  + titulo + "/ " + deporte + "/ " + distancia + "/ " + fecha_ini+ "/ " + duracion+ "/" +this.serverState.get(token));
-		SesionService.getInstance().crearSesion( titulo,deporte, distancia, fecha_ini, duracion,this.serverState.get(token));
+		SesionService.getInstance().crearSesion(titulo,dep,distancia,fecha_ini,duracion,this.serverState.get(token));
 		
 	}
 	
@@ -178,5 +184,17 @@ public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 		System.out.println(" * RemoteFaçade registrar usuario de Facebook: " + email + "/ " + pass + "/ ");
 		LoginService.getInstance().registroFacebook(username, email, pass, peso, altura);
 	    LoginService.getInstance().registro(username, email, pass, peso, altura, "Facebook");
+	}
+	
+	@Override
+	public List<String> getNombres()throws RemoteException{
+		System.out.println(" * RemoteFacade get Nombre de deportes");
+		return DeporteService.getInstance().getNombres();
+	}
+	
+	@Override
+	public DeporteDTO getDeporte(String deporte)throws RemoteException{
+		System.out.println(" * RemoteFacade get Deportes");
+		return DeporteAssembler.getInstance().deporteToDTO(DeporteService.getInstance().getDeporte(deporte));
 	}
 }

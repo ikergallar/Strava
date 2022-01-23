@@ -27,6 +27,7 @@ public class RetoAssembler {
 		dto.setFecha_ini(reto.getFecha_ini());
         dto.setFecha_fin(reto.getFecha_fin());
         dto.setDistancia(reto.getDistancia());
+        dto.setDeporte(reto.getDeporte());
 
         return dto;
     }
@@ -41,6 +42,7 @@ public class RetoAssembler {
     		dto.setFecha_ini(r.getFecha_ini());
             dto.setFecha_fin(r.getFecha_fin());
             dto.setDistancia(r.getDistancia());
+            dto.setDeporte(r.getDeporte());
             
             retos.add(dto);
     	}
