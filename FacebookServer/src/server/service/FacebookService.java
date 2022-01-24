@@ -20,10 +20,6 @@ public class FacebookService {
 			if (u.getEmail().equals(email) && u.getPass().equals(contrasenia)) {
 				acceso = true;
 			}
-
-			if (!acceso) {
-				System.out.println("El usuario no existe");
-			}
 		}
 
 		return acceso;
@@ -34,10 +30,6 @@ public class FacebookService {
 		for (UsuarioFacebook u : FacebookUsers.getInstance().getUsuarios()) {
 			if (u.getEmail().equals(email)) {
 				acceso = true;
-			}
-
-			if (!acceso) {
-				System.out.println("El usuario no existe");
 			}
 		}
 
