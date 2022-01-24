@@ -28,7 +28,7 @@ public class VentanaRegistroFacebook extends JFrame {
 		getContentPane().setLayout(null);
 		
 		JLabel lblUsername = new JLabel("Nombre de usuario:");
-		lblUsername.setBounds(115, 71, 114, 14);
+		lblUsername.setBounds(115, 71, 121, 14);
 		getContentPane().add(lblUsername);
 		
 		JLabel lblEmail = new JLabel("Correo:");
@@ -36,7 +36,7 @@ public class VentanaRegistroFacebook extends JFrame {
 		getContentPane().add(lblEmail);
 		
 		JLabel lblPass = new JLabel("Contrase\u00F1a:");
-		lblPass.setBounds(115, 158, 84, 14);
+		lblPass.setBounds(115, 158, 102, 14);
 		getContentPane().add(lblPass);
 		
 		JLabel lblPeso = new JLabel("Peso:");
@@ -44,21 +44,21 @@ public class VentanaRegistroFacebook extends JFrame {
 		getContentPane().add(lblPeso);
 		
 		JLabel lblAltura = new JLabel("Altura:");
-		lblAltura.setBounds(115, 253, 46, 14);
+		lblAltura.setBounds(115, 253, 60, 14);
 		getContentPane().add(lblAltura);
 		
 		textUsername = new JTextField();
-		textUsername.setBounds(274, 68, 86, 20);
+		textUsername.setBounds(274, 68, 102, 20);
 		getContentPane().add(textUsername);
 		textUsername.setColumns(10);
 		
 		textEmail = new JTextField();
-		textEmail.setBounds(274, 111, 86, 20);
+		textEmail.setBounds(274, 111, 102, 20);
 		getContentPane().add(textEmail);
 		textEmail.setColumns(10);
 		
 		textPass = new JTextField();
-		textPass.setBounds(274, 155, 86, 20);
+		textPass.setBounds(274, 155, 102, 20);
 		getContentPane().add(textPass);
 		textPass.setColumns(10);
 		
@@ -71,7 +71,7 @@ public class VentanaRegistroFacebook extends JFrame {
 		getContentPane().add(spinnerAltura);
 		
 		JButton btnRegistrarse = new JButton("Registrarse");
-		btnRegistrarse.setBounds(159, 327, 107, 23);
+		btnRegistrarse.setBounds(298, 340, 107, 23);
 		getContentPane().add(btnRegistrarse);
 				
 		btnRegistrarse.addActionListener(new ActionListener() {
@@ -82,7 +82,7 @@ public class VentanaRegistroFacebook extends JFrame {
 				String email = textEmail.getText();
 				String pass = textPass.getText();
 				int altura = (Integer) spinnerAltura.getValue();
-			//	float peso = (Float) spinnerPeso.getValue();
+				int peso = (Integer) spinnerPeso.getValue();
 				
 				if (username.equals("") || email.equals("") || pass.equals("")) {
 					JOptionPane.showMessageDialog(null, "Es necesario rellenar todos los campos", "Error", 0);
@@ -90,32 +90,25 @@ public class VentanaRegistroFacebook extends JFrame {
 				} else {
 
 					if (email.contains("@") && email.contains(".")) {	
-						
-						if(email.contains("gmail")) {
-							
-							if(!loginController.existeUsuario(username,email)) {
+													
+						if(!loginController.existeUsuario(username,email)) {
 								
-								if(loginController.registroFacebook(username, email, pass, altura, 0)) {									
-									JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Confirmacion", 1);
+							if(loginController.registroFacebook(username, email, pass, peso, altura)) {									
+								JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Confirmacion", 1);
 									
-									VentanaLogin vL = new VentanaLogin(loginController, retoController,sesionController,deporteController);
-									vL.setVisible(true);
-									dispose();
-								} else {
-									JOptionPane.showMessageDialog(null, "Error en el registro", "Error", 0);
-								}
-								
-							} else {
-								JOptionPane.showMessageDialog(null, "El usuario ya existe", "Error", 0);
+								VentanaLogin vL = new VentanaLogin(loginController, retoController,sesionController,deporteController);
+								vL.setVisible(true);
+								dispose();
+							}else {
+								JOptionPane.showMessageDialog(null, "Error en el registro", "Error", 0);
 							}
-						} else {
-							JOptionPane.showMessageDialog(null, "Dominio de google no valido, use @gmail", "Error", 0);
-
-						}			
-
-					} else {
+								
+						}else {
+							JOptionPane.showMessageDialog(null, "El usuario ya existe", "Error", 0);
+						}
+								
+					}else {
 						JOptionPane.showMessageDialog(null, "Direccion de correo no valida", "Error", 0);
-
 					}
 				}
 			}
@@ -124,21 +117,16 @@ public class VentanaRegistroFacebook extends JFrame {
 		btnRegistrarse.setForeground(Color.BLACK);
 		getContentPane().add(btnRegistrarse);
 		
-		JLabel lblFacebook = new JLabel("Registro con Google");
-		lblFacebook.setBounds(141, 11, 208, 38);
+		JLabel lblFacebook = new JLabel("Registro con Facebook");
+		lblFacebook.setBounds(141, 11, 287, 38);
 		lblFacebook.setFont(new Font("Tahoma", Font.ITALIC, 22));
-		lblFacebook.setForeground(Color.RED);
+		lblFacebook.setForeground(Color.BLUE);
 		getContentPane().add(lblFacebook);
 		
 		JButton btnAtras = new JButton("Atras");
 		btnAtras.setBounds(26, 326, 89, 23);
 		btnAtras.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		getContentPane().add(btnAtras);
-		
-		JLabel lblInfo = new JLabel("Registrese en Strava utilizan un email y contrase\u00F1a asociadas\r\n a una cuenta de Google");
-		lblInfo.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblInfo.setBounds(10, 60, 464, 68);
-		getContentPane().add(lblInfo);
 		
 		 btnAtras.addActionListener(new ActionListener() {
 				
@@ -152,7 +140,7 @@ public class VentanaRegistroFacebook extends JFrame {
 				}
 			});
 		  
-		 this.setSize(500, 405);
+		 this.setSize(500, 402);
 	
 	}
 }

@@ -3,8 +3,6 @@ package server.gateway;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 
-import server.data.dao.UsuarioDAO;
-import server.data.domain.Usuario;
 import server.remote.IGoogleRemote;
 
 public class GoogleGateway implements ILoginGateway{
@@ -40,7 +38,7 @@ public class GoogleGateway implements ILoginGateway{
 		
 	}
 
-	public void registro(String username, String email, String pass, float peso, int altura) throws RemoteException{
+	public void registro(String username, String email, String pass, int peso, int altura) throws RemoteException{
 		this.googleService.registrarUsuarioGoogle(username, email, pass, peso, altura);
 	}
 	

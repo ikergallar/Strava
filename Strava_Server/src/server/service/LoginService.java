@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 
 import server.data.dao.UsuarioDAO;
 import server.data.domain.Usuario;
-import server.data.dto.UsuarioDTO;
 import server.gateway.FacebookGateway;
 import server.gateway.GoogleGateway;
 
@@ -47,7 +46,7 @@ public class LoginService {
 		return FacebookGateway.getInstance().login(email, pass);
 	}
 	
-	public void registro(String username, String email, String pass, float peso, int altura, String userExt)throws RemoteException {
+	public void registro(String username, String email, String pass, int peso, int altura, String userExt)throws RemoteException {
 		Usuario user = new Usuario();
 		user.setUsername(username);
 		user.setPass(pass);
@@ -59,11 +58,11 @@ public class LoginService {
 		UsuarioDAO.getInstance().save(user);
 	}
 	
-	public void registroGoogle(String username, String email, String pass, float peso, int altura)throws RemoteException {
+	public void registroGoogle(String username, String email, String pass, int peso, int altura)throws RemoteException {
 		GoogleGateway.getInstance().registro(username, email, pass, peso, altura);;
 	}
 	
-	public void registroFacebook(String username, String email, String pass, float peso, int altura) throws RemoteException{
+	public void registroFacebook(String username, String email, String pass, int peso, int altura) throws RemoteException{
 		FacebookGateway.getInstance().registro(username, email, pass, peso, altura);;
 	}
 }

@@ -36,7 +36,7 @@ public class GoogleService {
 		return acceso;
 	}
 
-	public boolean registrarseGoogle(String username, String email, String pass, float peso, int altura) {
+	public boolean registrarseGoogle(String username, String email, String pass, int peso, int altura) {
 		if(!existeUsuario(email)) {
 			UsuarioGoogle u = new UsuarioGoogle(username,email, pass, peso, altura);
 			GoogleUsers.getInstance().getUsuarios().add(u);

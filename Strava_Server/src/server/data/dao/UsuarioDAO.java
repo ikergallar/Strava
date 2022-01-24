@@ -109,31 +109,4 @@ public class UsuarioDAO extends DataAccessObjectBase implements IDataAccessObjec
 		return "";
 	}
 	
-//	public static String getUserTipo(String email) {		
-//		PersistenceManager pm = pmf.getPersistenceManager();
-//		Transaction tx = pm.currentTransaction();
-//
-//		Usuario result = null; 
-//
-//		try {
-//			tx.begin();
-//			
-//			Query<?> query = pm.newQuery("SELECT FROM " + Usuario.class.getName() + " WHERE email =='" + email + "'");
-//			query.setUnique(true);
-//            result = (Usuario) query.execute();
-//			
-//			tx.commit();
-//		} catch (Exception ex) {
-//			System.out.println("  $ Error querying a User: " + ex.getMessage());
-//		} finally {
-//			if (tx != null && tx.isActive()) {
-//				tx.rollback();
-//			}
-//
-//			pm.close();
-//		}
-//
-//		return result.getUsuarioExt();
-//	}
-
 }

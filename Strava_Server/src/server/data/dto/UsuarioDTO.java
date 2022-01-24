@@ -9,10 +9,8 @@ public class UsuarioDTO implements Serializable{
 	private String username;
 	private String email;
 	private String bornDate;
-	private float peso;
+	private int peso;
 	private int altura;
-	private int frecuenciaCardiacaMax;
-	private int frecuenciaCardiacaReposo;
 
 	public String getUsername() {
 		return username;
@@ -38,11 +36,11 @@ public class UsuarioDTO implements Serializable{
 		this.bornDate = bornDate;
 	}
 
-	public float getPeso() {
+	public int getPeso() {
 		return peso;
 	}
 
-	public void setPeso(float peso) {
+	public void setPeso(int peso) {
 		this.peso = peso;
 	}
 
@@ -52,22 +50,6 @@ public class UsuarioDTO implements Serializable{
 
 	public void setAltura(int altura) {
 		this.altura = altura;
-	}
-
-	public int getFrecuenciaCardiacaMax() {
-		return frecuenciaCardiacaMax;
-	}
-
-	public void setFrecuenciaCardiacaMax(int frecuenciaCardiacaMax) {
-		this.frecuenciaCardiacaMax = frecuenciaCardiacaMax;
-	}
-
-	public int getFrecuenciaCardiacaReposo() {
-		return frecuenciaCardiacaReposo;
-	}
-
-	public void setFrecuenciaCardiacaReposo(int frecuenciaCardiacaReposo) {
-		this.frecuenciaCardiacaReposo = frecuenciaCardiacaReposo;
 	}
 
 }

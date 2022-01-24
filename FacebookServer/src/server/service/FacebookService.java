@@ -44,7 +44,7 @@ public class FacebookService {
 		return acceso;
 	}
 	
-	public boolean registrarseFacebook(String username, String email, String pass, float peso, int altura) {
+	public boolean registrarseFacebook(String username, String email, String pass, int peso, int altura) {
 		if(!existeUsuario(email)) {
 			UsuarioFacebook u = new UsuarioFacebook(username,email, pass, peso, altura);
 			FacebookUsers.getInstance().getUsuarios().add(u);

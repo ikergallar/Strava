@@ -5,10 +5,10 @@ public class UsuarioFacebook {
 	public String username;
 	public String email;
 	public String pass;
-	public float peso;
+	public int peso;
 	public int altura;
 	
-	public UsuarioFacebook(String username, String email, String pass, float peso, int altura) {
+	public UsuarioFacebook(String username, String email, String pass, int peso, int altura) {
 		super();
 		this.username = username;
 		this.email = email;
@@ -36,11 +36,11 @@ public class UsuarioFacebook {
 		this.username = username;
 	}
 
-	public float getPeso() {
+	public int getPeso() {
 		return peso;
 	}
 
-	public void setPeso(float peso) {
+	public void setPeso(int peso) {
 		this.peso = peso;
 	}
 

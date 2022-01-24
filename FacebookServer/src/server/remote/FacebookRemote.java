@@ -2,7 +2,6 @@ package server.remote;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import server.dataUsuario.*;
 
 import server.service.FacebookService;
 
@@ -33,7 +32,7 @@ public class FacebookRemote extends UnicastRemoteObject implements IFacebookRemo
 	}
 
 	@Override
-	public void registrarUsuarioFacebook(String username, String email, String pass, float peso, int altura) throws RemoteException {
+	public void registrarUsuarioFacebook(String username, String email, String pass, int peso, int altura) throws RemoteException {
 		FacebookService.getInstance().registrarseFacebook(username, email, pass, peso, altura);;
 	}
 

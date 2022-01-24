@@ -28,11 +28,8 @@ public class SesionDAO extends DataAccessObjectBase implements IDataAccessObject
 	public void save(Sesion object) {
 		super.saveObject(object);
 	}
-
-
-
 	
-	 public List<Sesion> getFiltros(String titulo, int distancia, Date fechaIni, int duracion) {
+	public List<Sesion> getFiltros(String titulo,String deporte, int distancia, Date fechaIni, int duracion) {
          PersistenceManager pm = pmf.getPersistenceManager();
          Transaction tx = pm.currentTransaction();
 
@@ -47,7 +44,7 @@ public class SesionDAO extends DataAccessObjectBase implements IDataAccessObject
 
              for (Sesion sesion : sesionExtent) {           
                      
-            	 Sesion s = new Sesion(sesion.getTitulo(), null, sesion.getDistancia(), sesion.getFecha_ini(), 
+            	 Sesion s = new Sesion(sesion.getTitulo(), sesion.getDeporte(), sesion.getDistancia(), sesion.getFecha_ini(), 
                  sesion.getDuracion(),sesion.getIdCreador());  
             	 
             	 int cont = 0;
@@ -60,12 +57,19 @@ public class SesionDAO extends DataAccessObjectBase implements IDataAccessObject
                      }
                  }
             	 
-        //    	 if (!s.getFecha_ini().equals("")) {
-          //           cont++;
-            //         if (s.getFecha_ini().contains(fechaIni) || s.getFecha_ini().toLowerCase().contains(fechaIni)) {
-              //           contV++;
-                //     }
-                 //}
+            	 if (!s.getDeporte().equals("")) {
+                     cont++;
+                     if (s.getDeporte().contains(deporte) || s.getDeporte().toLowerCase().contains(deporte)) {
+                         contV++;
+                     }
+                 }
+            	 
+            	 if (fechaIni != null) {
+                     cont++;
+                     if (s.getFecha_ini().equals(fechaIni)) {
+                        contV++;
+                     }
+                 }
             	 
             	 if (distancia != 0) {
                      cont ++;

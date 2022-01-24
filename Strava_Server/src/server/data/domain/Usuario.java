@@ -18,10 +18,8 @@ public class Usuario {
 	private String email;
 	private String pass;
 	private String bornDate;
-	private float peso;
+	private int peso;
 	private int altura;
-	private int frecuenciaCardiacaMax;
-	private int frecuenciaCardiacaReposo;
 	private String usuarioExt;
 	
 	@Persistent(defaultFetchGroup="true")
@@ -67,11 +65,11 @@ public class Usuario {
 		this.bornDate = bornDate;
 	}
 
-	public float getPeso() {
+	public int getPeso() {
 		return peso;
 	}
 
-	public void setPeso(float peso) {
+	public void setPeso(int peso) {
 		this.peso = peso;
 	}
 
@@ -81,22 +79,6 @@ public class Usuario {
 
 	public void setAltura(int altura) {
 		this.altura = altura;
-	}
-
-	public int getFrecuenciaCardiacaMax() {
-		return frecuenciaCardiacaMax;
-	}
-
-	public void setFrecuenciaCardiacaMax(int frecuenciaCardiacaMax) {
-		this.frecuenciaCardiacaMax = frecuenciaCardiacaMax;
-	}
-
-	public int getFrecuenciaCardiacaReposo() {
-		return frecuenciaCardiacaReposo;
-	}
-
-	public void setFrecuenciaCardiacaReposo(int frecuenciaCardiacaReposo) {
-		this.frecuenciaCardiacaReposo = frecuenciaCardiacaReposo;
 	}
 	
 	public boolean checkPassword(String password) {

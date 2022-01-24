@@ -1,17 +1,12 @@
 package server.service;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import server.data.dao.DeporteDAO;
-import server.data.dao.RetoDAO;
 import server.data.dao.SesionDAO;
 import server.data.domain.Deporte;
-import server.data.domain.Reto;
 import server.data.domain.Sesion;
 import server.data.domain.Usuario;
-import server.data.dto.DeporteDTO;
 
 public class SesionService {
 	
@@ -40,9 +35,9 @@ public class SesionService {
 		SesionDAO.getInstance().save(sesion);
 		
 	}
-	public List<Sesion> buscarSesion(String titulo, int distancia, Date fecha_ini, int duracion) {
+	public List<Sesion> buscarSesion(String titulo, String deporte, int distancia, Date fecha_ini, int duracion) {
 		
-        List<Sesion> sesion = SesionDAO.getInstance().getFiltros(titulo, distancia, fecha_ini, duracion);
+        List<Sesion> sesion = SesionDAO.getInstance().getFiltros(titulo, deporte, distancia, fecha_ini, duracion);
 		
 		return sesion;
 	}

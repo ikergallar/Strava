@@ -27,8 +27,6 @@ import javax.swing.JList;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
-import com.toedter.calendar.JDateChooser;
-
 import javax.swing.JTextPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
@@ -39,8 +37,9 @@ public class VentanaSesion extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JTextField textField;
+	private JTextField textFecha;
 	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	private JTextField textDeporte;
 
 
 	public VentanaSesion(LoginController loginController, RetoController retoController,
@@ -88,7 +87,7 @@ public class VentanaSesion extends JFrame {
 		JLabel lblTitulo = new JLabel("Sesiones disponibles");
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		lblTitulo.setBounds(56, 33, 275, 50);
+		lblTitulo.setBounds(67, 25, 275, 50);
 		getContentPane().add(lblTitulo);
 
 		JButton btnCrearSesion = new JButton("Crear Sesi\u00F3n");
@@ -99,76 +98,69 @@ public class VentanaSesion extends JFrame {
 				dispose();
 			}
 		});
-		btnCrearSesion.setBounds(202, 431, 142, 23);
+		btnCrearSesion.setBounds(200, 458, 142, 23);
 		getContentPane().add(btnCrearSesion);
 
 		JList<SesionDTO> list = new JList<SesionDTO>();
 		getContentPane().add(list);
-		list.setBounds(299, 104, 287, 267);
+		list.setBounds(257, 104, 516, 316);
 
 		JTextPane textNombre = new JTextPane();
 		textNombre.setBounds(29, 111, 110, 20);
 		getContentPane().add(textNombre);
 
 		JButton btnBuscarSesion = new JButton("Buscar Sesi\u00F3n");
-		btnBuscarSesion.setBounds(78, 340, 124, 31);
+		btnBuscarSesion.setBounds(81, 389, 124, 31);
 		getContentPane().add(btnBuscarSesion);
 
-		JLabel lblNewLabel = new JLabel("Nombre de la sesi\u00F3n");
-		lblNewLabel.setBounds(29, 86, 142, 14);
-		getContentPane().add(lblNewLabel);
+		JLabel lblNombre = new JLabel("Nombre de la sesi\u00F3n");
+		lblNombre.setBounds(29, 86, 142, 14);
+		getContentPane().add(lblNombre);
 
 		JLabel lblDis = new JLabel("Distancia");
-		lblDis.setBounds(28, 142, 101, 20);
+		lblDis.setBounds(29, 188, 101, 20);
 		getContentPane().add(lblDis);
 
 		JSpinner spinnerDis = new JSpinner();
-		spinnerDis.setBounds(29, 162, 110, 22);
+		spinnerDis.setBounds(29, 219, 110, 22);
 		getContentPane().add(spinnerDis);
 
 		JLabel lblFechaIni = new JLabel("Fecha de inicio(dd/MM/yyyy)");
-		lblFechaIni.setBounds(29, 195, 233, 14);
+		lblFechaIni.setBounds(29, 252, 233, 14);
 		getContentPane().add(lblFechaIni);
 
 		JLabel lblDuracion = new JLabel("Duraci\u00F3n");
-		lblDuracion.setBounds(29, 251, 110, 22);
+		lblDuracion.setBounds(29, 308, 110, 22);
 		getContentPane().add(lblDuracion);
 
 		JSpinner spinnerDur = new JSpinner();
-		spinnerDur.setBounds(29, 283, 110, 22);
+		spinnerDur.setBounds(29, 341, 110, 22);
 		getContentPane().add(spinnerDur);
 		
-		textField = new JTextField();
-		textField.setBounds(33, 220, 106, 20);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		textFecha = new JTextField();
+		textFecha.setBounds(29, 277, 106, 20);
+		getContentPane().add(textFecha);
+		textFecha.setColumns(10);
 		
-//		JDateChooser dateChooser = new JDateChooser();
-//		dateChooser.setBounds(29, 220, 110, 20);
-//		getContentPane().add(dateChooser);
-//		
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//		Date fechaM = new Date(System.currentTimeMillis());
-//		String fechaMin = sdf.format(fechaM);
-//		String fechaMax = "2022-12-31";
-//		try {
-//			Date fMin = sdf.parse(fechaMin);
-//			Date fMax = sdf.parse(fechaMax);
-//			dateChooser.setMinSelectableDate(fMin);
-//			dateChooser.setMaxSelectableDate(fMax);
-//		} catch (ParseException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
+		JLabel lblDeporte = new JLabel("Deporte");
+		lblDeporte.setBounds(29, 142, 46, 14);
+		getContentPane().add(lblDeporte);
+		
+		textDeporte = new JTextField();
+		textDeporte.setBounds(29, 167, 110, 20);
+		getContentPane().add(textDeporte);
+		textDeporte.setColumns(10);
+		
 
 		btnBuscarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				String nombre = textNombre.getText();
+				String deporte = textDeporte.getText();
 				int distancia = (Integer) spinnerDis.getValue();
 				Date fechaIni = null;
 				try {
-					fechaIni = sdf.parse(textField.getText());
+					fechaIni = sdf.parse(textFecha.getText());
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -179,7 +171,7 @@ public class VentanaSesion extends JFrame {
 				List<SesionDTO> lista;
 
 				modelo = new DefaultListModel<SesionDTO>();
-				lista = sesionController.buscarSesiones(nombre, distancia, fechaIni, duracion);
+				lista = sesionController.buscarSesiones(nombre,deporte, distancia, fechaIni, duracion);
 
 				if (lista != null) {
 					for (SesionDTO se : lista) {
@@ -187,7 +179,7 @@ public class VentanaSesion extends JFrame {
 						list.setModel(modelo);
 					}
 				} else {
-					JOptionPane.showMessageDialog(null, "No existe ninguna sesion con esas caracteristicas","Confirmacion", 1);
+					JOptionPane.showMessageDialog(null, "No existe ninguna sesion con esas caracteristicas","Warning", 1);
 				}
 
 			}
@@ -196,6 +188,6 @@ public class VentanaSesion extends JFrame {
 		this.setTitle("Strava - Menu");
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setVisible(true);
-		this.setSize(634, 531);
+		this.setSize(811, 531);
 	}
 }

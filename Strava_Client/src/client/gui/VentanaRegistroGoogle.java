@@ -28,15 +28,15 @@ public class VentanaRegistroGoogle extends JFrame {
 		getContentPane().setLayout(null);
 		
 		JLabel lblUsername = new JLabel("Nombre de usuario:");
-		lblUsername.setBounds(115, 71, 114, 14);
+		lblUsername.setBounds(115, 71, 129, 14);
 		getContentPane().add(lblUsername);
 		
 		JLabel lblEmail = new JLabel("Correo:");
-		lblEmail.setBounds(115, 114, 84, 14);
+		lblEmail.setBounds(115, 114, 89, 14);
 		getContentPane().add(lblEmail);
 		
 		JLabel lblPass = new JLabel("Contrase\u00F1a:");
-		lblPass.setBounds(115, 158, 84, 14);
+		lblPass.setBounds(115, 158, 89, 14);
 		getContentPane().add(lblPass);
 		
 		JLabel lblPeso = new JLabel("Peso:");
@@ -48,17 +48,17 @@ public class VentanaRegistroGoogle extends JFrame {
 		getContentPane().add(lblAltura);
 		
 		textUsername = new JTextField();
-		textUsername.setBounds(274, 68, 86, 20);
+		textUsername.setBounds(274, 68, 106, 20);
 		getContentPane().add(textUsername);
 		textUsername.setColumns(10);
 		
 		textEmail = new JTextField();
-		textEmail.setBounds(274, 111, 86, 20);
+		textEmail.setBounds(274, 111, 106, 20);
 		getContentPane().add(textEmail);
 		textEmail.setColumns(10);
 		
 		textPass = new JTextField();
-		textPass.setBounds(274, 155, 86, 20);
+		textPass.setBounds(274, 155, 106, 20);
 		getContentPane().add(textPass);
 		textPass.setColumns(10);
 		
@@ -71,7 +71,7 @@ public class VentanaRegistroGoogle extends JFrame {
 		getContentPane().add(spinnerAltura);
 		
 		JButton btnRegistrarse = new JButton("Registrarse");
-		btnRegistrarse.setBounds(159, 327, 107, 23);
+		btnRegistrarse.setBounds(169, 283, 107, 23);
 		getContentPane().add(btnRegistrarse);
 				
 		btnRegistrarse.addActionListener(new ActionListener() {
@@ -82,7 +82,7 @@ public class VentanaRegistroGoogle extends JFrame {
 				String email = textEmail.getText();
 				String pass = textPass.getText();
 				int altura = (Integer) spinnerAltura.getValue();
-			//	float peso = (Float) spinnerPeso.getValue();
+				int peso = (Integer) spinnerPeso.getValue();
 				
 				if (username.equals("") || email.equals("") || pass.equals("")) {
 					JOptionPane.showMessageDialog(null, "Es necesario rellenar todos los campos", "Error", 0);
@@ -95,7 +95,7 @@ public class VentanaRegistroGoogle extends JFrame {
 							
 							if(!loginController.existeUsuario(username,email)) {
 								
-								if(loginController.registroGoogle(username, email, pass, altura, 0)) {									
+								if(loginController.registroGoogle(username, email, pass, peso, altura)) {									
 									JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Confirmacion", 1);
 									
 									VentanaLogin vL = new VentanaLogin(loginController, retoController,sesionController,deporteController);
@@ -134,11 +134,6 @@ public class VentanaRegistroGoogle extends JFrame {
 		btnAtras.setBounds(26, 326, 89, 23);
 		btnAtras.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		getContentPane().add(btnAtras);
-		
-		JLabel lblInfo = new JLabel("Registrese en Strava utilizan un email y contrase\u00F1a asociadas\r\n a una cuenta de Google");
-		lblInfo.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblInfo.setBounds(10, 60, 464, 68);
-		getContentPane().add(lblInfo);
 		
 		 btnAtras.addActionListener(new ActionListener() {
 				

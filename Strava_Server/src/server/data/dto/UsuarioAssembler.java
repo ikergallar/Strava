@@ -27,8 +27,6 @@ public class UsuarioAssembler {
 		dto.setBornDate(user.getBornDate());
 		dto.setPeso(user.getPeso());
 		dto.setAltura(user.getAltura());
-		dto.setFrecuenciaCardiacaMax(user.getFrecuenciaCardiacaMax());
-		dto.setFrecuenciaCardiacaReposo(user.getFrecuenciaCardiacaReposo());
 
 		return dto;
 	}
@@ -43,9 +41,7 @@ public class UsuarioAssembler {
 	    		dto.setBornDate(u.getBornDate());
 	    		dto.setPeso(u.getPeso());
 	    		dto.setAltura(u.getAltura());
-	    		dto.setFrecuenciaCardiacaMax(u.getFrecuenciaCardiacaMax());
-	    		dto.setFrecuenciaCardiacaReposo(u.getFrecuenciaCardiacaReposo());
-
+	    		
 	    		usuarios.add(dto);
 	    	}
 	        

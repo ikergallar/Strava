@@ -36,7 +36,7 @@ public class VentanaCrearSesion extends JFrame {
 			SesionController sesionController, DeporteController deporteController) {
 		getContentPane().setLayout(null);
 
-		this.setBounds(150, 100, 450, 500);
+		this.setBounds(150, 100, 538, 551);
 		
 		JLabel lblNombre = new JLabel("Nombre de la sesi\u00F3n");
 		lblNombre.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -44,7 +44,6 @@ public class VentanaCrearSesion extends JFrame {
 		getContentPane().add(lblNombre);
 
 		textNombre = new JTextField();
-		textNombre.setText("Nombre de la sesi\u00F3n");
 		textNombre.setBounds(37, 88, 255, 28);
 		getContentPane().add(textNombre);
 		textNombre.setColumns(10);
@@ -52,12 +51,12 @@ public class VentanaCrearSesion extends JFrame {
 		JComboBox<?> comDeporte = new JComboBox();
 		comDeporte.setModel(new DefaultComboBoxModel(deporteController.getNombres().toArray()));
 		comDeporte.setToolTipText("");
-		comDeporte.setBounds(37, 127, 255, 28);
+		comDeporte.setBounds(37, 159, 255, 28);
 		getContentPane().add(comDeporte);
 
 		JLabel lblFecha = new JLabel("Fecha de inicio de la sesi\u00F3n(dd/MM/yyyy)");
 		lblFecha.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblFecha.setBounds(37, 166, 315, 21);
+		lblFecha.setBounds(37, 198, 315, 21);
 		getContentPane().add(lblFecha);
 
 		JLabel lblTitulo = new JLabel("Crea tu sesi\u00F3n personalizada de entrenamiento");
@@ -67,28 +66,28 @@ public class VentanaCrearSesion extends JFrame {
 
 		JLabel lblDur = new JLabel("Duraci\u00F3n de la sesi\u00F3n(min)");
 		lblDur.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblDur.setBounds(37, 239, 255, 21);
+		lblDur.setBounds(37, 279, 255, 21);
 		getContentPane().add(lblDur);
 
 		JSpinner spinnerDur = new JSpinner();
-		spinnerDur.setBounds(37, 271, 118, 28);
+		spinnerDur.setBounds(37, 311, 118, 28);
 		getContentPane().add(spinnerDur);
 
 		JLabel lblDistanciaDeLa = new JLabel("Distancia de la sesi\u00F3n(km)");
 		lblDistanciaDeLa.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblDistanciaDeLa.setBounds(37, 310, 255, 21);
+		lblDistanciaDeLa.setBounds(37, 350, 255, 21);
 		getContentPane().add(lblDistanciaDeLa);
 
 		JSpinner spinnerDis = new JSpinner();
-		spinnerDis.setBounds(37, 342, 118, 28);
+		spinnerDis.setBounds(37, 382, 118, 28);
 		getContentPane().add(spinnerDis);
 
 		JButton btnCrearSesion = new JButton("Crear Sesi\u00F3n");
-		btnCrearSesion.setBounds(79, 399, 118, 23);
+		btnCrearSesion.setBounds(58, 448, 146, 23);
 		getContentPane().add(btnCrearSesion);
 		
 		textField = new JTextField();
-		textField.setBounds(37, 208, 152, 20);
+		textField.setBounds(37, 230, 152, 28);
 		getContentPane().add(textField);
 		textField.setColumns(10);
 
@@ -125,8 +124,13 @@ public class VentanaCrearSesion extends JFrame {
 		});
 
 		JButton btnAtras = new JButton("Atras");
-		btnAtras.setBounds(207, 399, 104, 23);
+		btnAtras.setBounds(225, 448, 127, 23);
 		getContentPane().add(btnAtras);
+		
+		JLabel lblDeporte = new JLabel("Deporte");
+		lblDeporte.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblDeporte.setBounds(37, 127, 137, 21);
+		getContentPane().add(lblDeporte);
 		
 		btnAtras.addActionListener(new ActionListener() {
 

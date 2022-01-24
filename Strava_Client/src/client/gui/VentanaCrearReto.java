@@ -41,23 +41,23 @@ public class VentanaCrearReto extends JFrame {
 
 		JLabel lblTitulo = new JLabel("<html>Crea tus propios retos y compartelos con los usuarios de Strava<html>");
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblTitulo.setBounds(10, 11, 404, 86);
+		lblTitulo.setBounds(30, 11, 404, 86);
 		getContentPane().add(lblTitulo);
 
 		JLabel lblNombre = new JLabel("Nombre del reto: ");
-		lblNombre.setBounds(29, 136, 112, 14);
+		lblNombre.setBounds(29, 136, 139, 14);
 		getContentPane().add(lblNombre);
 
 		JLabel lblFechaIni = new JLabel("Fecha de Inicio(dd/mm/aaaa):");
-		lblFechaIni.setBounds(29, 215, 152, 14);
+		lblFechaIni.setBounds(29, 215, 180, 14);
 		getContentPane().add(lblFechaIni);
 
 		JLabel lblFechaFin = new JLabel("Fecha final(dd/mm/aaaa):");
-		lblFechaFin.setBounds(29, 254, 150, 14);
+		lblFechaFin.setBounds(29, 254, 180, 14);
 		getContentPane().add(lblFechaFin);
 
 		JSpinner spinner = new JSpinner();
-		spinner.setBounds(193, 303, 30, 20);
+		spinner.setBounds(219, 303, 30, 20);
 		getContentPane().add(spinner);
 
 		JLabel lblDistancia = new JLabel("Distancia(km): ");
@@ -65,29 +65,28 @@ public class VentanaCrearReto extends JFrame {
 		getContentPane().add(lblDistancia);
 
 		textNombre = new JTextField();
-		textNombre.setText("Nombre del reto");
-		textNombre.setBounds(189, 129, 255, 28);
+		textNombre.setBounds(219, 129, 255, 28);
 		getContentPane().add(textNombre);
 		textNombre.setColumns(10);
 
 		JComboBox comDeporte = new JComboBox();
 		comDeporte.setModel(new DefaultComboBoxModel(deporteController.getNombres().toArray()));
 		comDeporte.setToolTipText("");
-		comDeporte.setBounds(189, 169, 255, 28);
+		comDeporte.setBounds(219, 168, 255, 28);
 		getContentPane().add(comDeporte);
 
 		textFechaini = new JTextField();
-		textFechaini.setBounds(189, 208, 255, 28);
+		textFechaini.setBounds(219, 208, 255, 28);
 		getContentPane().add(textFechaini);
 		textFechaini.setColumns(10);
 
 		textFin = new JTextField();
-		textFin.setBounds(189, 247, 255, 29);
+		textFin.setBounds(219, 247, 255, 29);
 		getContentPane().add(textFin);
 		textFin.setColumns(10);
 
 		JButton btnCrearReto = new JButton("Crear Reto");
-		btnCrearReto.setBounds(91, 385, 89, 23);
+		btnCrearReto.setBounds(111, 385, 112, 23);
 		getContentPane().add(btnCrearReto);
 
 		btnCrearReto.addActionListener(new ActionListener() {
@@ -130,8 +129,12 @@ public class VentanaCrearReto extends JFrame {
 		});
 
 		JButton btnAtras = new JButton("Atras");
-		btnAtras.setBounds(201, 385, 89, 23);
+		btnAtras.setBounds(253, 385, 105, 23);
 		getContentPane().add(btnAtras);
+		
+		JLabel lblDeporte = new JLabel("Deporte:");
+		lblDeporte.setBounds(29, 176, 99, 14);
+		getContentPane().add(lblDeporte);
 
 		btnAtras.addActionListener(new ActionListener() {
 
@@ -145,7 +148,7 @@ public class VentanaCrearReto extends JFrame {
 			}
 		});
 
-		this.setSize(500, 500);
+		this.setSize(512, 500);
 
 	}
 }

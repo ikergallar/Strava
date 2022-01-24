@@ -16,7 +16,6 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
@@ -83,7 +82,7 @@ public class VentanaReto extends JFrame {
 		getContentPane().add(lblTitulo);
 
 		JList<RetoDTO> list = new JList<RetoDTO>();
-		list.setBounds(364, 84, 330, 278);
+		list.setBounds(205, 84, 694, 278);
 		getContentPane().add(list);
 
 		JButton btnCrearReto = new JButton("Crear Reto");
@@ -94,15 +93,15 @@ public class VentanaReto extends JFrame {
 				dispose();
 			}
 		});
-		btnCrearReto.setBounds(285, 501, 140, 23);
+		btnCrearReto.setBounds(255, 459, 140, 23);
 		getContentPane().add(btnCrearReto);
 
 		JButton btnBuscarReto = new JButton("Obtener retos");
-		btnBuscarReto.setBounds(170, 343, 128, 23);
+		btnBuscarReto.setBounds(37, 296, 140, 23);
 		getContentPane().add(btnBuscarReto);
 
 		JButton btnApuntarse = new JButton("Apuntarse ");
-		btnApuntarse.setBounds(490, 397, 128, 23);
+		btnApuntarse.setBounds(378, 373, 128, 23);
 		getContentPane().add(btnApuntarse);
 
 		btnBuscarReto.addActionListener(new ActionListener() {
@@ -141,7 +140,7 @@ public class VentanaReto extends JFrame {
 
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setVisible(true);
-		this.setSize(750, 600);
+		this.setSize(925, 571);
 
 	}
 }

@@ -39,7 +39,7 @@ public class VentanaRegistro extends JFrame{
 		getContentPane().add(lblTitulo);
 		
 		JLabel lblUsername = new JLabel("Nombre de usuario:");
-		lblUsername.setBounds(115, 71, 114, 14);
+		lblUsername.setBounds(115, 71, 139, 14);
 		getContentPane().add(lblUsername);
 		
 		JLabel lblEmail = new JLabel("Correo:");
@@ -47,7 +47,7 @@ public class VentanaRegistro extends JFrame{
 		getContentPane().add(lblEmail);
 		
 		JLabel lblPass = new JLabel("Contrase\u00F1a:");
-		lblPass.setBounds(115, 158, 84, 14);
+		lblPass.setBounds(115, 158, 107, 14);
 		getContentPane().add(lblPass);
 		
 		JLabel lblPeso = new JLabel("Peso:");
@@ -82,7 +82,7 @@ public class VentanaRegistro extends JFrame{
 		getContentPane().add(spinnerAltura);
 		
 		JButton btnRegistrarse = new JButton("Registrarse");
-		btnRegistrarse.setBounds(159, 327, 107, 23);
+		btnRegistrarse.setBounds(140, 313, 114, 23);
 		getContentPane().add(btnRegistrarse);
 		
 		JButton btnAtras = new JButton("Atras");
@@ -93,7 +93,7 @@ public class VentanaRegistro extends JFrame{
 				dispose();
 			}
 		});
-		btnAtras.setBounds(298, 327, 107, 23);
+		btnAtras.setBounds(298, 313, 107, 23);
 		getContentPane().add(btnAtras);
 		
 		btnRegistrarse.addActionListener(new ActionListener() {
@@ -104,7 +104,7 @@ public class VentanaRegistro extends JFrame{
 				String email = textEmail.getText();
 				String pass = textPass.getText();
 				int altura = (Integer) spinnerAltura.getValue();
-			//	float peso = (Float) spinnerPeso.getValue();
+				int peso = (Integer) spinnerPeso.getValue();
 				
 				if (username.equals("") || email.equals("") || pass.equals("")) {
 					JOptionPane.showMessageDialog(null, "Es necesario rellenar todos los campos", "Error", 0);
@@ -115,7 +115,7 @@ public class VentanaRegistro extends JFrame{
 						
 						if(!loginController.existeUsuario(username,email)) {
 							
-							loginController.registro(username, email, pass, 0, altura);
+							loginController.registro(username, email, pass, peso, altura);
 							
 							JOptionPane.showMessageDialog(null, "Usuario registrado correctamente", "Confirmacion", 1);
 							
