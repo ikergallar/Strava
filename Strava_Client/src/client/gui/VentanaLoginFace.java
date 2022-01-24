@@ -72,9 +72,10 @@ public class VentanaLoginFace extends JFrame {
 				
 				System.out.println(" - Login with Facebook into the server: '" + email + "' - '" + pass + "' ...");
 				System.out.println("\t* Password : " + pass);		
-				boolean result = loginController.loginFacebook(email, pass);
+				boolean resultado = loginController.loginFacebook(email, pass);
+				boolean result = loginController.login(email, pass);
 				System.out.println("\t* Login result: " + result);
-				if (result) {
+				if (result && resultado) {
 					JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "Confirmacion", 1);
 					VentanaSesion vP = new VentanaSesion(loginController,retoController, sesionController,deporteController);
 					vP.setVisible(true);

@@ -24,8 +24,8 @@ public class LocalDatabaseTest {
 			dep1.setNombre("Ciclismo");	
 			
 			Usuario u = new Usuario();
-			u.setUsername("Xabster");
-			u.setEmail("xabster@gmail.com");
+			u.setUsername("RealRondo");
+			u.setEmail("rondom@gmail.com");
 			u.setPass("123");
 			u.setAltura(177);
 			u.setPeso(73);
@@ -56,11 +56,11 @@ public class LocalDatabaseTest {
 			DeporteDAO.getInstance().save(dep);
 			DeporteDAO.getInstance().save(dep1);
 			
-			LoginService.getInstance().registro(u.getUsername(), u.getEmail(), u.getPass(), u.getPeso(), u.getAltura(), "Google");
 			LoginService.getInstance().registroGoogle(u.getUsername(), u.getEmail(), u.getPass(), u.getPeso(), u.getAltura());
+			LoginService.getInstance().registro(u.getUsername(), u.getEmail(), u.getPass(), u.getPeso(), u.getAltura(), "Google");
 			
-			LoginService.getInstance().registro(u1.getUsername(), u1.getEmail(), u1.getPass(), u1.getPeso(), u1.getAltura(), "Facebook");
 			LoginService.getInstance().registroFacebook(u1.getUsername(), u1.getEmail(), u1.getPass(), u1.getPeso(), u1.getAltura());
+			LoginService.getInstance().registro(u1.getUsername(), u1.getEmail(), u1.getPass(), u1.getPeso(), u1.getAltura(), "Facebook");
 
 			LoginService.getInstance().registro(u2.getUsername(), u2.getEmail(), u2.getPass(), u2.getPeso(), u2.getAltura(), "Email");
 

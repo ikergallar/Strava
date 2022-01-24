@@ -76,7 +76,6 @@ public class LoginController {
 	public boolean loginGoogle(String email, String pass) {
 		try {
 			this.serviceLocator.getService().loginGoogle(email, pass);	
-			this.token=0;
 			return true;
 		} catch (RemoteException e) {
 			System.out.println("# Error during login Google: " + e);
@@ -87,7 +86,6 @@ public class LoginController {
 	public boolean loginFacebook(String email, String pass) {
 		try {
 			this.serviceLocator.getService().loginFacebook(email, pass);
-			this.token=0;
 			return true;
 		} catch (RemoteException e) {
 			System.out.println("# Error during login Facebook: " + e);
