@@ -2,9 +2,11 @@ package server.test;
 
 import java.text.SimpleDateFormat;
 
+import server.data.dao.DeporteDAO;
 import server.data.domain.Deporte;
 import server.data.domain.Sesion;
 import server.data.domain.Usuario;
+import server.service.LoginService;
 
 
 public class LocalDatabaseTest {
@@ -49,6 +51,19 @@ public class LocalDatabaseTest {
 			s.setDuracion(27);
 			s.setDistancia(37);
 			s.setIdCreador(u1.getIdUsuario());
+			
+			//Save Data in the DB
+			DeporteDAO.getInstance().save(dep);
+			DeporteDAO.getInstance().save(dep1);
+			
+			LoginService.getInstance().registro(u.getUsername(), u.getEmail(), u.getPass(), u.getPeso(), u.getAltura(), "Google");
+			LoginService.getInstance().registroGoogle(u.getUsername(), u.getEmail(), u.getPass(), u.getPeso(), u.getAltura());
+			
+			LoginService.getInstance().registro(u1.getUsername(), u1.getEmail(), u1.getPass(), u1.getPeso(), u1.getAltura(), "Facebook");
+			LoginService.getInstance().registroFacebook(u1.getUsername(), u1.getEmail(), u1.getPass(), u1.getPeso(), u1.getAltura());
+
+			LoginService.getInstance().registro(u2.getUsername(), u2.getEmail(), u2.getPass(), u2.getPeso(), u2.getAltura(), "Email");
+
 				
 		} catch (Exception ex) {
 			System.out.println("\t$ Error storing data:" + ex.getMessage());
